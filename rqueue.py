@@ -22,7 +22,6 @@ class RedisQueue(object):
             item = self.redis.blpop(self.key, timeout=timeout)
         else:
             item = self.redis.lpop(self.key)
-        print item
         if item:
-            item = json.loads(item[1])
+            item = json.loads(item)
         return item

@@ -7,7 +7,6 @@ import requests
 import time
 
 import configfetcher
-import messagebuilder
 import rqueue
 
 conf = configfetcher.ConfigFetcher()
@@ -25,12 +24,10 @@ region = make_region().configure(
 
 
 class Wikibugs2(object):
-    def __init__(self, conf, builder):
+    def __init__(self, conf):
         """
         :param conf: Config
         :type conf: configfetcher.ConfigFetcher
-        :param builder: Converts event info to a string
-        :type builder: messagebuilder.IRCMessageBuilder
         """
         self.conf = conf
         self.phab = phabricator.Phabricator(
@@ -42,7 +39,6 @@ class Wikibugs2(object):
             conf.get('REDIS_QUEUE_NAME'),
             conf.get('REDIS_HOST')
         )
-        self.builder = builder
 
     @region.cache_on_arguments()
     def get_user_name(self, phid):
@@ -112,28 +108,6 @@ class Wikibugs2(object):
 
         return transactions
 
-    def get_channels_for_projects(self, projects):
-        """
-        :param projects: List of human readable project names
-        :type projects: list
-        """
-        channels = []
-        conf_channels = self.conf.get('CHANNELS')
-        for proj in projects:
-            if proj in conf_channels:
-                channels.append(conf_channels[proj])
-
-        # Send to the default channel if we're not sending it
-        # anywhere else
-        if not channels and '_default' in conf_channels:
-            channels.append(conf_channels['_default'])
-
-        # Don't forget the firehose!
-        if '_firehose' in conf_channels:
-            channels.append(conf_channels['_firehose'])
-
-        return channels
-
     def process_event(self, event_info):
         """
         :type event_info: dict
@@ -166,18 +140,10 @@ class Wikibugs2(object):
         if 'core:comment' in transactions:
             useful_event_metadata['comment'] = transactions['core:comment']['comments']
         print useful_event_metadata
-        message = self.builder.build_message(useful_event_metadata)
-        channels = self.get_channels_for_projects(useful_event_metadata['projects'])
-        self.rqueue.put({
-            'channels': channels,
-            'text': message,
-        })
+        self.rqueue.put(useful_event_metadata)
 
 
 
 if __name__ == '__main__':
-    bugs = Wikibugs2(
-        conf,
-        messagebuilder.IRCMessageBuilder()
-    )
+    bugs = Wikibugs2(conf)
     bugs.poll()
