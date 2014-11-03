@@ -1,23 +1,18 @@
 #!/usr/bin/env python
 
-from irc.bot import ServerSpec, SingleServerIRCBot
+import time
 
 import configfetcher
 import messagebuilder
 import rqueue
 
 
-class Redis2IRC(SingleServerIRCBot):
+class Redis2Stdout(object):
     def __init__(self, conf, builder):
         """
         :type conf: configfetcher.ConfigFetcher
         :type builder: messagebuilder.IRCMessageBuilder
         """
-        super(Redis2IRC, self).__init__(
-            [ServerSpec(conf.get('IRC_SERVER'))],
-            conf.get('IRC_NICK'),
-            conf.get('IRC_NICK'),
-        )
         self.rqueue = rqueue.RedisQueue(
             conf.get('REDIS_QUEUE_NAME'),
             conf.get('REDIS_HOST')
@@ -26,12 +21,6 @@ class Redis2IRC(SingleServerIRCBot):
         self.join_channels = conf.get('CHANNELS').values()
         self.builder = builder
         self.connected = False
-
-    def on_welcome(self, c, e):
-        print 'welcome!'
-        for chan in self.join_channels:
-            c.join(chan)
-        self.connected = True
 
     def get_channels_for_projects(self, projects):
         """
@@ -56,27 +45,16 @@ class Redis2IRC(SingleServerIRCBot):
         return channels
 
     def start(self):
-        for i in ['welcome']:
-            self.connection.add_global_handler(i, getattr(self, "on_" + i), -20)
-        self._connect()
-        for chan in self.join_channels:
-            self.manifold.server().join(chan)
         while 1:
-            self.manifold.process_once(0.1)
-            if self.connected:
-                print 'checking redis...'
-                useful_info = self.rqueue.get(False)
-                if useful_info:
-                    text = self.builder.build_message(useful_info)
-                    channels = self.get_channels_for_projects(useful_info['projects'])
-                    for channel in channels:
-                        if channel not in self.channels:
-                            print self.channels
-                            self.manifold.server().join(channel)
-                        self.manifold.server().privmsg(channel, text)
+            time.sleep(0.1)
+            useful_info = self.rqueue.get(False)
+            if useful_info:
+                text = self.builder.build_message(useful_info)
+                channels = self.get_channels_for_projects(useful_info['projects'])
+                print ','.join(channels) + ': ' + text
 
 if __name__ == '__main__':
-    bot = Redis2IRC(
+    bot = Redis2Stdout(
         configfetcher.ConfigFetcher(),
         messagebuilder.IRCMessageBuilder()
     )

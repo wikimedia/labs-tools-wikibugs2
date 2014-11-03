@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 from dogpile.cache import make_region
-import json
 import phabricator
-import requests
-import time
 
 import configfetcher
 import rqueue
@@ -100,7 +97,6 @@ class Wikibugs2(object):
         transactions = {}
         for trans in info.values()[0]:
             if trans['dateCreated'] == timestamp:  # Yeah, this is a hack, but it works
-                #print trans
                 transactions[trans['transactionType']] = {
                     'old': trans['oldValue'],
                     'new': trans['newValue'],
@@ -142,20 +138,21 @@ class Wikibugs2(object):
             useful_event_metadata['title'] = phid_info['fullName'].split(':', 1)[1].strip()
         if 'core:comment' in transactions:
             useful_event_metadata['comment'] = transactions['core:comment']['comments']
-        if 'priority' in transactions:
-            useful_event_metadata['priority'] = transactions['priority']
-            pass
+        for _type in ['status', 'priority']:
+            if _type in transactions:
+                useful_event_metadata[_type] = transactions[_type]
         if 'reassign' in transactions:
             trans = transactions['reassign']
             info = {}
             for _type in ['old', 'new']:
                 if trans[_type] is not None:
                     info[_type] = self.get_user_name(trans[_type])
+                else:
+                    info[_type] = None
             useful_event_metadata['assignee'] = info
 
         print useful_event_metadata
-        #self.rqueue.put(useful_event_metadata)
-
+        self.rqueue.put(useful_event_metadata)
 
 
 if __name__ == '__main__':
