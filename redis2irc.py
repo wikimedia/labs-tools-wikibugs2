@@ -25,6 +25,13 @@ class Redis2IRC(SingleServerIRCBot):
         self.conf = conf
         self.join_channels = conf.get('CHANNELS').values()
         self.builder = builder
+        self.connected = False
+
+    def on_welcome(self, c, e):
+        print 'welcome!'
+        for chan in self.join_channels:
+            c.join(chan)
+        self.connected = True
 
     def get_channels_for_projects(self, projects):
         """
@@ -49,19 +56,24 @@ class Redis2IRC(SingleServerIRCBot):
         return channels
 
     def start(self):
+        for i in ['welcome']:
+            self.connection.add_global_handler(i, getattr(self, "on_" + i), -20)
         self._connect()
         #for chan in self.join_channels:
         #    self.manifold.server().join(chan)
         while 1:
             self.manifold.process_once(0.1)
-            useful_info = self.rqueue.get(False)
-            if useful_info:
-                text = self.builder.build_message(useful_info)
-                channels = self.get_channels_for_projects(useful_info['projects'])
-                for channel in channels:
-                    if not channel in self.channels:
-                        self.manifold.server().join(channel)
-                    self.manifold.server().privmsg(channel, text)
+            if self.connected:
+                print 'checking redis...'
+                useful_info = self.rqueue.get(False)
+                if useful_info:
+                    text = self.builder.build_message(useful_info)
+                    channels = self.get_channels_for_projects(useful_info['projects'])
+                    for channel in channels:
+                        if not channel in self.channels:
+                            print self.channels
+                            self.manifold.server().join(channel)
+                        self.manifold.server().privmsg(channel, text)
 
 if __name__ == '__main__':
     bot = Redis2IRC(

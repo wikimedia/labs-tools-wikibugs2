@@ -8,6 +8,21 @@ class IRCMessageBuilder(object):
               'purple': 6, 'orange': 7, 'yellow': 8, 'lime': 9, 'teal': 10,
               'cyan': 11, 'royal': 12, 'pink': 13, 'grey': 14, 'silver': 15}
 
+    # TODO FIXME I cannot figure these out at all.
+    PRIORITY = {
+        100: 'Unbreak now!',
+        90: 'High',
+        80: 'Low',
+        25: 'Needs volunteer',
+    }
+
+    # FIXME: Incomplete
+    STATUSES = {
+        'open': 'Open',
+        'needsinfo': 'Needs info',
+        'invalid': 'Invalid',
+    }
+
     def colorify(self, text, foreground=None, background=None):
         outtext = "\x03"
         if foreground:

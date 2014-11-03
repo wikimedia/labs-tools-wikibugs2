@@ -100,11 +100,13 @@ class Wikibugs2(object):
         transactions = {}
         for trans in info.values()[0]:
             if trans['dateCreated'] == timestamp:  # Yeah, this is a hack, but it works
+                #print trans
                 transactions[trans['transactionType']] = {
                     'old': trans['oldValue'],
                     'new': trans['newValue'],
-                    'comments': trans['comments'],
                 }
+                if trans['comments'] is not None:
+                    transactions[trans['transactionType']]['comments'] = trans['comments']
 
         return transactions
 
@@ -116,8 +118,8 @@ class Wikibugs2(object):
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
             return
-        #if phid_info['uri'] != 'https://phab-01.wmflabs.org/T47':
-        #    return
+        if phid_info['uri'] != 'https://phab-01.wmflabs.org/T84':
+            return
         task_info = self.maniphest_info(phid_info['name'])
         # Start sorting this into things we care about...
         useful_event_metadata = {
@@ -131,7 +133,8 @@ class Wikibugs2(object):
             return
         if 'title' in transactions:
             useful_event_metadata['title'] = transactions['title']['new']
-            pass
+            if transactions['title']['old'] is None:
+                useful_event_metadata['new'] = True
         else:
             # Technically there's a race condition if the title is changed
             # in another event before our API request is made, but meh
@@ -139,8 +142,19 @@ class Wikibugs2(object):
             useful_event_metadata['title'] = phid_info['fullName'].split(':', 1)[1].strip()
         if 'core:comment' in transactions:
             useful_event_metadata['comment'] = transactions['core:comment']['comments']
+        if 'priority' in transactions:
+            useful_event_metadata['priority'] = transactions['priority']
+            pass
+        if 'reassign' in transactions:
+            trans = transactions['reassign']
+            info = {}
+            for _type in ['old', 'new']:
+                if trans[_type] is not None:
+                    info[_type] = self.get_user_name(trans[_type])
+            useful_event_metadata['assignee'] = info
+
         print useful_event_metadata
-        self.rqueue.put(useful_event_metadata)
+        #self.rqueue.put(useful_event_metadata)
 
 
 
