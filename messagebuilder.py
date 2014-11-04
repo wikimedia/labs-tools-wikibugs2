@@ -48,7 +48,7 @@ class IRCMessageBuilder(object):
         text += useful_info['title']
         text += ' - ' + useful_info['url']
         text += " (" + self.colorify(useful_info['user'], "teal") + ") "
-        is_new = 'new' in useful_info
+        is_new = 'new' in useful_info or ('status' in useful_info and useful_info['status']['old'] is None)
         if is_new:
             text += self.colorify('NEW', 'green') + ' '
         elif 'status' in useful_info:
