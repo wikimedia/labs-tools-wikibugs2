@@ -65,7 +65,7 @@ class Redis2IRC(SingleServerIRCBot):
             self.manifold.process_once(0.1)
             if self.connected:
                 print 'checking redis...'
-                useful_info = self.rqueue.get(False)
+                useful_info = self.rqueue.get()
                 if useful_info:
                     text = self.builder.build_message(useful_info)
                     channels = self.get_channels_for_projects(useful_info['projects'])

@@ -13,15 +13,11 @@ class RedisQueue(object):
         """Put item into the queue."""
         self.redis.rpush(self.key, json.dumps(item))
 
-    def get(self, block=True, timeout=None):
+    def get(self):
         """Remove and return an item from the queue.
 
-        If optional args block is true and timeout is None (the default), block
-        if necessary until an item is available."""
-        if block:
-            item = self.redis.blpop(self.key, timeout=timeout)
-        else:
-            item = self.redis.lpop(self.key)
+        Will block until an item is available"""
+        item = self.redis.blpop(self.key)
         if item:
             item = json.loads(item)
         return item

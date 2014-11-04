@@ -47,7 +47,7 @@ class Redis2Stdout(object):
     def start(self):
         while 1:
             time.sleep(0.1)
-            useful_info = self.rqueue.get(False)
+            useful_info = self.rqueue.get()
             if useful_info:
                 text = self.builder.build_message(useful_info)
                 channels = self.get_channels_for_projects(useful_info['projects'])
