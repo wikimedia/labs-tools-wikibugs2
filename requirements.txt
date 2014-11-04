@@ -1,5 +1,4 @@
 PyYAML==3.11
-dogpile.cache==0.5.4
 fab==1.4
 irc==10.0
 redis==2.10.3

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from dogpile.cache import make_region
+import functools
 import phabricator
 import time
 
@@ -8,21 +8,6 @@ import configfetcher
 import rqueue
 
 conf = configfetcher.ConfigFetcher()
-
-redis_region = make_region().configure(
-    'dogpile.cache.redis',
-    arguments={
-        'host': conf.get('REDIS_HOST'),
-        'port': 6379,
-        'db': 0,
-        'redis_expiration_time': 60*60*24,   # 1 day
-        'distributed_lock': True
-    }
-)
-
-mem_region = make_region().configure(
-    'dogpile.cache.memory'
-)
 
 
 class Wikibugs2(object):
@@ -43,8 +28,7 @@ class Wikibugs2(object):
         )
         self.poll_last_seen_chrono_key = 0
 
-    @mem_region.cache_on_arguments()
-    @redis_region.cache_on_arguments()
+    @functools.lru_cache(maxsize=200)
     def get_user_name(self, phid):
         """
         :param phid: A PHID- thingy representing a user
@@ -100,8 +84,7 @@ class Wikibugs2(object):
         })
         return info
 
-    @mem_region.cache_on_arguments()
-    @redis_region.cache_on_arguments()
+    @functools.lru_cache(maxsize=200)
     def cached_phid_info(self, phid):
         """
         Same thing as phid_info, but
