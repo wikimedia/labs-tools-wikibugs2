@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import os
-import json
 from dogpile.cache import make_region
 import phabricator
 
