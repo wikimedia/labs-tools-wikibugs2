@@ -8,7 +8,7 @@ import rqueue
 
 conf = configfetcher.ConfigFetcher()
 
-region = make_region().configure(
+redis_region = make_region().configure(
     'dogpile.cache.redis',
     arguments={
         'host': conf.get('REDIS_HOST'),
@@ -17,6 +17,10 @@ region = make_region().configure(
         'redis_expiration_time': 60*60*2,   # 2 hours
         'distributed_lock': True
     }
+)
+
+mem_region = make_region().configure(
+    'dogpile.cache.memory'
 )
 
 
@@ -37,7 +41,8 @@ class Wikibugs2(object):
             conf.get('REDIS_HOST')
         )
 
-    @region.cache_on_arguments()
+    @mem_region.cache_on_arguments()
+    @redis_region.cache_on_arguments()
     def get_user_name(self, phid):
         """
         :param phid: A PHID- thingy representing a user
@@ -75,7 +80,8 @@ class Wikibugs2(object):
         })
         return info
 
-    @region.cache_on_arguments()
+    @mem_region.cache_on_arguments()
+    @redis_region.cache_on_arguments()
     def cached_phid_info(self, phid):
         """
         Same thing as phid_info, but
@@ -137,7 +143,7 @@ class Wikibugs2(object):
             # Name is in the format "T123: FooBar", so get rid of the prefix
             useful_event_metadata['title'] = phid_info['fullName'].split(':', 1)[1].strip()
         if 'core:comment' in transactions:
-            useful_event_metadata['comment'] = transactions['core:comment']['comments']
+            useful_event_metadata['comment'] = transactions['core:comment'].get('comments', 'Removed.')
         for _type in ['status', 'priority']:
             if _type in transactions:
                 useful_event_metadata[_type] = transactions[_type]
