@@ -83,8 +83,6 @@ class Wikibugs2(object):
             if key > self.poll_last_seen_chrono_key:
                 self.process_event(event)
                 self.poll_last_seen_chrono_key = key
-            else:
-                print 'less'
 
     def phid_info(self, phid):
         info = self.phab.request('phid.query', {
