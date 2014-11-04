@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-import os
 import time
-import yaml
 
 import configfetcher
 import messagebuilder
@@ -15,6 +13,7 @@ class Redis2Stdout(object):
         """
         :type conf: configfetcher.ConfigFetcher
         :type builder: messagebuilder.IRCMessageBuilder
+        :type channelfilter: channelfilter.ChannelFilter
         """
         self.rqueue = rqueue.RedisQueue(
             conf.get('REDIS_QUEUE_NAME'),
@@ -50,13 +49,9 @@ class Redis2Stdout(object):
                 print ','.join(channels) + ': ' + text
 
 if __name__ == '__main__':
-    channels_path = os.path.join(os.path.dirname(__file__), 'channels.yaml')
-    with open(channels_path) as f:
-        channel_filter = yaml.load(f)
-
     bot = Redis2Stdout(
         configfetcher.ConfigFetcher(),
         messagebuilder.IRCMessageBuilder(),
-        channelfilter.ChannelFilter(channel_filter)
+        channelfilter.ChannelFilter()
     )
     bot.start()
