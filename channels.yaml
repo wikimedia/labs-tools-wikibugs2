@@ -1,0 +1,4 @@
+firehose-channel: '##legoktm-test'
+channels:
+    '#wikimedia-operations':
+        - operations
