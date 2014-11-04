@@ -162,8 +162,5 @@ class Wikibugs2(object):
 
 
 if __name__ == '__main__':
-    conf_path = os.path.join(os.path.dirname(__file__), 'config.json')
-    with open(conf_path) as conf_file:
-        conf = json.load(conf_file)
     bugs = Wikibugs2(conf)
     bugs.poll()
