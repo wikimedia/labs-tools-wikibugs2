@@ -43,7 +43,6 @@ class Wikibugs2(object):
         )
         self.poll_last_seen_chrono_key = 0
 
-
     @mem_region.cache_on_arguments()
     @redis_region.cache_on_arguments()
     def get_user_name(self, phid):
@@ -178,7 +177,7 @@ class Wikibugs2(object):
                     info[_type] = None
             useful_event_metadata['assignee'] = info
 
-        print useful_event_metadata
+        print(useful_event_metadata)
         self.rqueue.put(useful_event_metadata)
 
 

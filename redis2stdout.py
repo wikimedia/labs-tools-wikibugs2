@@ -42,11 +42,11 @@ class Redis2Stdout(object):
         while 1:
             time.sleep(0.1)
             useful_info = self.rqueue.get()
-            print useful_info
+            print(useful_info)
             if useful_info:
                 text = self.builder.build_message(useful_info)
                 channels = self.get_channels_for_projects(useful_info['projects'])
-                print ','.join(channels) + ': ' + text
+                print(','.join(channels) + ': ' + text)
 
 if __name__ == '__main__':
     bot = Redis2Stdout(

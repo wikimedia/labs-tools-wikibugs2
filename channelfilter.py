@@ -11,7 +11,7 @@ class ChannelFilter(object):
         with open(path) as f:
             self.config = yaml.load(f)
 
-        print self.config
+        print(self.config)
 
     def channels_for(self, project):
         """
@@ -24,5 +24,5 @@ class ChannelFilter(object):
                 channels.add(channel)
                 continue
         channels.add(self.config['firehose-channel'])
-        print channels
+        print(channels)
         return channels
