@@ -14,7 +14,7 @@ redis_region = make_region().configure(
         'host': conf.get('REDIS_HOST'),
         'port': 6379,
         'db': 0,
-        'redis_expiration_time': 60*60*2,   # 2 hours
+        'redis_expiration_time': 60*60*24,   # 1 day
         'distributed_lock': True
     }
 )
@@ -40,6 +40,7 @@ class Wikibugs2(object):
             conf.get('REDIS_QUEUE_NAME'),
             conf.get('REDIS_HOST')
         )
+
 
     @mem_region.cache_on_arguments()
     @redis_region.cache_on_arguments()
