@@ -147,6 +147,8 @@ class Wikibugs2(object):
         for _type in ['status', 'priority']:
             if _type in transactions:
                 useful_event_metadata[_type] = transactions[_type]
+        if 'status' in useful_event_metadata and useful_event_metadata['status']['old'] is None:
+            useful_event_metadata['new'] = True
         if 'reassign' in transactions:
             trans = transactions['reassign']
             info = {}
