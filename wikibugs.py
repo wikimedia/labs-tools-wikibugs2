@@ -2,6 +2,7 @@
 
 from dogpile.cache import make_region
 import phabricator
+import time
 
 import configfetcher
 import rqueue
@@ -40,6 +41,7 @@ class Wikibugs2(object):
             conf.get('REDIS_QUEUE_NAME'),
             conf.get('REDIS_HOST')
         )
+        self.poll_last_seen_chrono_key = 0
 
 
     @mem_region.cache_on_arguments()
@@ -58,11 +60,31 @@ class Wikibugs2(object):
         return self.cached_phid_info(phid)['name']
 
     def poll(self):
+        if self.poll_last_seen_chrono_key == 0:
+            # First time, get the latest event and start from there
+            latest = self.phab.request('feed.query', {
+                'limit': '1',
+            }).values()[0]
+            self.poll_last_seen_chrono_key = int(latest['chronologicalKey'])
+
         events = self.phab.request('feed.query', {
-            'view': 'data'
+            'view': 'data',
+            'before': self.poll_last_seen_chrono_key,
         })
-        for event in events.values():
-            self.process_event(event)
+
+        if not events:
+            # PHP bug, what should be {} is actually []
+            return
+        events = events.values()
+        # Events are in the order of most recent first to oldest, so reverse!
+        events.reverse()
+        for event in events:
+            key = int(event['chronologicalKey'])
+            if key > self.poll_last_seen_chrono_key:
+                self.process_event(event)
+                self.poll_last_seen_chrono_key = key
+            else:
+                print 'less'
 
     def phid_info(self, phid):
         info = self.phab.request('phid.query', {
@@ -164,4 +186,6 @@ class Wikibugs2(object):
 
 if __name__ == '__main__':
     bugs = Wikibugs2(conf)
-    bugs.poll()
+    while 1:
+        bugs.poll()
+        time.sleep(1)
