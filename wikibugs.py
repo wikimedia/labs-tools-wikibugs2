@@ -122,8 +122,6 @@ class Wikibugs2(object):
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
             return
-        if phid_info['uri'] != 'https://phab-01.wmflabs.org/T84':
-            return
         task_info = self.maniphest_info(phid_info['name'])
         # Start sorting this into things we care about...
         useful_event_metadata = {
