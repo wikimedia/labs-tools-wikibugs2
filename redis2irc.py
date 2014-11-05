@@ -3,6 +3,7 @@
 import asyncio
 import asyncio_redis
 import asyncio_redis.encoders
+import json
 import irc3
 import logging
 import logging.config
@@ -75,18 +76,12 @@ def redislistener(bot):
     connection = yield from asyncio_redis.Connection.create(
         host=bot.conf.get('REDIS_HOST'),
         port=6379,
-        encoder=asyncio_redis.encoders.BytesEncoder()
     )
 
-    # Create subscriber.
-    subscriber = yield from connection.start_subscribe()
-
-    # Subscribe to channel.
-    yield from subscriber.subscribe([bytes(bot.conf.get('REDIS_QUEUE_NAME'), 'ascii')])
-    # Inside a while loop, wait for incoming events.
     while True:
         try:
-            useful_info = yield from subscriber.next_published()
+            future = yield from connection.blpop([bot.conf.get('REDIS_QUEUE_NAME')])
+            useful_info = json.loads(future.value)
             asyncio.Task(handle_useful_info(bot, useful_info))  # Do not wait for response
         except Exception:
             bot.log.critical(traceback.format_exc())
