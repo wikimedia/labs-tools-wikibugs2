@@ -21,6 +21,7 @@ class IRCMessageBuilder(object):
         'open': 'Open',
         'needsinfo': 'Needs info',
         'invalid': 'Invalid',
+        'resolved': 'Resolved',
     }
 
     def colorify(self, text, foreground=None, background=None):
