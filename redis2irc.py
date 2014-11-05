@@ -45,6 +45,9 @@ def handle_useful_info(bot, useful_info):
     :type bot: Redis2Irc
     :type useful_info: dict
     """
+    if useful_info['user'] == 'gerritbot':
+        # Ignore "Patch to review" stuff
+        return
     text = bot.builder.build_message(useful_info)
     channels = bot.chanfilter.channels_for(useful_info['projects'])
     for chan in channels:
