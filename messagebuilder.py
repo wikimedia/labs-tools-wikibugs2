@@ -72,6 +72,7 @@ class IRCMessageBuilder(object):
                 text += self.colorify(ass['old'], 'brown')
                 text += '>'
             text += self.colorify(str(ass['new']), 'green')
+            text += ' '
 
         if 'comment' in useful_info:
             text += ' '.join(useful_info['comment'].split('\n'))
