@@ -5,8 +5,6 @@ import asyncio_redis
 import asyncio_redis.encoders
 import json
 import irc3
-import logging
-import logging.config
 import traceback
 
 import channelfilter
