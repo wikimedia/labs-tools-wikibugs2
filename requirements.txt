@@ -1,5 +1,5 @@
 PyYAML==3.11
-fab==1.4
+fab==1.4.1
 irc==10.0
 redis==2.10.3
 requests==2.4.3

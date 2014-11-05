@@ -19,5 +19,5 @@ class RedisQueue(object):
         Will block until an item is available"""
         item = self.redis.blpop(self.key)
         if item:
-            return json.loads(item[1])
+            return json.loads(item[1].decode())
         return item

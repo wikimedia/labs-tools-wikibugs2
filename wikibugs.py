@@ -45,9 +45,9 @@ class Wikibugs2(object):
     def poll(self):
         if self.poll_last_seen_chrono_key == 0:
             # First time, get the latest event and start from there
-            latest = self.phab.request('feed.query', {
+            latest = list(self.phab.request('feed.query', {
                 'limit': '1',
-            }).values()[0]
+            }).values())[0]
             self.poll_last_seen_chrono_key = int(latest['chronologicalKey'])
 
         events = self.phab.request('feed.query', {
@@ -58,7 +58,7 @@ class Wikibugs2(object):
         if not events:
             # PHP bug, what should be {} is actually []
             return
-        events = events.values()
+        events = list(events.values())
         # Events are in the order of most recent first to oldest, so reverse!
         events.reverse()
         for event in events:
@@ -71,7 +71,7 @@ class Wikibugs2(object):
         info = self.phab.request('phid.query', {
             'phids': [phid]
         })
-        return info.values()[0]
+        return list(info.values())[0]
 
     def maniphest_info(self, task_id):
         """
@@ -104,7 +104,7 @@ class Wikibugs2(object):
             'ids': [task_id]
         })
         transactions = {}
-        for trans in info.values()[0]:
+        for trans in list(info.values())[0]:
             if trans['dateCreated'] == timestamp:  # Yeah, this is a hack, but it works
                 transactions[trans['transactionType']] = {
                     'old': trans['oldValue'],
