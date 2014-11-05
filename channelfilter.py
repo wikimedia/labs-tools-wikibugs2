@@ -25,18 +25,18 @@ class ChannelFilter(object):
         channels = [self.default_channel, self.firehose_channel] + list(self.config['channels'])
         return list(set(channels))
 
-    def channels_for(self, project):
+    def channels_for(self, projects):
         """
-        :param project: Get all channels to spam for the given project
-        :type project: basestring
+        :param project: Get all channels to spam for given projects
+        :type project: list
         """
         channels = set()
         for channel in self.config['channels']:
-            if project in self.config['channels'][channel]:
-                channels.add(channel)
-                continue
+            for project in projects:
+                if project in self.config['channels'][channel]:
+                    channels.add(channel)
+                    break
         if not channels:
             channels.add(self.default_channel)
         channels.add(self.firehose_channel)
-        print(channels)
         return channels
