@@ -7,8 +7,6 @@ import time
 import configfetcher
 import rqueue
 
-conf = configfetcher.ConfigFetcher()
-
 
 class Wikibugs2(object):
     def __init__(self, conf):
@@ -165,7 +163,9 @@ class Wikibugs2(object):
 
 
 if __name__ == '__main__':
-    bugs = Wikibugs2(conf)
+    bugs = Wikibugs2(
+        configfetcher.ConfigFetcher()
+    )
     while 1:
         bugs.poll()
         time.sleep(1)

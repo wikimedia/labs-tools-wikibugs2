@@ -1,4 +1,5 @@
 firehose-channel: '##legoktm-test'
+default-channel: '##legoktm-bots'
 channels:
-    '#wikimedia-operations':
-        - operations
+    '##legoktm-bots':
+        - foobarbaz

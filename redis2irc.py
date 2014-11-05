@@ -1,83 +1,128 @@
 #!/usr/bin/env python
 
-from irc.bot import ServerSpec, SingleServerIRCBot
+import asyncio
+import asyncio_redis
+import asyncio_redis.encoders
+import irc3
+import logging
+import logging.config
+import traceback
 
+import channelfilter
 import configfetcher
 import messagebuilder
-import rqueue
+
+__version__ = '3.0alpha'
 
 
-class Redis2IRC(SingleServerIRCBot):
-    def __init__(self, conf, builder):
+class Redis2Irc(irc3.IrcBot):
+    def __init__(self, conf, builder, chanfilter, **kwargs):
         """
         :type conf: configfetcher.ConfigFetcher
         :type builder: messagebuilder.IRCMessageBuilder
+        :type chanfilter: channelfilter.ChannelFilter
         """
-        super(Redis2IRC, self).__init__(
-            [ServerSpec(conf.get('IRC_SERVER'))],
-            conf.get('IRC_NICK'),
-            conf.get('IRC_NICK'),
-        )
-        self.rqueue = rqueue.RedisQueue(
-            conf.get('REDIS_QUEUE_NAME'),
-            conf.get('REDIS_HOST')
-        )
-        self.conf = conf
-        self.join_channels = conf.get('CHANNELS').values()
-        self.builder = builder
-        self.connected = False
+        super(Redis2Irc, self).__init__(**kwargs)
+        self._conf = conf
+        self._builder = builder
+        self._chanfilter = chanfilter
 
-    def on_welcome(self, c, e):
-        print('welcome!')
-        for chan in self.join_channels:
-            c.join(chan)
-        self.connected = True
+    @property
+    def conf(self):
+        return self._conf
 
-    def get_channels_for_projects(self, projects):
-        """
-        :param projects: List of human readable project names
-        :type projects: list
-        """
-        channels = []
-        conf_channels = self.conf.get('CHANNELS')
-        for proj in projects:
-            if proj in conf_channels:
-                channels.append(conf_channels[proj])
+    @property
+    def builder(self):
+        return self._builder
 
-        # Send to the default channel if we're not sending it
-        # anywhere else
-        if not channels and '_default' in conf_channels:
-            channels.append(conf_channels['_default'])
+    @property
+    def chanfilter(self):
+        return self._chanfilter
 
-        # Don't forget the firehose!
-        if '_firehose' in conf_channels:
-            channels.append(conf_channels['_firehose'])
 
-        return channels
+@asyncio.coroutine
+def handle_useful_info(bot, useful_info):
+    """
+    :type bot: Redis2Irc
+    :type useful_info: dict
+    """
+    text = bot.builder.build_message(useful_info)
+    channels = bot.chanfilter.channels_for(useful_info['projects'])
+    for chan in channels:
+        bot.privmsg(chan, text)
 
-    def start(self):
-        for i in ['welcome']:
-            self.connection.add_global_handler(i, getattr(self, "on_" + i), -20)
-        self._connect()
-        for chan in self.join_channels:
-            self.manifold.server().join(chan)
-        while 1:
-            self.manifold.process_once(0.1)
-            if self.connected:
-                print('checking redis...')
-                useful_info = self.rqueue.get()
-                if useful_info:
-                    text = self.builder.build_message(useful_info)
-                    channels = self.get_channels_for_projects(useful_info['projects'])
-                    for channel in channels:
-                        if channel not in self.channels:
-                            print(self.channels)
-                            self.manifold.server().join(channel)
-                        self.manifold.server().privmsg(channel, text)
+
+@asyncio.coroutine
+def redisrunner(bot):
+    """
+    :type bot: Redis2Irc
+    """
+    while True:
+        try:
+            yield from redislistener(bot)
+        except Exception:
+            bot.log.critical(traceback.format_exc())
+            bot.log.info("...restarting Redis listener in a few seconds.")
+        yield from asyncio.sleep(5)
+
+
+@asyncio.coroutine
+def redislistener(bot):
+    """
+    :type bot: Redis2Irc
+    """
+    # Create connection
+    connection = yield from asyncio_redis.Connection.create(
+        host=bot.conf.get('REDIS_HOST'),
+        port=6379,
+        encoder=asyncio_redis.encoders.BytesEncoder()
+    )
+
+    # Create subscriber.
+    subscriber = yield from connection.start_subscribe()
+
+    # Subscribe to channel.
+    yield from subscriber.subscribe([bytes(bot.conf.get('REDIS_QUEUE_NAME'), 'ascii')])
+    # Inside a while loop, wait for incoming events.
+    while True:
+        try:
+            useful_info = yield from subscriber.next_published()
+            asyncio.Task(handle_useful_info(bot, useful_info))  # Do not wait for response
+        except Exception:
+            bot.log.critical(traceback.format_exc())
+            yield from asyncio.sleep(1)
+
+
+def main():
+    conf = configfetcher.ConfigFetcher()
+    chanfilter = channelfilter.ChannelFilter()
+    bot = Redis2Irc(
+        conf=conf,
+        builder=messagebuilder.IRCMessageBuilder(),
+        chanfilter=chanfilter,
+        nick=conf.get('IRC_NICK'),
+        autojoins=chanfilter.all_channels(),
+        host=conf.get('IRC_SERVER'),
+        port=7000,
+        ssl=True,
+        password=conf.get('IRC_PASSWORD'),
+        realname='wikibugs2',
+        userinfo='Wikibugs v2.1, http://tools.wmflabs.org/wikibugs/',
+        includes=[
+            'irc3.plugins.core',
+            'irc3.plugins.ctcp',
+            'irc3.plugins.autojoins',
+            __name__,  # this register MyPlugin
+        ],
+        verbose=True,
+        ctcp={
+            'version': 'wikibugs2 %s running on irc3 {version}. See {url} for more details.' % __version__,
+            'userinfo': '{userinfo}',
+            'ping': 'PONG',
+        }
+    )
+    asyncio.Task(redisrunner(bot))
+    bot.run()
 
 if __name__ == '__main__':
-    bot = Redis2IRC(
-        configfetcher.ConfigFetcher(),
-        messagebuilder.IRCMessageBuilder()
-    )
-    bot.start()
+    main()

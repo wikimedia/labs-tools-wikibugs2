@@ -13,6 +13,18 @@ class ChannelFilter(object):
 
         print(self.config)
 
+    @property
+    def firehose_channel(self):
+        return self.config['firehose-channel']
+
+    @property
+    def default_channel(self):
+        return self.config['default-channel']
+
+    def all_channels(self):
+        channels = [self.default_channel, self.firehose_channel] + list(self.config['channels'])
+        return list(set(channels))
+
     def channels_for(self, project):
         """
         :param project: Get all channels to spam for the given project
@@ -23,6 +35,8 @@ class ChannelFilter(object):
             if project in self.config['channels'][channel]:
                 channels.add(channel)
                 continue
-        channels.add(self.config['firehose-channel'])
+        if not channels:
+            channels.add(self.default_channel)
+        channels.add(self.firehose_channel)
         print(channels)
         return channels

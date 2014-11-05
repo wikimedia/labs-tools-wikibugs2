@@ -5,8 +5,5 @@
     "REDIS_HOST": "localhost",
     "REDIS_QUEUE_NAME": "wikibugs2",
     "IRC_SERVER": "irc.freenode.net",
-    "IRC_NICK": "wikibugs2",
-    "CHANNELS": {
-        "_firehose": "##legoktm-bots"
-    }
+    "IRC_NICK": "wikibugs2"
 }
