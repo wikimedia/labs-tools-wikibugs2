@@ -223,7 +223,9 @@ if __name__ == '__main__':
     bugs = Wikibugs2(
         configfetcher.ConfigFetcher()
     )
-
+    # Usage:
+    # python -i wikibugs.py ~/errors/XACT-anchor/PHID-TASK-qmkysswakxnzzausyzlv
+    # then import pdb; pdb.pm() to enter the debugger
     for file in sys.argv[1:]:
         bugs.raise_errors = True
         print("Processing {f}".format(f=file))
