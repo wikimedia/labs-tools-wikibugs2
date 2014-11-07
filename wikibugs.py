@@ -214,10 +214,21 @@ class Wikibugs2(object):
             )
             anchor = ""
         
+        
+        try:
+            projects = self.get_tags_to_display(task_page)
+        except Exception as e:
+            if self.raise_errors:
+                raise
+            open("/data/project/wikibugs/errors/scrape-tags/" + event_info['data']['objectPHID'], "w").write(
+                repr(event_info) + "\n" + repr(e)
+            )
+            projects = [self.get_project_name(phid) for phid in task_info['projectPHIDs']]
+
         # Start sorting this into things we care about...
         useful_event_metadata = {
             'url': phid_info['uri'] + anchor,
-            'projects': self.get_tags_to_display(task_page),
+            'projects': projects,
             'user': self.get_user_name(event_info['authorPHID']),
         }
         
