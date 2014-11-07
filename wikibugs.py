@@ -254,6 +254,7 @@ class Wikibugs2(object):
                 useful_event_metadata[_type] = transactions[_type]
         if 'status' in useful_event_metadata and useful_event_metadata['status']['old'] is None:
             useful_event_metadata['new'] = True
+            useful_event_metadata['url'] = useful_event_metadata['url'].split('#')[0]
         if 'reassign' in transactions:
             trans = transactions['reassign']
             info = {}
