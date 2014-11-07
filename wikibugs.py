@@ -3,11 +3,11 @@
 import functools
 import phabricator
 import time
+import sys
 import json
 
 import configfetcher
 import rqueue
-
 
 class Wikibugs2(object):
     def __init__(self, conf):
@@ -26,6 +26,7 @@ class Wikibugs2(object):
             conf.get('REDIS_HOST')
         )
         self.poll_last_seen_chrono_key = 0
+        self.raise_errors = False
 
     @functools.lru_cache(maxsize=200)
     def get_user_name(self, phid):
@@ -162,6 +163,8 @@ class Wikibugs2(object):
                 phid_info['uri'], event_info['data']['transactionPHIDs']
             )
         except Exception as e:
+            if self.raise_errors:
+                raise
             open("/data/project/wikibugs/errors/XACT-anchor/" + event_info['data']['objectPHID'], "w").write(
                 repr(event_info) + "\n" + repr(e)
             )
@@ -214,6 +217,14 @@ if __name__ == '__main__':
     bugs = Wikibugs2(
         configfetcher.ConfigFetcher()
     )
+
+    for file in sys.argv[1:]:
+        bugs.raise_errors = True
+        print("Processing {f}".format(f=file))
+        from collections import OrderedDict
+        bugs.process_event(eval(open(file).readline()))
+    bugs.raise_errors = False
+        
     while 1:
         bugs.poll()
         time.sleep(1)
