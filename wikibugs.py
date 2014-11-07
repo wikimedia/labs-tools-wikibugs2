@@ -3,6 +3,7 @@
 import functools
 import phabricator
 import time
+import json
 
 import configfetcher
 import rqueue
@@ -113,6 +114,38 @@ class Wikibugs2(object):
 
         return transactions
 
+    def get_anchors_for_task(self, url):
+        """
+        :param url: url to task
+        :type url: basestring
+        :returns dict(phid => anchor)
+        """
+        page = self.phab.req_session.get(url).text
+        data_dict_str = page.split(
+            '<script type="text/javascript">JX.Stratcom.mergeData(0,'
+        )[1].split(
+            ");\nJX.onload"
+        )[0]
+        
+        data_dict = json.loads(data_dict_str)
+        return {x[u'phid']: x[u'anchor'] for x in data_dict if u'phid' in x and u'anchor' in x}
+        
+    def get_lowest_anchor_for_task_and_XACTs(self, url, XACTs):
+        """
+        :param url: url to task
+        :type url: basestring
+        :param XACTs: list of XACT phids to look up anchors for
+        :type XACTs: list(basestring)
+        :returns dict(phid => anchor)
+        """
+        anchor_dict = self.get_anchors_for_task(url)
+        anchors = [anchor_dict.get(phid, None) for phid in XACTs]
+        anchors = filter(None, anchors)
+        if anchors:
+            return "#" + sorted(anchors, key=lambda x: int(x))[0]
+        else:
+            return ""
+        
     def process_event(self, event_info):
         """
         :type event_info: dict
@@ -122,12 +155,27 @@ class Wikibugs2(object):
         if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
             return
         task_info = self.maniphest_info(phid_info['name'])
+        
+        # try to get the (lowest) anchor for this change
+        try:
+            anchor = self.get_lowest_anchor_for_task_and_XACTs(
+                phid_info['uri'], event_info['data']['transactionPHIDs']
+            )
+        except Exception as e:
+            open("/data/project/wikibugs/errors/XACT-anchor/" + event_info['data']['objectPHID'], "w").write(
+                repr(event_info) + "\n" + repr(e)
+            )
+            anchor = ""
+        
         # Start sorting this into things we care about...
         useful_event_metadata = {
-            'url': phid_info['uri'],
+            'url': phid_info['uri'] + anchor,
             'projects': [self.get_project_name(phid) for phid in task_info['projectPHIDs']],
             'user': self.get_user_name(event_info['authorPHID']),
         }
+        
+
+        
         transactions = self.get_transaction_info(phid_info['name'], timestamp)
         if 'ccs' in transactions and len(transactions) == 1:
             # Ignore any only-CC updates
