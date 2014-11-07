@@ -141,11 +141,17 @@ class Wikibugs2(object):
         """
         anchor_dict = self.get_anchors_for_task(url)
         anchors = [anchor_dict.get(phid, None) for phid in XACTs]
-        anchors = filter(None, anchors)
+        anchors = [anchor for anchor in anchors if anchor]
+
         if anchors:
             return "#" + sorted(anchors, key=lambda x: int(x))[0]
-        else:
-            return ""
+            
+        # if no anchors could be found, return the highest-numbered anchor we /can/ find
+        anchors = sorted(anchor_dict.values(), key=lambda x: int(x))
+        if anchors:
+            return "#" + anchors[-1]
+            
+        return ""
         
     def process_event(self, event_info):
         """
