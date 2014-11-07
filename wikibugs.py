@@ -5,6 +5,7 @@ import phabricator
 import time
 import sys
 import json
+from bs4 import BeautifulSoup
 
 import configfetcher
 import rqueue
@@ -115,14 +116,51 @@ class Wikibugs2(object):
 
         return transactions
 
-    def get_anchors_for_task(self, url):
+    def get_task_page(self, url):
+        return self.phab.req_session.get(url).text
+        
+    def get_tags(self, task_page):
+        soup = BeautifulSoup(task_page)
+        alltags = {}
+
+        for tag in soup.find(class_='phabricator-handle-tag-list')('li'):
+            taglink = tag.find('a', class_='phui-tag-view')
+            if not taglink:
+                continue
+            
+            marker = taglink.find('span', class_='phui-icon-view')
+            
+            classes = taglink['class'] + marker['class']
+            
+            shade = [cls.split("-")[3] for cls in classes if cls.startswith("phui-tag-shade-")][0]
+            disabled = shade == "disabled"
+            tagtype = [cls.split("-")[1] for cls in classes if cls.startswith("fa-")][0]
+            uri = taglink['href']
+            name = taglink.text
+            
+            alltags[name] = {'shade': shade,
+                             'disabled': disabled,
+                             'tagtype': tagtype,
+                             'uri': uri}
+        
+        return alltags
+        
+    def get_tags_to_display(self, task_page):
+        return [
+            tag
+            for tag, info
+            in self.get_tags(task_page).items()
+            if info["tagtype"] in ["briefcase"] and \
+                not info["disabled"]
+        ]
+        
+    def get_anchors_for_task(self, task_page):
         """
         :param url: url to task
         :type url: basestring
         :returns dict(phid => anchor)
         """
-        page = self.phab.req_session.get(url).text
-        data_dict_str = page.split(
+        data_dict_str = task_page.split(
             '<script type="text/javascript">JX.Stratcom.mergeData(0,'
         )[1].split(
             ");\nJX.onload"
@@ -131,7 +169,7 @@ class Wikibugs2(object):
         data_dict = json.loads(data_dict_str)
         return {x[u'phid']: x[u'anchor'] for x in data_dict if u'phid' in x and u'anchor' in x}
         
-    def get_lowest_anchor_for_task_and_XACTs(self, url, XACTs):
+    def get_lowest_anchor_for_task_and_XACTs(self, task_page, XACTs):
         """
         :param url: url to task
         :type url: basestring
@@ -139,18 +177,17 @@ class Wikibugs2(object):
         :type XACTs: list(basestring)
         :returns dict(phid => anchor)
         """
-        anchor_dict = self.get_anchors_for_task(url)
+        anchor_dict = self.get_anchors_for_task(task_page)
         anchors = [anchor_dict.get(phid, None) for phid in XACTs]
         anchors = [anchor for anchor in anchors if anchor]
 
         if anchors:
-            return "#" + sorted(anchors, key=lambda x: int(x))[0]
+            return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
             
         # if no anchors could be found, return the highest-numbered anchor we /can/ find
         anchors = sorted(anchor_dict.values(), key=lambda x: int(x))
         if anchors:
-            return "#" + anchors[-1]
-            
+            return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
         return ""
         
     def process_event(self, event_info):
@@ -164,9 +201,10 @@ class Wikibugs2(object):
         task_info = self.maniphest_info(phid_info['name'])
         
         # try to get the (lowest) anchor for this change
+        task_page = self.get_task_page(phid_info['uri'])
         try:
             anchor = self.get_lowest_anchor_for_task_and_XACTs(
-                phid_info['uri'], event_info['data']['transactionPHIDs']
+                task_page, event_info['data']['transactionPHIDs']
             )
         except Exception as e:
             if self.raise_errors:
@@ -179,7 +217,7 @@ class Wikibugs2(object):
         # Start sorting this into things we care about...
         useful_event_metadata = {
             'url': phid_info['uri'] + anchor,
-            'projects': [self.get_project_name(phid) for phid in task_info['projectPHIDs']],
+            'projects': self.get_tags_to_display(task_page),
             'user': self.get_user_name(event_info['authorPHID']),
         }
         
@@ -226,12 +264,16 @@ if __name__ == '__main__':
     # Usage:
     # python -i wikibugs.py ~/errors/XACT-anchor/PHID-TASK-qmkysswakxnzzausyzlv
     # then import pdb; pdb.pm() to enter the debugger
+
+    bugs.raise_errors = False
     for file in sys.argv[1:]:
-        bugs.raise_errors = True
+        if file == "--raise":
+            bugs.raise_errors = True
+            continue
         print("Processing {f}".format(f=file))
         from collections import OrderedDict
         bugs.process_event(eval(open(file).readline()))
-    bugs.raise_errors = False
+    
         
     while 1:
         bugs.poll()
