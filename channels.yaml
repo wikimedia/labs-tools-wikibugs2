@@ -106,6 +106,19 @@ channels:
     "#wikimedia-analytics":
         # x.get("X-Bugzilla-Product", None) == "Analytics",
         - Analytics(-.*)?
+        
+    "#wikimedia-devtools":
+        # teams
+        - Phabricator
+        # projects
+        - Wikibugs
+        - Phabricator.org
+        - Bugzilla-Migration
+        - Bugzilla-Preview
+        - RT-Migration
+        - Project-Management
+        - Code-Review
+        - Gitblit-Deprecate
 
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
