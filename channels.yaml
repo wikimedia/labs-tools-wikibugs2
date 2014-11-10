@@ -1,5 +1,130 @@
-firehose-channel: '#mediawiki-feed'
-default-channel: '#wikimedia-devtools'
 channels:
     '##legoktm-bots':
         - foobarbaz
+    "#huggle":
+#        lambda x: x.get("X-Bugzilla-Product", None) == "Huggle",
+        - Huggle(-.*)?
+
+    "#pywikibot":
+#        lambda x: x.get("X-Bugzilla-Product", None) == "Pywikibot",
+        - Pywikibot(-.*)?
+        
+    "#wikidata":
+        # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
+        # x.get("X-Bugzilla-Component", None) in ["WikidataRepo", "WikidataClient"]
+        - MediaWiki_extensions-WikidataRepo
+        - MediaWiki_extensions-WikidataClient
+        # x.get("X-Bugzilla-Product", None) in ["Wikimedia"] and
+        # x.get("X-Bugzilla-Component", None) in ["Wikidata"]
+        - Wikimedia-Wikidata
+
+    "#wikimedia-corefeatures":
+        # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
+        # x.get("X-Bugzilla-Component", None) in ["Echo", "Flow", "PageCuration", "Thanks", "WikiLove"]),
+        - MediaWiki_extensions-Echo
+        - MediaWiki_extensions-Flow
+        - MediaWiki_extensions-PageCuration
+        - MediaWiki_extensions-Thanks
+        - MediaWiki_extensions-WikiLove
+
+    "#mediawiki-i18n":
+        # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
+        - .*-ContentTranslation
+        
+    "#wikimedia-labs":
+        # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
+        - Tool_Labs_tools(-.*)?
+        - Wikimedia_Labs(-.*)?
+        # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
+        # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
+        - MediaWiki_extensions-OpenStackManager
+    
+    "#wikimedia-mobile":
+        # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
+        - Wikimedia_Mobile(-.*)?
+        - Commons_App(-.*)?
+        - Wikipedia_App(-.*)?
+        - MobileFrontend(-.*)?
+        
+    "#wikimedia-qa":
+        # x.get("X-Bugzilla-Product", None) == "Wikimedia") and \
+        # x.get("X-Bugzilla-Component", None) in ["Continuous integration", "Quality Assurance"])
+        - Wikimedia-Continuous_integration
+        - Wikimedia-Quality_Assurance        
+        # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
+        # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
+        - Wikimedia_Labs-deployment-prep_(beta) # FIXME: not sure about this one
+
+    "#mediawiki-visualeditor":
+        # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
+        - VisualEditor(-.*)?
+        - OOjs(-.*)?
+        - OOjs_UI(-.*)?
+        #  x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
+        #  x.get("X-Bugzilla-Component", None) in ["TemplateData", "Cite", "WikiEditor"])
+        - MediaWiki_extensions-TemplateData
+        - MediaWiki_extensions-Cite
+        - MediaWiki_extensions-WikiEditor
+        #  x.get("X-Bugzilla-Product", None) == "MediaWiki") and \
+        #  x.get("X-Bugzilla-Component", None) in ["Page editing", "ResourceLoader"])
+        - MediaWiki-Page_editing
+        - MediaWiki-ResourceLoader
+
+    "#mediawiki-parsoid":
+        # x.get("X-Bugzilla-Product", None) in ["Parsoid"],
+        - Parsoid(-.*)?
+
+    "#wikimedia-multimedia":
+        #  x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
+        #  x.get("X-Bugzilla-Component", None) in
+        #      ["UploadWizard", "TimedMediaHandler", "VipsScaler", "GlobalUsage", "MultimediaViewer", "GWToolset",
+        #       "Score", "PagedTiffHandler", "PdfHandler", "ImageMap", "CommonsMetadata", "OggHandler",
+        #       "ImageMetrics"]
+        - MediaWiki_extensions-UploadWizard
+        - MediaWiki_extensions-TimedMediaHandler
+        - MediaWiki_extensions-VipsScaler
+        - MediaWiki_extensions-GlobalUsage
+        - MediaWiki_extensions-MultimediaViewer
+        - MediaWiki_extensions-GWToolset
+        - MediaWiki_extensions-Score
+        - MediaWiki_extensions-PagedTiffHandler
+        - MediaWiki_extensions-PdfHandler
+        - MediaWiki_extensions-ImageMap
+        - MediaWiki_extensions-CommonsMetadata
+        - MediaWiki_extensions-OggHandler
+        # x.get("X-Bugzilla-Product", None) in ["MediaWiki"] and
+        #  x.get("X-Bugzilla-Component", None) in ["File management", "Uploading"]
+        - MediaWiki-File_management
+        - MediaWiki-Uploading
+        
+    "#wikimedia-growth":
+        # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
+        # x.get("X-Bugzilla-Component", None) in ["GuidedTour", "GettingStarted"]
+        - MediaWiki_extensions-GuidedTour
+        - MediaWiki_extensions-GettingStarted
+
+    "#wikimedia-analytics":
+        # x.get("X-Bugzilla-Product", None) == "Analytics",
+        - Analytics(-.*)?
+        
+    "#wikimedia-devtools":
+        # teams
+        - Phabricator
+        # projects
+        - Wikibugs
+        - Phabricator.org
+        - Bugzilla-Migration
+        - Bugzilla-Preview
+        - RT-Migration
+        - Project-Management
+        - Code-Review
+        - Gitblit-Deprecate
+
+    # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
+    # are also reported elsewhere.
+    "#wikimedia-dev":
+        # x.get("X-Bugzilla-Product", None) == "MediaWiki"
+        - MediaWiki(-.*)?
+
+firehose-channel: '#mediawiki-feed'
+default-channel: '#wikimedia-dev'
