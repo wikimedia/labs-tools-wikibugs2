@@ -97,12 +97,6 @@ channels:
         - MediaWiki-File_management
         - MediaWiki-Uploading
         
-    "#wikimedia-growth":
-        # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
-        # x.get("X-Bugzilla-Component", None) in ["GuidedTour", "GettingStarted"]
-        - MediaWiki_extensions-GuidedTour
-        - MediaWiki_extensions-GettingStarted
-
     "#wikimedia-analytics":
         # x.get("X-Bugzilla-Product", None) == "Analytics",
         - Analytics(-.*)?
