@@ -1,5 +1,5 @@
-firehose-channel: '##legoktm-test'
-default-channel: '##legoktm-bots'
+firehose-channel: '#mediawiki-feed'
+default-channel: '#wikimedia-devtools'
 channels:
     '##legoktm-bots':
         - foobarbaz
