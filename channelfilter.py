@@ -2,7 +2,7 @@
 
 import os
 import yaml
-
+import re
 
 class ChannelFilter(object):
     def __init__(self, path=None):
@@ -11,7 +11,14 @@ class ChannelFilter(object):
         with open(path) as f:
             self.config = yaml.load(f)
 
+        self.parse_regexps()
         print(self.config)
+
+    def parse_regexps(self):
+        chan_proj_map = self.config['channels']
+        for channel in chan_proj_map:
+            fullregex = "^(" + "|".join(chan_proj_map[channel]) + ")$"
+            chan_proj_map[channel] = re.compile(fullregex)
 
     @property
     def firehose_channel(self):
@@ -33,7 +40,7 @@ class ChannelFilter(object):
         channels = set()
         for channel in self.config['channels']:
             for project in projects:
-                if project in self.config['channels'][channel]:
+                if self.config['channels'][channel].match(project):
                     channels.add(channel)
                     break
         if not channels:
