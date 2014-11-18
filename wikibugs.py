@@ -150,7 +150,7 @@ class Wikibugs2(object):
             tag
             for tag, info
             in self.get_tags(task_page).items()
-            if info["tagtype"] in ["briefcase"] and \
+            if info["tagtype"] in ["briefcase", "users"] and \
                 not info["disabled"]
         ]
         
