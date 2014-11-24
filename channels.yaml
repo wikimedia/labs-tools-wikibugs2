@@ -114,6 +114,9 @@ channels:
         - Code-Review
         - Gitblit-Deprecate
 
+    "#mediawiki-core":
+        - MediaWiki-Core-Team
+
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
     "#wikimedia-dev":
