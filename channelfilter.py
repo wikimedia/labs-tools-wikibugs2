@@ -4,6 +4,7 @@ import os
 import yaml
 import re
 
+
 class ChannelFilter(object):
     def __init__(self, path=None):
         if path is None:

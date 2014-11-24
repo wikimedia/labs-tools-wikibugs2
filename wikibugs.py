@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import configfetcher
 import rqueue
 
+
 class Wikibugs2(object):
     def __init__(self, conf):
         """
@@ -118,7 +119,7 @@ class Wikibugs2(object):
 
     def get_task_page(self, url):
         return self.phab.req_session.get(url).text
-        
+
     def get_tags(self, task_page):
         soup = BeautifulSoup(task_page)
         alltags = {}
@@ -127,33 +128,32 @@ class Wikibugs2(object):
             taglink = tag.find('a', class_='phui-tag-view')
             if not taglink:
                 continue
-            
+
             marker = taglink.find('span', class_='phui-icon-view')
-            
+
             classes = taglink['class'] + marker['class']
-            
+
             shade = [cls.split("-")[3] for cls in classes if cls.startswith("phui-tag-shade-")][0]
             disabled = shade == "disabled"
             tagtype = [cls.split("-")[1] for cls in classes if cls.startswith("fa-")][0]
             uri = taglink['href']
             name = taglink.text
-            
+
             alltags[name] = {'shade': shade,
                              'disabled': disabled,
                              'tagtype': tagtype,
                              'uri': uri}
-        
+
         return alltags
-        
+
     def get_tags_to_display(self, task_page):
         return [
             tag
             for tag, info
             in self.get_tags(task_page).items()
-            if info["tagtype"] in ["briefcase", "users"] and \
-                not info["disabled"]
+            if info["tagtype"] in ["briefcase", "users"] and not info["disabled"]
         ]
-        
+
     def get_anchors_for_task(self, task_page):
         """
         :param url: url to task
@@ -165,10 +165,10 @@ class Wikibugs2(object):
         )[1].split(
             ");\nJX.onload"
         )[0]
-        
+
         data_dict = json.loads(data_dict_str)
         return {x[u'phid']: x[u'anchor'] for x in data_dict if u'phid' in x and u'anchor' in x}
-        
+
     def get_lowest_anchor_for_task_and_XACTs(self, task_page, XACTs):
         """
         :param url: url to task
@@ -183,13 +183,13 @@ class Wikibugs2(object):
 
         if anchors:
             return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
-            
+
         # if no anchors could be found, return the highest-numbered anchor we /can/ find
         anchors = sorted(anchor_dict.values(), key=lambda x: int(x))
         if anchors:
             return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
         return ""
-        
+
     def process_event(self, event_info):
         """
         :type event_info: dict
@@ -199,7 +199,7 @@ class Wikibugs2(object):
         if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
             return
         task_info = self.maniphest_info(phid_info['name'])
-        
+
         # try to get the (lowest) anchor for this change
         task_page = self.get_task_page(phid_info['uri'])
         try:
@@ -213,8 +213,7 @@ class Wikibugs2(object):
                 repr(event_info) + "\n" + repr(e)
             )
             anchor = ""
-        
-        
+
         try:
             projects = self.get_tags_to_display(task_page)
         except Exception as e:
@@ -231,9 +230,7 @@ class Wikibugs2(object):
             'projects': projects,
             'user': self.get_user_name(event_info['authorPHID']),
         }
-        
 
-        
         transactions = self.get_transaction_info(phid_info['name'], timestamp)
         if 'ccs' in transactions and len(transactions) == 1:
             # Ignore any only-CC updates
@@ -283,10 +280,9 @@ if __name__ == '__main__':
             bugs.raise_errors = True
             continue
         print("Processing {f}".format(f=file))
-        from collections import OrderedDict
+        from collections import OrderedDict  # noqa
         bugs.process_event(eval(open(file).readline()))
-    
-        
+
     while 1:
         bugs.poll()
         time.sleep(1)
