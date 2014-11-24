@@ -54,6 +54,7 @@ channels:
         # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
         # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
         - Beta-Cluster
+        - Release-Engineering
 
     "#mediawiki-visualeditor":
         # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
