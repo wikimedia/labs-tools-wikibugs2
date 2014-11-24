@@ -20,7 +20,6 @@ class Redis2Stdout(object):
             conf.get('REDIS_HOST')
         )
         self.conf = conf
-        self.join_channels = conf.get('CHANNELS').values()
         self.builder = builder
         self.connected = False
         self.channelfilter = channelfilter
