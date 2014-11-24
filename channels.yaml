@@ -12,8 +12,8 @@ channels:
     "#wikidata":
         # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
         # x.get("X-Bugzilla-Component", None) in ["WikidataRepo", "WikidataClient"]
-        - MediaWiki_extensions-WikidataRepo
-        - MediaWiki_extensions-WikidataClient
+        - MediaWiki-extensions-WikidataRepo
+        - MediaWiki-extensions-WikidataClient
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia"] and
         # x.get("X-Bugzilla-Component", None) in ["Wikidata"]
         - Wikimedia-Wikidata
@@ -21,11 +21,11 @@ channels:
     "#wikimedia-corefeatures":
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["Echo", "Flow", "PageCuration", "Thanks", "WikiLove"]),
-        - MediaWiki_extensions-Echo
-        - MediaWiki_extensions-Flow
-        - MediaWiki_extensions-PageCuration
-        - MediaWiki_extensions-Thanks
-        - MediaWiki_extensions-WikiLove
+        - MediaWiki-extensions-Echo
+        - MediaWiki-extensions-Flow
+        - MediaWiki-extensions-PageCuration
+        - MediaWiki-extensions-Thanks
+        - MediaWiki-extensions-WikiLove
 
     "#mediawiki-i18n":
         # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
@@ -33,41 +33,41 @@ channels:
         
     "#wikimedia-labs":
         # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
-        - Tool_Labs_tools(-.*)?
-        - Wikimedia_Labs(-.*)?
+        - Tool-Labs-tools(-.*)?
+        - Wikimedia-Labs(-.*)?
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
-        - MediaWiki_extensions-OpenStackManager
+        - MediaWiki-extensions-OpenStackManager
     
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
-        - Wikimedia_Mobile(-.*)?
-        - Commons_App(-.*)?
-        - Wikipedia_App(-.*)?
+        - Wikimedia-Mobile(-.*)?
+        - Commons-App(-.*)?
+        - Wikipedia-App(-.*)?
         - MobileFrontend(-.*)?
         
     "#wikimedia-qa":
         # x.get("X-Bugzilla-Product", None) == "Wikimedia") and \
         # x.get("X-Bugzilla-Component", None) in ["Continuous integration", "Quality Assurance"])
-        - Wikimedia-Continuous_integration
-        - Wikimedia-Quality_Assurance        
+        - Wikimedia-Continuous-integration
+        - Wikimedia-Quality-Assurance        
         # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
         # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
-        - Wikimedia_Labs-deployment-prep_(beta) # FIXME: not sure about this one
+        - Wikimedia-Labs-deployment-prep-(beta) # FIXME: not sure about this one
 
     "#mediawiki-visualeditor":
         # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
         - VisualEditor(-.*)?
         - OOjs(-.*)?
-        - OOjs_UI(-.*)?
+        - OOjs-UI(-.*)?
         #  x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         #  x.get("X-Bugzilla-Component", None) in ["TemplateData", "Cite", "WikiEditor"])
-        - MediaWiki_extensions-TemplateData
-        - MediaWiki_extensions-Cite
-        - MediaWiki_extensions-WikiEditor
+        - MediaWiki-extensions-TemplateData
+        - MediaWiki-extensions-Cite
+        - MediaWiki-extensions-WikiEditor
         #  x.get("X-Bugzilla-Product", None) == "MediaWiki") and \
         #  x.get("X-Bugzilla-Component", None) in ["Page editing", "ResourceLoader"])
-        - MediaWiki-Page_editing
+        - MediaWiki-Page-editing
         - MediaWiki-ResourceLoader
 
     "#mediawiki-parsoid":
@@ -80,21 +80,21 @@ channels:
         #      ["UploadWizard", "TimedMediaHandler", "VipsScaler", "GlobalUsage", "MultimediaViewer", "GWToolset",
         #       "Score", "PagedTiffHandler", "PdfHandler", "ImageMap", "CommonsMetadata", "OggHandler",
         #       "ImageMetrics"]
-        - MediaWiki_extensions-UploadWizard
-        - MediaWiki_extensions-TimedMediaHandler
-        - MediaWiki_extensions-VipsScaler
-        - MediaWiki_extensions-GlobalUsage
-        - MediaWiki_extensions-MultimediaViewer
-        - MediaWiki_extensions-GWToolset
-        - MediaWiki_extensions-Score
-        - MediaWiki_extensions-PagedTiffHandler
-        - MediaWiki_extensions-PdfHandler
-        - MediaWiki_extensions-ImageMap
-        - MediaWiki_extensions-CommonsMetadata
-        - MediaWiki_extensions-OggHandler
+        - MediaWiki-extensions-UploadWizard
+        - MediaWiki-extensions-TimedMediaHandler
+        - MediaWiki-extensions-VipsScaler
+        - MediaWiki-extensions-GlobalUsage
+        - MediaWiki-extensions-MultimediaViewer
+        - MediaWiki-extensions-GWToolset
+        - MediaWiki-extensions-Score
+        - MediaWiki-extensions-PagedTiffHandler
+        - MediaWiki-extensions-PdfHandler
+        - MediaWiki-extensions-ImageMap
+        - MediaWiki-extensions-CommonsMetadata
+        - MediaWiki-extensions-OggHandler
         # x.get("X-Bugzilla-Product", None) in ["MediaWiki"] and
         #  x.get("X-Bugzilla-Component", None) in ["File management", "Uploading"]
-        - MediaWiki-File_management
+        - MediaWiki-File-management
         - MediaWiki-Uploading
         
     "#wikimedia-analytics":
