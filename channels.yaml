@@ -8,7 +8,7 @@ channels:
     "#pywikibot":
 #        lambda x: x.get("X-Bugzilla-Product", None) == "Pywikibot",
         - Pywikibot(-.*)?
-        
+
     "#wikidata":
         # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
         # x.get("X-Bugzilla-Component", None) in ["WikidataRepo", "WikidataClient"]
@@ -30,7 +30,7 @@ channels:
     "#mediawiki-i18n":
         # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
         - .*-ContentTranslation
-        
+
     "#wikimedia-labs":
         # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
         - Tool-Labs-tools(-.*)?
@@ -38,19 +38,19 @@ channels:
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
         - MediaWiki-extensions-OpenStackManager
-    
+
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
         - Wikimedia-Mobile(-.*)?
         - Commons-App(-.*)?
         - Wikipedia-App(-.*)?
         - MobileFrontend(-.*)?
-        
+
     "#wikimedia-qa":
         # x.get("X-Bugzilla-Product", None) == "Wikimedia") and \
         # x.get("X-Bugzilla-Component", None) in ["Continuous integration", "Quality Assurance"])
         - Wikimedia-Continuous-integration
-        - Wikimedia-Quality-Assurance        
+        - Wikimedia-Quality-Assurance
         # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
         # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
         - Wikimedia-Labs-deployment-prep-(beta) # FIXME: not sure about this one
@@ -96,11 +96,11 @@ channels:
         #  x.get("X-Bugzilla-Component", None) in ["File management", "Uploading"]
         - MediaWiki-File-management
         - MediaWiki-Uploading
-        
+
     "#wikimedia-analytics":
         # x.get("X-Bugzilla-Product", None) == "Analytics",
         - Analytics(-.*)?
-        
+
     "#wikimedia-devtools":
         # teams
         - Phabricator
