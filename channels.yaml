@@ -53,7 +53,7 @@ channels:
         - Wikimedia-Quality-Assurance
         # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
         # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
-        - Wikimedia-Labs-deployment-prep-(beta) # FIXME: not sure about this one
+        - Beta-Cluster
 
     "#mediawiki-visualeditor":
         # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
