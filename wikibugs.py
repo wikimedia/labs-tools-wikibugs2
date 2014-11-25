@@ -235,6 +235,10 @@ class Wikibugs2(object):
         if 'ccs' in transactions and len(transactions) == 1:
             # Ignore any only-CC updates
             return
+        elif 'projectcolumn' in transactions and len(transactions) == 1:
+            # Ignore column changes, see T1204
+            return
+
         if 'title' in transactions:
             useful_event_metadata['title'] = transactions['title']['new']
             if transactions['title']['old'] is None:
