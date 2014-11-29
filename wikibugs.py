@@ -233,7 +233,7 @@ class Wikibugs2(object):
 
         transactions = self.get_transaction_info(phid_info['name'], timestamp)
         ignored = [
-            'css',  # Ignore any only-CC updates
+            'ccs',  # Ignore any only-CC updates
             'projectcolumn',  # Ignore column changes, see T1204
             'token:give',  # Ignore granting tokens, see T76246
         ]
