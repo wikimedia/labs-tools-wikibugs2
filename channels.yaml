@@ -18,7 +18,7 @@ channels:
         # x.get("X-Bugzilla-Component", None) in ["Wikidata"]
         - Wikimedia-Wikidata
 
-    "#wikimedia-corefeatures":
+    "#wikimedia-collaboration":
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["Echo", "Flow", "PageCuration", "Thanks", "WikiLove"]),
         - MediaWiki-extensions-Echo
@@ -26,6 +26,7 @@ channels:
         - MediaWiki-extensions-PageCuration
         - MediaWiki-extensions-Thanks
         - MediaWiki-extensions-WikiLove
+        # Should also have https://phabricator.wikimedia.org/tag/core-features/ when that is renamed
 
     "#mediawiki-i18n":
         # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
