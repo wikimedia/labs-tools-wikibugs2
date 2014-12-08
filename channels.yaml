@@ -40,6 +40,7 @@ channels:
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
         - MediaWiki-extensions-OpenStackManager
+        - Quarry
 
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
@@ -103,6 +104,10 @@ channels:
     "#wikimedia-analytics":
         # x.get("X-Bugzilla-Product", None) == "Analytics",
         - Analytics(-.*)?
+        - Quarry
+
+    '#wikimedia-research':
+        - Quarry
 
     "#wikimedia-devtools":
         # teams
