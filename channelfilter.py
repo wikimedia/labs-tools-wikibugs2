@@ -19,9 +19,7 @@ class ChannelFilter(object):
         chan_proj_map = self.config['channels']
         for channel in chan_proj_map:
             fullregex = "^(" + "|".join(chan_proj_map[channel]) + ")$"
-            chan_proj_map[channel] = re.compile(fullregex,
-                    flags=(re.IGNORECASE | re.UNICODE)
-            )
+            chan_proj_map[channel] = re.compile(fullregex, flags=(re.IGNORECASE | re.UNICODE))
 
     @property
     def firehose_channel(self):
