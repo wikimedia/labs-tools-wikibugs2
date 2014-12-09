@@ -1,6 +1,10 @@
 channels:
     '##legoktm-bots':
         - foobarbaz
+
+    "/dev/null":
+        - User-Bd808-Test
+
     "#huggle":
 #        lambda x: x.get("X-Bugzilla-Product", None) == "Huggle",
         - Huggle(-.*)?

@@ -46,5 +46,7 @@ class ChannelFilter(object):
                     break
         if not channels:
             channels.add(self.default_channel)
+        if '/dev/null' in channels:
+            channels.remove('/dev/null')
         channels.add(self.firehose_channel)
         return channels
