@@ -1,11 +1,21 @@
 #!/usr/bin/env python
 
 import functools
+import logging
 import phabricator
 import time
 import sys
 import json
 from bs4 import BeautifulSoup
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 import configfetcher
 import rqueue
@@ -80,6 +90,7 @@ class Wikibugs2(object):
         :param task_id: T###
         :type task_id: basestring
         """
+        logging.debug('Getting maniphest.info for %s' % task_id)
         task_id = int(task_id[1:])
         info = self.phab.request('maniphest.info', {
             'task_id': task_id
@@ -190,13 +201,25 @@ class Wikibugs2(object):
             return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
         return ""
 
+    def get_type_from_phid(self, phid):
+        """
+
+        :param phid: PHID-TASK-* or PHID-CMIT-*, etc
+        :return: str
+        """
+        return phid.split('-')[1]
+
     def process_event(self, event_info):
         """
         :type event_info: dict
         """
-        phid_info = self.phid_info(event_info['data']['objectPHID'])
-        if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
+        phid_type = self.get_type_from_phid(event_info['data']['objectPHID'])
+        if phid_type != 'TASK':  # Only handle Maniphest Tasks for now
+            logging.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
             return
+        logging.debug('Processing %s' % event_info['data']['objectPHID'])
+
+        phid_info = self.phid_info(event_info['data']['objectPHID'])
         task_info = self.maniphest_info(phid_info['name'])
 
         # try to get the (lowest) anchor for this change
