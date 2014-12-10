@@ -38,9 +38,9 @@ channels:
 
     "#wikimedia-labs":
         # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
-        - Tool-Labs(.*?)
+        - Tool-Labs(.*)?
         - Labs-Team
-        - Wikimedia-Labs(-.*?)
+        - Wikimedia-Labs(-.*)?
         # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
         # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
         - MediaWiki-extensions-OpenStackManager
