@@ -94,12 +94,12 @@ class Wikibugs2(object):
         """
         return self.phid_info(phid)
 
-    def get_transaction_info(self, task_id, timestamp):
+    def get_transaction_info(self, task_id, transaction_phids):
         """
         :param task_id: T###
         :type task_id: basestring
-        :param timestamp: "epoch timestamp"
-        :type timestamp: basestring
+        :param transaction_phids: PHID-XACT-TASK-* stuff
+        :type transaction_phids: list
         """
         task_id = int(task_id[1:])
         info = self.phab.request('maniphest.gettasktransactions', {
@@ -107,7 +107,7 @@ class Wikibugs2(object):
         })
         transactions = {}
         for trans in list(info.values())[0]:
-            if trans['dateCreated'] == timestamp:  # Yeah, this is a hack, but it works
+            if trans['transactionPHID'] in transaction_phids:
                 transactions[trans['transactionType']] = {
                     'old': trans['oldValue'],
                     'new': trans['newValue'],
@@ -194,7 +194,6 @@ class Wikibugs2(object):
         """
         :type event_info: dict
         """
-        timestamp = str(event_info['epoch'])
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         if phid_info['type'] != 'TASK':  # Only handle Maniphest Tasks for now
             return
@@ -231,7 +230,7 @@ class Wikibugs2(object):
             'user': self.get_user_name(event_info['authorPHID']),
         }
 
-        transactions = self.get_transaction_info(phid_info['name'], timestamp)
+        transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
         ignored = [
             'ccs',  # Ignore any only-CC updates
             'projectcolumn',  # Ignore column changes, see T1204
