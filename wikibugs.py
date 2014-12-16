@@ -162,7 +162,7 @@ class Wikibugs2(object):
             tag
             for tag, info
             in self.get_tags(task_page).items()
-            if info["tagtype"] in ["briefcase", "users"] and not info["disabled"]
+            if info["tagtype"] in ["briefcase", "users", "umbrella"] and not info["disabled"]
         ]
 
     def get_anchors_for_task(self, task_page):
