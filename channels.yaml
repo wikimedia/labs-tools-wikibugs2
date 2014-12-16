@@ -82,6 +82,11 @@ channels:
         # x.get("X-Bugzilla-Product", None) in ["Parsoid"],
         - Parsoid(-.*)?
 
+    "#wikimedia-services":
+        - restbase(-.*)?
+        - services(-.*)?
+        - blocked-on-services
+
     "#wikimedia-multimedia":
         #  x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
         #  x.get("X-Bugzilla-Component", None) in
