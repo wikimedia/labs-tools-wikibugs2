@@ -4,6 +4,7 @@ from fabric.contrib.console import confirm
 env.hosts = ['tools-login.wmflabs.org']
 env.sudo_user = 'tools.wikibugs'
 env.sudo_prefix = 'sudo -ni '
+env.use_ssh_config = True
 
 code_dir = '/data/project/wikibugs/wikibugs2'
 
