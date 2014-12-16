@@ -44,6 +44,10 @@ class Redis2Stdout(object):
             print(useful_info)
             if useful_info:
                 text = self.builder.build_message(useful_info)
+                updated = self.channelfilter.update()
+                if updated:
+                    print('!log tools.wikibugs Updated channels.yaml to: %s' % updated)
+
                 channels = self.get_channels_for_projects(useful_info['projects'])
                 print(','.join(channels) + ': ' + text)
 

@@ -49,6 +49,9 @@ def handle_useful_info(bot, useful_info):
         # Ignore "Patch to review" stuff
         return
     text = bot.builder.build_message(useful_info)
+    updated = bot.chanfilter.update()
+    if updated:
+        bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
     channels = bot.chanfilter.channels_for(useful_info['projects'])
     for chan in channels:
         bot.privmsg(chan, text)

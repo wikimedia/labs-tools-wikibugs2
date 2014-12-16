@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import os
+import subprocess
+import time
 import yaml
 import re
 
@@ -9,10 +11,19 @@ class ChannelFilter(object):
     def __init__(self, path=None):
         if path is None:
             path = os.path.join(os.path.dirname(__file__), 'channels.yaml')
-        with open(path) as f:
+        self.path = path
+        self.time = 0
+        self.mtime = 0
+        self.config = {}
+        self.load()
+
+    def load(self):
+        with open(self.path) as f:
             self.config = yaml.load(f)
 
         self.parse_regexps()
+        self.time = time.time()
+        self.mtime = os.path.getmtime(self.path)
         print(self.config)
 
     def parse_regexps(self):
@@ -32,6 +43,18 @@ class ChannelFilter(object):
     def all_channels(self):
         channels = [self.default_channel, self.firehose_channel] + list(self.config['channels'])
         return list(set(channels))
+
+    def update(self):
+        if time.time() - self.time > 60:
+            mtime = os.path.getmtime(self.path)
+            if mtime != self.mtime:
+                self.load()
+                cwd = os.getcwd()
+                os.chdir(os.path.dirname(self.path))
+                desc = subprocess.check_output(['git', 'rev-list', 'HEAD', '--max-count=1', '--pretty=oneline'])
+                os.chdir(cwd)
+                return desc.decode().strip()
+        return False
 
     def channels_for(self, projects):
         """
