@@ -5,5 +5,6 @@
     "REDIS_HOST": "localhost",
     "REDIS_QUEUE_NAME": "wikibugs2",
     "IRC_SERVER": "irc.freenode.net",
-    "IRC_NICK": "wikibugs2"
+    "IRC_NICK": "wikibugs2",
+    "IRCNOTIFIER_KEY": "..."
 }

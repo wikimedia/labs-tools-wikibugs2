@@ -17,7 +17,7 @@ jobs = {
 
 def irclog_deploy(message):
     with cd(code_dir):
-        sudo('./log_to_irc.sh "{}"'.format(message))
+        sudo('./log_to_irc.py "{}"'.format(message))
 
 
 @task
