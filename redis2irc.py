@@ -21,10 +21,25 @@ class Redis2Irc(irc3.IrcBot):
         :type builder: messagebuilder.IRCMessageBuilder
         :type chanfilter: channelfilter.ChannelFilter
         """
+        self.channels = set(kwargs['autojoins'])
         super(Redis2Irc, self).__init__(**kwargs)
         self._conf = conf
         self._builder = builder
         self._chanfilter = chanfilter
+
+    def join_many(self, targets):
+        for target in targets:
+            if target not in self.channels:
+                self.join(target)
+
+    def join(self, target):
+        super(Redis2Irc, self).join(target)
+        self.channels.add(target)
+
+    def part(self, target, reason=None):
+        super(Redis2Irc, self).part(target, reason)
+        if target in self.channels:
+            self.channels.remove(target)
 
     @property
     def conf(self):
@@ -52,6 +67,8 @@ def handle_useful_info(bot, useful_info):
     updated = bot.chanfilter.update()
     if updated:
         bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
+        # Reload channels
+        bot.join_many(bot.chanfilter.all_channels())
     channels = bot.chanfilter.channels_for(useful_info['projects'])
     for chan in channels:
         bot.privmsg(chan, text)
