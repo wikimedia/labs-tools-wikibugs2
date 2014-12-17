@@ -20,6 +20,7 @@ def irclog_deploy(message):
         sudo('./log_to_irc.sh "{}"'.format(message))
 
 
+@task
 def pull():
     with cd(code_dir):
         sudo('git reset --hard')
