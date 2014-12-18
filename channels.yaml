@@ -4,6 +4,7 @@ channels:
 
     "/dev/null":
         - User-Bd808-Test
+        - Spam(-.*)?
 
     "#huggle":
 #        lambda x: x.get("X-Bugzilla-Product", None) == "Huggle",
