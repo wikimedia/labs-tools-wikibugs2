@@ -42,6 +42,15 @@ class IRCMessageBuilder(object):
     def _human_prio(self, name):
         return self.PRIORITY.get(str(name), str(name))
 
+    def escape(self, text):
+        """
+        Escape user supplied text so it can't be abused to
+        execute arbitrary IRC commands
+        :param text: possibly unsafe input
+        :return: safe output
+        """
+        return text.replace('\n', ' ').replace('\r', ' ')
+
     def build_message(self, useful_info):
         text = ''
         if useful_info['projects']:
@@ -76,10 +85,10 @@ class IRCMessageBuilder(object):
             text += ' '
 
         if 'comment' in useful_info:
-            text += ' '.join(useful_info['comment'].split('\n'))
-            pass
+            text += useful_info['comment']
 
         # Get rid of annoying stuff
+        text = self.escape(text)
         text = text.replace('\t', ' ')
         if len(text) > self.MAX_MESSAGE_LENGTH:
             text = text[:self.MAX_MESSAGE_LENGTH-3].strip() + "..."
