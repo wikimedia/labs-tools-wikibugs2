@@ -3,3 +3,8 @@ lib/
 bin/
 include/
 .idea/
+config.json
+pywikibot.lwp
+throttle.ctrl
+user-config.py
+apicache
