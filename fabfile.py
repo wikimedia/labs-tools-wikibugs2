@@ -23,7 +23,8 @@ def irclog_deploy(message):
 @task
 def pull():
     with cd(code_dir):
-        sudo('git reset --hard')
+        sudo('git rev-list HEAD --max-count=1')
+        sudo('git reset --hard origin/master')
         sudo('git pull')
 
 
