@@ -141,5 +141,10 @@ channels:
         # x.get("X-Bugzilla-Product", None) == "MediaWiki"
         - MediaWiki(-.*)?
 
+    "#wikimedia-operations":
+        - ops(-.*)?
+        - operations
+        - Blocked-on-Operations
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
