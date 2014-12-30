@@ -58,3 +58,9 @@ def deploy(*args):
     for job in args:
         restart_job(job)
     irclog_deploy(', '.join(args))
+
+
+@task
+def grab_config():
+    with cd(code_dir):
+        get('config.json', '.')
