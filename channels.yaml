@@ -141,7 +141,7 @@ channels:
         # x.get("X-Bugzilla-Product", None) == "MediaWiki"
         - MediaWiki(-.*)?
 
-    "#wikimedia-operations":
+    "#wikimedia-operations-feed":
         - ops(-.*)?
         - operations
         - Blocked-on-Operations
