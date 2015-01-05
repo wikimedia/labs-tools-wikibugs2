@@ -15,6 +15,7 @@ channels:
         - Pywikibot(-.*)?
 
     "#wikidata":
+        - Wikidata
         # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
         # x.get("X-Bugzilla-Component", None) in ["WikidataRepo", "WikidataClient"]
         - MediaWiki-extensions-WikidataRepo
