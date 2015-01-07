@@ -58,13 +58,40 @@ channels:
         - MobileFrontend(-.*)?
         - Mobile-Web
 
+    "#wikimedia-devtools":
+        # teams
+        - Phabricator
+        # projects
+        - Wikibugs
+        - Phabricator.org
+        - Bugzilla-Migration
+        - Bugzilla-Preview
+        - RT-Migration
+        - Project-Management
+        - Code-Review
+        - Gitblit-Deprecate
+
     "#wikimedia-qa":
-        # x.get("X-Bugzilla-Product", None) == "Wikimedia") and \
-        # x.get("X-Bugzilla-Component", None) in ["Continuous integration", "Quality Assurance"])
         - Continuous-integration
         - Quality-Assurance
-        # x.get("X-Bugzilla-Product", None) == "Wikimedia Labs") and \
-        # x.get("X-Bugzilla-Component", None) == "deployment-prep (beta)")
+        - Beta-Cluster
+        - Release-Engineering
+
+    "#wikimedia-releng":
+        # wikimedia-devtools + wikimedia-qa
+        # teams
+        - Phabricator
+        # projects
+        - Wikibugs
+        - Phabricator.org
+        - Bugzilla-Migration
+        - Bugzilla-Preview
+        - RT-Migration
+        - Project-Management
+        - Code-Review
+        - Gitblit-Deprecate
+        - Continuous-integration
+        - Quality-Assurance
         - Beta-Cluster
         - Release-Engineering
 
@@ -105,19 +132,6 @@ channels:
 
     '#wikimedia-research':
         - Quarry
-
-    "#wikimedia-devtools":
-        # teams
-        - Phabricator
-        # projects
-        - Wikibugs
-        - Phabricator.org
-        - Bugzilla-Migration
-        - Bugzilla-Preview
-        - RT-Migration
-        - Project-Management
-        - Code-Review
-        - Gitblit-Deprecate
 
     "#mediawiki-core":
         - MediaWiki-Core-Team
