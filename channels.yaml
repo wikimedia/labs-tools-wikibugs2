@@ -54,6 +54,7 @@ channels:
         - Commons-App(-.*)?
         - Wikipedia-App(-.*)?
         - MobileFrontend(-.*)?
+        - Mobile-Web
 
     "#wikimedia-qa":
         # x.get("X-Bugzilla-Product", None) == "Wikimedia") and \
