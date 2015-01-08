@@ -46,6 +46,7 @@ channels:
         # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
         - MediaWiki-extensions-OpenStackManager
         - Quarry
+        - Wikibugs
 
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
