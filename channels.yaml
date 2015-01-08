@@ -37,6 +37,7 @@ channels:
     "#mediawiki-i18n":
         # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
         - .*-ContentTranslation
+        - translatewiki\.net
 
     "#wikimedia-labs":
         # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
