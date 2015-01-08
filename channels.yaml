@@ -91,27 +91,10 @@ channels:
         - blocked-on-services
 
     "#wikimedia-multimedia":
-        #  x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
-        #  x.get("X-Bugzilla-Component", None) in
-        #      ["UploadWizard", "TimedMediaHandler", "VipsScaler", "GlobalUsage", "MultimediaViewer", "GWToolset",
-        #       "Score", "PagedTiffHandler", "PdfHandler", "ImageMap", "CommonsMetadata", "OggHandler",
-        #       "ImageMetrics"]
-        - MediaWiki-extensions-UploadWizard
-        - MediaWiki-extensions-TimedMediaHandler
-        - MediaWiki-extensions-VipsScaler
-        - MediaWiki-extensions-GlobalUsage
-        - MediaWiki-extensions-MultimediaViewer
-        - MediaWiki-extensions-GWToolset
-        - MediaWiki-extensions-Score
-        - MediaWiki-extensions-PagedTiffHandler
-        - MediaWiki-extensions-PdfHandler
-        - MediaWiki-extensions-ImageMap
-        - MediaWiki-extensions-CommonsMetadata
-        - MediaWiki-extensions-OggHandler
-        # x.get("X-Bugzilla-Product", None) in ["MediaWiki"] and
-        #  x.get("X-Bugzilla-Component", None) in ["File management", "Uploading"]
-        - MediaWiki-File-management
-        - MediaWiki-Uploading
+        # All tasks handled by the Multimedia team are tagged with the Multimedia project
+        # in addition to the relevant extensions. For now adding that tag is done manually,
+        # but once herald is available to us we'll make it automated.
+        - Multimedia
 
     "#wikimedia-analytics":
         # x.get("X-Bugzilla-Product", None) == "Analytics",
