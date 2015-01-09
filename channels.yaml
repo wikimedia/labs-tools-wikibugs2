@@ -49,6 +49,7 @@ channels:
         - MediaWiki-extensions-OpenStackManager
         - Quarry
         - Wikibugs
+        - Gerrit-Patch-Uploader
 
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
