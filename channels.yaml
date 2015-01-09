@@ -79,22 +79,15 @@ channels:
         - Release-Engineering
 
     "#wikimedia-releng":
-        # wikimedia-devtools + wikimedia-qa
         # teams
+        - Release-Engineering
         - Phabricator
         # projects
-        - Wikibugs
-        - Phabricator.org
-        - Bugzilla-Migration
-        - Bugzilla-Preview
-        - RT-Migration
-        - Project-Management
         - Code-Review
-        - Gitblit-Deprecate
         - Continuous-integration
         - Quality-Assurance
         - Beta-Cluster
-        - Release-Engineering
+        - Deployment-Systems
 
     "#mediawiki-visualeditor":
         # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
