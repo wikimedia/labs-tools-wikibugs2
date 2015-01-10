@@ -90,6 +90,6 @@ site = pywikibot.Site(
     user=conf.get('MEDIAWIKI_USER')
 )
 site.login(password=conf.get('MEDIAWIKI_PASS'))
-page = pywikibot.Page(site, 'Phabricator/Projects/Test')
+page = pywikibot.Page(site, 'Phabricator/Projects')
 page.text = wikipage
 page.save(comment='Updating project taxonomy', botflag=False)
