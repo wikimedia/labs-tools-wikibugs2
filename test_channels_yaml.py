@@ -11,7 +11,7 @@ def assertEquals(expected, actual):
     assert expected == actual, "\nExpected: %s\nActual:   %s" % (expected, actual)
 
 assertEquals(
-    {'#mediawiki-feed', '#wikimedia-qa', '#wikimedia-releng'},
+    {'#mediawiki-feed', '#wikimedia-releng'},
     chanfilter.channels_for(['Continuous-Integration']))
 
 assertEquals(

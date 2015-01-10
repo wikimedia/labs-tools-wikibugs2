@@ -73,12 +73,6 @@ channels:
         - Code-Review
         - Gitblit-Deprecate
 
-    "#wikimedia-qa":
-        - Continuous-integration
-        - Quality-Assurance
-        - Beta-Cluster
-        - Release-Engineering
-
     "#wikimedia-releng":
         # teams
         - Release-Engineering
