@@ -50,6 +50,7 @@ channels:
         - Quarry
         - Wikibugs
         - Gerrit-Patch-Uploader
+        - LabsDB-Auditor
 
     "#wikimedia-mobile":
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
