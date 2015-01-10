@@ -15,7 +15,7 @@ assertEquals(
     chanfilter.channels_for(['Continuous-Integration']))
 
 assertEquals(
-    {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-releng'},
+    {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-releng', '#wikimedia-dev'},
     chanfilter.channels_for(['Phabricator']))
 
 print('Acceptance tests passed')
