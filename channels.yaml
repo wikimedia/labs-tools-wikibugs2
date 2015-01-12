@@ -141,5 +141,8 @@ channels:
         - operations
         - Blocked-on-Operations
 
+    "#wikimedia-teampractices":
+        - team-practices
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
