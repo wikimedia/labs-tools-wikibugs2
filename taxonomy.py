@@ -50,7 +50,7 @@ projecttypes = OrderedDict([
     ('umbrella', 'Umbrella projects'),
 ])
 
-for icon in set((x['icon']) for x in projects):
+for icon in sorted(set((x['icon']) for x in projects)):
     if icon not in projecttypes:
         projecttypes[icon] = icon + " (unknown)"
 
