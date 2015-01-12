@@ -133,6 +133,8 @@ channels:
     "#wikimedia-dev":
         # x.get("X-Bugzilla-Product", None) == "MediaWiki"
         - MediaWiki(-.*)?
+        - Phabricator
+        - Phabricator.org
 
     "#wikimedia-operations":
         - ops(-.*)?
