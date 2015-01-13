@@ -18,4 +18,9 @@ assertEquals(
     {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-releng', '#wikimedia-dev'},
     chanfilter.channels_for(['Phabricator']))
 
+
+import json
+json.load(open("config.json.example"))
+print('config.json.example is valid json')
+
 print('Acceptance tests passed')

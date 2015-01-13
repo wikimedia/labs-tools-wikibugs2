@@ -1,10 +1,18 @@
 {
-    "PHAB_HOST": "https://phab-01.wmflabs.org",
-    "PHAB_USER": "Legoktm",
-    "PHAB_CERT": "",
-    "REDIS_HOST": "localhost",
-    "REDIS_QUEUE_NAME": "wikibugs2",
-    "IRC_SERVER": "irc.freenode.net",
-    "IRC_NICK": "wikibugs2",
-    "IRCNOTIFIER_KEY": "..."
+        "comment": "Don't forget to chmod 600 this file!",
+        "IRC_SERVER" : "irc.freenode.net",
+        "IRC_NICK" : "wikibugs",
+        "IRC_PASSWORD": "...",
+
+        "PHAB_HOST" : "https://phabricator.wikimedia.org (or https://phab-01.wmflabs.org)",
+        "PHAB_USER" : "pywikibugs",
+        "PHAB_CERT" : "...",
+
+        "REDIS_HOST": "tools-redis",
+        "REDIS_QUEUE_NAME": "wikibugs2",
+
+        "IRCNOTIFIER_KEY": "(ask Yuvipanda)",
+
+        "MEDIAWIKI_USER": "pywikibugs",
+        "MEDIAWIKI_PASS": "..."
 }
