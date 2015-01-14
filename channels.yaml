@@ -139,6 +139,7 @@ channels:
     "#wikimedia-operations":
         - ops(-.*)?
         - operations
+        - puppet
         - Blocked-on-Operations
 
     "#wikimedia-teampractices":
