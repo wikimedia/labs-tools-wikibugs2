@@ -245,11 +245,13 @@ class Wikibugs2(object):
             'user': self.get_user_name(event_info['authorPHID']),
         }
 
+        if 'transactionPHIDs' not in event_info['data']:
+            # If there are no transactions, it's something weird like tokens
+            return
         transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
         ignored = [
-            'ccs',  # Ignore any only-CC updates
+            'core:subscribers',  # Ignore any only-CC updates
             'projectcolumn',  # Ignore column changes, see T1204
-            'token:give',  # Ignore granting tokens, see T76246
         ]
         for event in ignored:
             if event in transactions and len(transactions) == 1:
