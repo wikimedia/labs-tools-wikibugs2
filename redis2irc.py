@@ -117,7 +117,7 @@ def main():
         builder=messagebuilder.IRCMessageBuilder(),
         chanfilter=chanfilter,
         nick=conf.get('IRC_NICK'),
-        autojoins=chanfilter.all_channels(),
+        autojoins=chanfilter.all_channels()[::2],
         host=conf.get('IRC_SERVER'),
         port=6667,
         password=conf.get('IRC_PASSWORD'),
