@@ -25,6 +25,8 @@ class IRCMessageBuilder(object):
         'resolved': 'Resolved',
     }
 
+    OUTPUT_PROJECT_TYPES = ['briefcase', 'users', 'umbrella']
+
     def colorify(self, text, foreground=None, background=None):
         outtext = "\x03"
         if foreground:
@@ -54,7 +56,15 @@ class IRCMessageBuilder(object):
     def build_message(self, useful_info):
         text = ''
         if useful_info['projects']:
-            text += self.colorify(', '.join(useful_info['projects']), 'green')
+            # This could be either a dict (if we are able to scrape all the info)
+            # Or a list, if it could not scrape all the info. Handle both cases.
+            if isinstance(useful_info['projects'], dict):
+                visible_projects = [
+                    p for p, info in useful_info['projects'].items()
+                    if info['tagtype'] in self.OUTPUT_PROJECT_TYPES and not info['disabled']]
+            else:
+                visible_projects = useful_info['projects']
+            text += self.colorify(', '.join(visible_projects), 'green')
             text += ': '
         text += useful_info['title']
         text += ' - ' + useful_info['url']

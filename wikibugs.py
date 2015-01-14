@@ -157,14 +157,6 @@ class Wikibugs2(object):
 
         return alltags
 
-    def get_tags_to_display(self, task_page):
-        return [
-            tag
-            for tag, info
-            in self.get_tags(task_page).items()
-            if info["tagtype"] in ["briefcase", "users", "umbrella"] and not info["disabled"]
-        ]
-
     def get_anchors_for_task(self, task_page):
         """
         :param url: url to task
@@ -237,7 +229,7 @@ class Wikibugs2(object):
             anchor = ""
 
         try:
-            projects = self.get_tags_to_display(task_page)
+            projects = self.get_tags(task_page)
         except Exception as e:
             if self.raise_errors:
                 raise

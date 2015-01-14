@@ -59,7 +59,7 @@ class ChannelFilter(object):
     def channels_for(self, projects):
         """
         :param project: Get all channels to spam for given projects
-        :type project: list
+        :type project: iterable
         """
         channels = set()
         for channel in self.config['channels']:
