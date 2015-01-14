@@ -42,7 +42,7 @@ class ChannelFilter(object):
 
     def all_channels(self):
         channels = [self.default_channel, self.firehose_channel] + list(self.config['channels'])
-        return list(set(channels))
+        return [c for c in set(channels) if c != '/dev/null']
 
     def update(self):
         if time.time() - self.time > 60:
