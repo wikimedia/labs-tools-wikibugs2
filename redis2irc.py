@@ -41,6 +41,11 @@ class Redis2Irc(irc3.IrcBot):
         if target in self.channels:
             self.channels.remove(target)
 
+    def privmsg(self, target, message):
+        if target not in self.channels:
+            self.join(target)
+        super(Redis2Irc, self).privmsg(target, message)
+
     @property
     def conf(self):
         return self._conf
@@ -67,8 +72,7 @@ def handle_useful_info(bot, useful_info):
     updated = bot.chanfilter.update()
     if updated:
         bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
-        # Reload channels
-        bot.join_many(bot.chanfilter.all_channels())
+
     channels = bot.chanfilter.channels_for(useful_info['projects'])
     for chan in channels:
         bot.privmsg(chan, text)
@@ -117,7 +121,7 @@ def main():
         builder=messagebuilder.IRCMessageBuilder(),
         chanfilter=chanfilter,
         nick=conf.get('IRC_NICK'),
-        autojoins=chanfilter.all_channels()[::2],
+        autojoins=['#wikimedia-labs'],
         host=conf.get('IRC_SERVER'),
         port=6667,
         password=conf.get('IRC_PASSWORD'),
