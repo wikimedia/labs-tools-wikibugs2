@@ -136,6 +136,9 @@ channels:
         - Phabricator
         - Phabricator.org
 
+    "#wikimedia-fundraising":
+        - Wikimedia-Fundraising
+
     "#wikimedia-operations":
         - ops(-.*)?
         - operations
