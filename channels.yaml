@@ -7,11 +7,9 @@ channels:
         - Spam(-.*)?
 
     "#huggle":
-#        lambda x: x.get("X-Bugzilla-Product", None) == "Huggle",
         - Huggle(-.*)?
 
     "#pywikibot":
-#        lambda x: x.get("X-Bugzilla-Product", None) == "Pywikibot",
         - Pywikibot(-.*)?
 
     "#wm-bot":
@@ -19,8 +17,6 @@ channels:
 
     "#wikidata":
         - Wikidata
-        # x.get("X-Bugzilla-Product", None) in ["MediaWiki extensions"] and
-        # x.get("X-Bugzilla-Component", None) in ["WikidataRepo", "WikidataClient"]
         - MediaWiki-extensions-WikidataRepository
         - MediaWiki-extensions-WikidataClient
         # x.get("X-Bugzilla-Product", None) in ["Wikimedia"] and
@@ -28,8 +24,6 @@ channels:
         - Wikimedia-Wikidata
 
     "#wikimedia-collaboration":
-        # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
-        # x.get("X-Bugzilla-Component", None) in ["Echo", "Flow", "PageCuration", "Thanks", "WikiLove"]),
         - MediaWiki-extensions-Echo
         - MediaWiki-extensions-Flow
         - MediaWiki-extensions-PageCuration
@@ -38,17 +32,13 @@ channels:
         - Collaboration-Team
 
     "#mediawiki-i18n":
-        # x.get("X-Bugzilla-Component", None) in ["ContentTranslation"]),
         - .*-ContentTranslation
         - translatewiki\.net
 
     "#wikimedia-labs":
-        # x.get("X-Bugzilla-Product", None) in ["Tool Labs tools", "Wikimedia Labs"]
         - Tool-Labs(.*)?
         - Labs
         - Wikimedia-Labs(-.*)?
-        # x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
-        # x.get("X-Bugzilla-Component", None) in ["OpenStackManager"])
         - MediaWiki-extensions-OpenStackManager
         - Quarry
         - Wikibugs
@@ -56,7 +46,6 @@ channels:
         - LabsDB-Auditor
 
     "#wikimedia-mobile":
-        # x.get("X-Bugzilla-Product", None) in ["Wikimedia Mobile", "Commons App", "Wikipedia App", "MobileFrontend"],
         - Wikimedia-Mobile(-.*)?
         - Commons-App(-.*)?
         - Wikipedia-App(-.*)?
@@ -88,22 +77,16 @@ channels:
         - Deployment-Systems
 
     "#mediawiki-visualeditor":
-        # x.get("X-Bugzilla-Product", None) in ["VisualEditor", "OOjs", "OOjs UI"] or \
         - VisualEditor(-.*)?
         - OOjs(-.*)?
         - OOjs-UI(-.*)?
-        #  x.get("X-Bugzilla-Product", None) == "MediaWiki extensions") and \
-        #  x.get("X-Bugzilla-Component", None) in ["TemplateData", "Cite", "WikiEditor"])
         - MediaWiki-extensions-TemplateData
         - MediaWiki-extensions-Cite
         - MediaWiki-extensions-WikiEditor
-        #  x.get("X-Bugzilla-Product", None) == "MediaWiki") and \
-        #  x.get("X-Bugzilla-Component", None) in ["Page editing", "ResourceLoader"])
         - MediaWiki-Page-editing
         - MediaWiki-ResourceLoader
 
     "#mediawiki-parsoid":
-        # x.get("X-Bugzilla-Product", None) in ["Parsoid"],
         - Parsoid(-.*)?
 
     "#wikimedia-services":
@@ -112,13 +95,9 @@ channels:
         - blocked-on-services
 
     "#wikimedia-multimedia":
-        # All tasks handled by the Multimedia team are tagged with the Multimedia project
-        # in addition to the relevant extensions. For now adding that tag is done manually,
-        # but once herald is available to us we'll make it automated.
         - Multimedia
 
     "#wikimedia-analytics":
-        # x.get("X-Bugzilla-Product", None) == "Analytics",
         - Analytics(-.*)?
         - Quarry
 
@@ -131,7 +110,6 @@ channels:
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
     "#wikimedia-dev":
-        # x.get("X-Bugzilla-Product", None) == "MediaWiki"
         - MediaWiki(-.*)?
         - Phabricator
         - Phabricator.org
