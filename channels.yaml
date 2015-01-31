@@ -19,8 +19,6 @@ channels:
         - Wikidata
         - MediaWiki-extensions-WikidataRepository
         - MediaWiki-extensions-WikidataClient
-        # x.get("X-Bugzilla-Product", None) in ["Wikimedia"] and
-        # x.get("X-Bugzilla-Component", None) in ["Wikidata"]
         - Wikimedia-Wikidata
 
     "#wikimedia-collaboration":
