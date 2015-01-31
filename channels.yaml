@@ -24,11 +24,11 @@ channels:
         - Wikimedia-Wikidata
 
     "#wikimedia-collaboration":
-        - MediaWiki-extensions-Echo
-        - MediaWiki-extensions-Flow
+        - Echo
+        - Flow
         - MediaWiki-extensions-PageCuration
-        - MediaWiki-extensions-Thanks
-        - MediaWiki-extensions-WikiLove
+        - Thanks
+        - WikiLove
         - Collaboration-Team
 
     "#mediawiki-i18n":
@@ -80,9 +80,9 @@ channels:
         - VisualEditor(-.*)?
         - OOjs(-.*)?
         - OOjs-UI(-.*)?
-        - MediaWiki-extensions-TemplateData
-        - MediaWiki-extensions-Cite
-        - MediaWiki-extensions-WikiEditor
+        - TemplateData
+        - Cite
+        - WikiEditor
         - MediaWiki-Page-editing
         - MediaWiki-ResourceLoader
 
