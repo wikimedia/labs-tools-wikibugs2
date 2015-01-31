@@ -106,6 +106,7 @@ channels:
 
     "#mediawiki-core":
         - MediaWiki-Core-Team
+        - Blocked-on-MediaWiki-Core
 
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
