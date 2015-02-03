@@ -24,6 +24,7 @@ channels:
     "#wikimedia-collaboration":
         - Echo
         - Flow
+        - MoodBar
         - MediaWiki-extensions-PageCuration
         - Thanks
         - WikiLove
