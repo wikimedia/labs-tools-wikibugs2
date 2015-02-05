@@ -53,6 +53,8 @@ def crontab():
 def start_job(name):
     # string formatting as fab doesn't get list-style commands...
     sudo('{jsub} -N {name} {jsub_params} -continuous {command}'.format(
+        jsub=jsub,
+        jsub_params=jsub_params,
         name=name,
         command=jobs[name].format(**globals())
     ))
