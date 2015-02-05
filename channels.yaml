@@ -117,6 +117,7 @@ channels:
 
     "#wikimedia-fundraising":
         - Wikimedia-Fundraising
+        - § Fundraising.* # workaround for T88747
 
     "#wikimedia-operations":
         - ops(-.*)?
