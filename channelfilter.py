@@ -18,7 +18,7 @@ class ChannelFilter(object):
         self.load()
 
     def load(self):
-        with open(self.path) as f:
+        with open(self.path, encoding='utf-8') as f:
             self.config = yaml.load(f)
 
         self.parse_regexps()
