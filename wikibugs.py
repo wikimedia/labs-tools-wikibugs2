@@ -135,7 +135,7 @@ class Wikibugs2(object):
         soup = BeautifulSoup(task_page)
         alltags = {}
 
-        for tag in soup.find(class_='phabricator-handle-tag-list')('li'):
+        for tag in soup.findAll(class_='phabricator-handle-tag-list-item'):
             taglink = tag.find('a', class_='phui-tag-view')
             if not taglink:
                 continue
@@ -149,12 +149,10 @@ class Wikibugs2(object):
             tagtype = [cls.split("-")[1] for cls in classes if cls.startswith("fa-")][0]
             uri = taglink['href']
             name = taglink.text
-
             alltags[name] = {'shade': shade,
                              'disabled': disabled,
                              'tagtype': tagtype,
                              'uri': uri}
-
         return alltags
 
     def get_anchors_for_task(self, task_page):
