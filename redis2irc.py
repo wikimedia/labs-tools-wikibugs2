@@ -148,7 +148,7 @@ def main():
             'ping': 'PONG',
         }
     )
-    asyncio.Task(redisrunner())
+    asyncio.Task(redisrunner(bot))
     bot.run()
 
 if __name__ == '__main__':
