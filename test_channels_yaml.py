@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import channelfilter
+import json
 
 chanfilter = channelfilter.ChannelFilter()
 # An exception would have been raised if that wasn't the case
@@ -19,7 +20,6 @@ assertEquals(
     chanfilter.channels_for(['Phabricator']))
 
 
-import json
 json.load(open("config.json.example"))
 print('config.json.example is valid json')
 

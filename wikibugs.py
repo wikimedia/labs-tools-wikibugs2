@@ -7,6 +7,8 @@ import time
 import sys
 import json
 from bs4 import BeautifulSoup
+import configfetcher
+import rqueue
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -16,9 +18,6 @@ handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
-import configfetcher
-import rqueue
 
 
 class Wikibugs2(object):

@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import phabricator
+import configfetcher
 
 # work around pywikibot defaults
 import os
@@ -13,9 +14,8 @@ except IOError:
     pass
 os.environ["PYWIKIBOT2_NO_USER_CONFIG"] = "1"
 os.environ["PYWIKIBOT2_DIR"] = pwb_path
-import pywikibot
+import pywikibot  # noqa
 
-import configfetcher
 conf = configfetcher.ConfigFetcher()
 
 # Fetch projects
