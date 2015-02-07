@@ -6,6 +6,10 @@ import time
 import yaml
 import re
 
+import logging
+
+logger = logging.getLogger('wikibugs2.channelfilter')
+
 
 class ChannelFilter(object):
     def __init__(self, path=None):
@@ -24,7 +28,7 @@ class ChannelFilter(object):
         self.parse_regexps()
         self.time = time.time()
         self.mtime = os.path.getmtime(self.path)
-        print(self.config)
+        logger.info(self.config)
 
     def parse_regexps(self):
         chan_proj_map = self.config['channels']

@@ -14,8 +14,8 @@ code_dir = '{}/wikibugs2'.format(home_dir)
 python = '{}/py-wikibugs2/bin/python'.format(home_dir)
 
 jobs = {
-    'wb2-phab': '{python} {code_dir}/wikibugs.py',
-    'wb2-irc': '{python} {code_dir}/redis2irc.py',
+    'wb2-phab': '{python} {code_dir}/wikibugs.py --logfile {home_dir}/wikibugs.log',
+    'wb2-irc': '{python} {code_dir}/redis2irc.py --logfile {home_dir}/redis2irc.log',
 }
 
 jsub = '/usr/bin/jsub'

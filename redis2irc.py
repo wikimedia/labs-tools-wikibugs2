@@ -5,16 +5,26 @@ import asyncio_redis
 import asyncio_redis.encoders
 import json
 import irc3
-import traceback
+import logging
 
 import channelfilter
 import configfetcher
 import messagebuilder
+from wblogging import LoggingSetupParser
 
 __version__ = '3.0alpha'
 
+parser = LoggingSetupParser(
+    description="Read bugs from redis, format them and send them to irc",
+)
+args = parser.parse_args()
+
+logger = logging.getLogger('wikibugs.wb2-irc')
+
 
 class Redis2Irc(irc3.IrcBot):
+    logging_config = {'version': 1}
+
     def __init__(self, conf, builder, chanfilter, **kwargs):
         """
         :type conf: configfetcher.ConfigFetcher
@@ -72,6 +82,7 @@ def handle_useful_info(bot, useful_info):
     updated = bot.chanfilter.update()
     if updated:
         bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
+        logger.info('Updated channels.yaml to: %s' % updated)
 
     channels = bot.chanfilter.channels_for(useful_info['projects'])
     for chan in channels:
@@ -87,8 +98,7 @@ def redisrunner(bot):
         try:
             yield from redislistener(bot)
         except Exception:
-            bot.log.critical(traceback.format_exc())
-            bot.log.info("...restarting Redis listener in a few seconds.")
+            logger.exception("Redis listener crashed; restarting in a few seconds.")
         yield from asyncio.sleep(5)
 
 
@@ -109,8 +119,7 @@ def redislistener(bot):
             useful_info = json.loads(future.value)
             asyncio.Task(handle_useful_info(bot, useful_info))  # Do not wait for response
         except Exception:
-            bot.log.critical(traceback.format_exc())
-            yield from asyncio.sleep(1)
+            logger.exception("Redis configuration failed; retrying.")
 
 
 def main():
@@ -133,14 +142,13 @@ def main():
             'irc3.plugins.autojoins',
             __name__,  # this register MyPlugin
         ],
-        verbose=True,
         ctcp={
             'version': 'wikibugs2 %s running on irc3 {version}. See {url} for more details.' % __version__,
             'userinfo': '{userinfo}',
             'ping': 'PONG',
         }
     )
-    asyncio.Task(redisrunner(bot))
+    asyncio.Task(redisrunner())
     bot.run()
 
 if __name__ == '__main__':

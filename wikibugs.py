@@ -4,20 +4,25 @@ import functools
 import logging
 import phabricator
 import time
-import sys
 import json
 from bs4 import BeautifulSoup
 import configfetcher
 import rqueue
+from wblogging import LoggingSetupParser
 
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+parser = LoggingSetupParser(
+    description="Read bugs from redis, format them and send them to irc",
+)
+parser.add_argument('--raise', dest='raise_errors', action='store_true',
+                    help="Raise exceptions instead of just logging them")
+parser.add_argument('files', metavar='file', nargs='*',
+                    help="XACT files to parse (listen to phabricator otherwise)")
 
-handler = logging.StreamHandler(sys.stdout)
-handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+args = parser.parse_args()
+
+logging.getLogger('requests').setLevel(logging.INFO)
+
+logger = logging.getLogger('wikibugs.wb2-phab')
 
 
 class Wikibugs2(object):
@@ -281,7 +286,7 @@ class Wikibugs2(object):
                     info[_type] = None
             useful_event_metadata['assignee'] = info
 
-        print(useful_event_metadata)
+        logger.debug(useful_event_metadata)
         self.rqueue.put(useful_event_metadata)
 
 
@@ -293,12 +298,9 @@ if __name__ == '__main__':
     # python -i wikibugs.py ~/errors/XACT-anchor/PHID-TASK-qmkysswakxnzzausyzlv
     # then import pdb; pdb.pm() to enter the debugger
 
-    bugs.raise_errors = False
-    for file in sys.argv[1:]:
-        if file == "--raise":
-            bugs.raise_errors = True
-            continue
-        print("Processing {f}".format(f=file))
+    bugs.raise_errors = args.raise_errors
+    for file in args.files:
+        logger.info("Processing {f}".format(f=file))
         from collections import OrderedDict  # noqa
         bugs.process_event(eval(open(file).readline()))
 
