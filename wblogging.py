@@ -35,7 +35,8 @@ class LoggingSetupParser(argparse.ArgumentParser):
             handler = PrivateTimedRotatingFileHandler(
                 args.logfile,
                 when='midnight', backupCount=7,
-                utc=True
+                utc=True,
+                encoding='utf-8',
             )
             print("Logging to %s" % args.logfile)
         else:
