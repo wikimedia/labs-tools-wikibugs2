@@ -16,7 +16,7 @@ assertEquals(
     chanfilter.channels_for(['Continuous-Integration']))
 
 assertEquals(
-    {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-releng', '#wikimedia-dev'},
+    {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-dev'},
     chanfilter.channels_for(['Phabricator']))
 
 

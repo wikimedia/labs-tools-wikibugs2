@@ -67,9 +67,7 @@ channels:
     "#wikimedia-releng":
         # teams
         - Release-Engineering
-        - Phabricator
         # projects
-        - Code-Review
         - Continuous-integration
         - Quality-Assurance
         - Beta-Cluster
