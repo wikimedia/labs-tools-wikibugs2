@@ -7,6 +7,9 @@ import messagebuilder
 import rqueue
 import channelfilter
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 
 class Redis2Stdout(object):
     def __init__(self, conf, builder, channelfilter):
@@ -49,7 +52,7 @@ class Redis2Stdout(object):
                     print('!log tools.wikibugs Updated channels.yaml to: %s' % updated)
 
                 channels = self.get_channels_for_projects(useful_info['projects'])
-                print(','.join(channels) + ': ' + text)
+                print(','.join(channels) + ': ' + repr(text))
 
 if __name__ == '__main__':
     bot = Redis2Stdout(
