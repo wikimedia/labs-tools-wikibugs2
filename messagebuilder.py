@@ -178,4 +178,9 @@ class IRCMessageBuilder(object):
         if len(text) > self.MAX_MESSAGE_LENGTH:
             text = text[:self.MAX_MESSAGE_LENGTH-3].strip() + "..."
 
+        # Make sure the URL is always fully present
+        if useful_info['url'] not in text:
+            inserttext = "... - " + useful_info['url']
+            text = text[:-len(inserttext)] + inserttext
+
         return text
