@@ -17,7 +17,8 @@ parser.add_argument('--raise', dest='raise_errors', action='store_true',
                     help="Raise exceptions instead of just logging them")
 parser.add_argument('files', metavar='file', nargs='*',
                     help="XACT files to parse (listen to phabricator otherwise)")
-
+parser.add_argument('--ask', dest='ask_before_push', action='store_true',
+                    help='Ask before pushing change to redis')
 args = parser.parse_args()
 
 logging.getLogger('requests').setLevel(logging.INFO)
@@ -287,7 +288,9 @@ class Wikibugs2(object):
             useful_event_metadata['assignee'] = info
 
         logger.debug(useful_event_metadata)
-        self.rqueue.put(useful_event_metadata)
+        if not args.ask_before_push or \
+                input('Push? (y/N)').lower().strip() == 'y':
+            self.rqueue.put(useful_event_metadata)
 
 
 if __name__ == '__main__':
