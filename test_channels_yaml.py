@@ -13,11 +13,11 @@ def assertEquals(expected, actual):
 
 assertEquals(
     {'#mediawiki-feed', '#wikimedia-releng'},
-    chanfilter.channels_for(['Continuous-Integration']))
+    set(chanfilter.channels_for(['Continuous-Integration'])))
 
 assertEquals(
     {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-dev'},
-    chanfilter.channels_for(['Phabricator']))
+    set(chanfilter.channels_for(['Phabricator'])))
 
 
 json.load(open("config.json.example"))

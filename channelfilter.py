@@ -5,7 +5,7 @@ import subprocess
 import time
 import yaml
 import re
-
+import collections
 import logging
 
 logger = logging.getLogger('wikibugs2.channelfilter')
@@ -64,16 +64,18 @@ class ChannelFilter(object):
         """
         :param project: Get all channels to spam for given projects
         :type project: iterable
+        :returns: dict[channel: matched projects]
         """
-        channels = set()
+        channels = collections.defaultdict(list)
         for channel in self.config['channels']:
             for project in projects:
                 if self.config['channels'][channel].match(project):
-                    channels.add(channel)
+                    channels[channel].append(project)
                     break
         if not channels:
-            channels.add(self.default_channel)
-        if '/dev/null' in channels:
-            channels.remove('/dev/null')
-        channels.add(self.firehose_channel)
+            channels[self.default_channel] = []
+
+        channels.pop('/dev/null', None)
+        channels[self.firehose_channel] = []
+
         return channels

@@ -3,10 +3,15 @@
 
 class IRCMessageBuilder(object):
     MAX_MESSAGE_LENGTH = 80 * 4
+    MAX_NUM_PROJECTS = 4
 
-    COLORS = {'white': 0, 'black': 1, 'blue': 2, 'green': 3, 'red': 4, 'brown': 5,
-              'purple': 6, 'orange': 7, 'yellow': 8, 'lime': 9, 'teal': 10,
-              'cyan': 11, 'royal': 12, 'pink': 13, 'grey': 14, 'silver': 15}
+    COLORS = {
+        'white': 0, 'black': 1, 'blue': 2, 'green': 3, 'red': 4, 'brown': 5,
+        'purple': 6, 'orange': 7, 'yellow': 8, 'lime': 9, 'teal': 10,
+        'cyan': 11, 'royal': 12, 'pink': 13, 'grey': 14, 'silver': 15,
+
+        'indigo': 6, 'violet': 13,  # match phabricator colors
+    }
 
     PRIORITY = {
         '100': 'Unbreak!',
@@ -27,15 +32,27 @@ class IRCMessageBuilder(object):
 
     OUTPUT_PROJECT_TYPES = ['briefcase', 'users', 'umbrella']
 
-    def colorify(self, text, foreground=None, background=None):
-        outtext = "\x03"
+    TEXT_STYLE = {
+        'bold': '\x02',
+        'underline': '\x1f',
+        'reversed': '\x16',
+    }
+
+    def ircformat(self, text, foreground=None, background=None, style=None):
+        outtext = ""
+        if style:
+            outtext += self.TEXT_STYLE[style]
+        if foreground or background:
+            outtext += "\x03"
         if foreground:
             outtext += str(self.COLORS[foreground])
         if background:
             outtext += "," + str(self.COLORS[background])
         outtext += text
-        outtext += "\x03"
-
+        if foreground or background:
+            outtext += "\x03"
+        if style:
+            outtext += self.TEXT_STYLE[style]
         return outtext
 
     def _human_status(self, name):
@@ -53,45 +70,103 @@ class IRCMessageBuilder(object):
         """
         return text.replace('\n', ' ').replace('\r', ' ')
 
-    def build_message(self, useful_info):
-        text = ''
-        if useful_info['projects']:
-            # This could be either a dict (if we are able to scrape all the info)
-            # Or a list, if it could not scrape all the info. Handle both cases.
-            if isinstance(useful_info['projects'], dict):
-                visible_projects = [
-                    p for p, info in useful_info['projects'].items()
-                    if info['tagtype'] in self.OUTPUT_PROJECT_TYPES and not info['disabled']]
+    def build_project_text(self, all_projects, matched_projects):
+        """
+        Build project text to be shown.
+        Requirement:
+            (1) Show matched projects first, and bold
+            (2) Only show other projects if they are in self.OUTPUT_PROJECT_TYPES
+                and not disabled
+            (3) Colors match phabricator colors
+            (4) If the list is empty (e.g. only tags and firehose channel), show
+                all projects, irrespective of type.
+            (4a) If there are no projects at all, show "(no projects)" in bright red
+            (5) Never show more than self.MAX_NUM_PROJECTS, even if they are matched
+
+        :param all_projects: dict[project name, info] (scraped) or
+                             list[project name] (failed scraping)
+        :param matched_projects: list[project name]
+        :return: list with formatted projects
+        """
+
+        # (3) format all projects
+        # and map to a standardized format in the process
+        projects = {}
+        for project in all_projects:
+            try:
+                info = all_projects[project]
+            except KeyError:
+                info = {
+                    'shade': 'green',
+                    'tagtype': 'briefcase',
+                    'disabled': False,
+                    'uri': ''
+                }
+            info['matched'] = project in matched_projects
+            style = 'bold' if info['matched'] else None
+            info['irc_text'] = self.ircformat(project, info['shade'], style=style)
+            projects[project] = info
+
+        # (1)
+        matched_parts = [projects[project]['irc_text'] for project in sorted(matched_projects)]
+
+        # (2)
+        other_projects = [proj for proj in all_projects if proj not in matched_projects]
+        other_parts = []
+        hidden_parts = []
+        for project in sorted(other_projects):
+            info = projects[project]
+            if info['tagtype'] in self.OUTPUT_PROJECT_TYPES and not info['disabled']:
+                other_parts.append(info['irc_text'])
             else:
-                visible_projects = useful_info['projects']
-            text += self.colorify(', '.join(visible_projects), 'green')
-            text += ': '
+                hidden_parts.append(info['irc_text'])
+
+        # (4)
+        show_parts = matched_parts + other_parts
+        if len(show_parts) == 0:
+            show_parts = hidden_parts
+            hidden_parts = []
+        if len(show_parts) == 0:
+            show_parts = self.ircformat('(no projects)', 'red', 'bold')
+
+        # (5)
+        hidden_parts.extend(show_parts[self.MAX_NUM_PROJECTS:])
+        show_parts = show_parts[:self.MAX_NUM_PROJECTS]
+
+        if len(hidden_parts) == 1:
+            show_parts.append("and 1 other")
+        elif len(hidden_parts) > 0:
+            show_parts.append("and %i others" % len(hidden_parts))
+        return ", ".join(show_parts)
+
+    def build_message(self, useful_info):
+        text = self.build_project_text(useful_info['projects'], useful_info['matched_projects']) + ': '
         text += useful_info['title']
         text += ' - ' + useful_info['url']
-        text += " (" + self.colorify(useful_info['user'], "teal") + ") "
+        text += " (" + self.ircformat(useful_info['user'], "teal") + ") "
         is_new = 'new' in useful_info
         if is_new:
-            text += self.colorify('NEW', 'green') + ' '
+            text += self.ircformat('NEW', 'green') + ' '
         elif 'status' in useful_info:
             status = useful_info['status']
-            text += self.colorify(self._human_status(status['old']), 'brown')
+            text += self.ircformat(self._human_status(status['old']), 'brown')
             text += '>'
-            text += self.colorify(self._human_status(status['new']), 'green') + ' '
+            text += self.ircformat(self._human_status(status['new']), 'green') + ' '
         if 'priority' in useful_info:
             prio = useful_info['priority']
             text += 'p:'
             if prio['old']:
-                text += self.colorify(self._human_prio(prio['old']), 'brown')
+                text += self.ircformat(self._human_prio(prio['old']), 'brown')
                 text += '>'
-            text += self.colorify(self._human_prio(prio['new']), 'green')
+            text += self.ircformat(self._human_prio(prio['new']), 'green')
             text += ' '
         if 'assignee' in useful_info:
             ass = useful_info['assignee']
             text += 'a:'
             if ass['old']:
-                text += self.colorify(ass['old'], 'brown')
+                text += self.ircformat(ass['old'], 'brown')
                 text += '>'
-            text += self.colorify(str(ass['new']), 'green')
+            text += self.ircformat(str(ass['new']), 'green')
             text += ' '
 
         if 'comment' in useful_info:
