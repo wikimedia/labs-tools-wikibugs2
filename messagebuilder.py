@@ -9,8 +9,25 @@ class IRCMessageBuilder(object):
         'white': 0, 'black': 1, 'blue': 2, 'green': 3, 'red': 4, 'brown': 5,
         'purple': 6, 'orange': 7, 'yellow': 8, 'lime': 9, 'teal': 10,
         'cyan': 11, 'royal': 12, 'pink': 13, 'grey': 14, 'silver': 15,
+    }
 
-        'indigo': 6, 'violet': 13,  # match phabricator colors
+    # The following colors are safe for use on both black and white backgrounds:
+    # green, red, brown, purple, orange, teal, cyan, royal, pink, grey, silver
+    #
+    # Make sure to define a background when using other colors!
+
+    PHAB_COLORS = {
+        # Matches phabricator project colors to IRC colors
+        'blue': 'teal',
+        'red': 'brown',
+        'orange': 'red',
+        'yellow': 'orange',
+        'indigo': 'royal',
+        'violet': 'purple',
+        'green': 'green',
+        'grey': 'grey',
+        'pink': 'pink',
+        'checkered': 'silver',
     }
 
     PRIORITY = {
@@ -32,6 +49,7 @@ class IRCMessageBuilder(object):
 
     OUTPUT_PROJECT_TYPES = ['briefcase', 'users', 'umbrella']
 
+    # Style may be stripped by irc3 if it's a the beginning (or end) of a line
     TEXT_STYLE = {
         'bold': '\x02',
         'underline': '\x1f',
@@ -40,19 +58,17 @@ class IRCMessageBuilder(object):
 
     def ircformat(self, text, foreground=None, background=None, style=None):
         outtext = ""
-        if style:
-            outtext += self.TEXT_STYLE[style]
         if foreground or background:
             outtext += "\x03"
         if foreground:
             outtext += str(self.COLORS[foreground])
         if background:
             outtext += "," + str(self.COLORS[background])
-        outtext += text
-        if foreground or background:
-            outtext += "\x03"
         if style:
             outtext += self.TEXT_STYLE[style]
+        outtext += text
+        if foreground or background or style:
+            outtext += "\x0f"
         return outtext
 
     def _human_status(self, name):
@@ -103,8 +119,11 @@ class IRCMessageBuilder(object):
                     'uri': ''
                 }
             info['matched'] = project in matched_projects
-            style = 'bold' if info['matched'] else None
-            info['irc_text'] = self.ircformat(project, info['shade'], style=style)
+
+            color = self.PHAB_COLORS.get(info['shade'], 'teal')
+            style = 'underline' if info['matched'] else None
+            info['irc_text'] = self.ircformat(project, color, style=style)
+
             projects[project] = info
 
         # (1)
@@ -176,7 +195,7 @@ class IRCMessageBuilder(object):
         text = self.escape(text)
         text = text.replace('\t', ' ')
         if len(text) > self.MAX_MESSAGE_LENGTH:
-            text = text[:self.MAX_MESSAGE_LENGTH-3].strip() + "..."
+            text = text[:self.MAX_MESSAGE_LENGTH-3].rstrip() + "..."
 
         # Make sure the URL is always fully present
         if useful_info['url'] not in text:
