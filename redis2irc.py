@@ -77,6 +77,7 @@ def handle_useful_info(bot, useful_info):
     """
     if useful_info['user'] == 'gerritbot':
         # Ignore "Patch to review" stuff
+        logger.debug("Skipped %s by gerritbot" % useful_info['url'])
         return
     updated = bot.chanfilter.update()
     if updated:
@@ -156,4 +157,11 @@ def main():
     bot.run()
 
 if __name__ == '__main__':
-    main()
+    try:
+        logger.info("Started")
+        main()
+    except Exception as e:
+        logger.exception("Uncaught Exception:")
+        raise
+    finally:
+        logger.info("Stopped")

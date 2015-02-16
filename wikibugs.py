@@ -95,7 +95,7 @@ class Wikibugs2(object):
         :param task_id: T###
         :type task_id: basestring
         """
-        logging.debug('Getting maniphest.info for %s' % task_id)
+        logger.info('Getting maniphest.info for %s' % task_id)
         task_id = int(task_id[1:])
         info = self.phab.request('maniphest.info', {
             'task_id': task_id
@@ -210,9 +210,9 @@ class Wikibugs2(object):
         """
         phid_type = self.get_type_from_phid(event_info['data']['objectPHID'])
         if phid_type != 'TASK':  # Only handle Maniphest Tasks for now
-            logging.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
+            logger.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
             return
-        logging.debug('Processing %s' % event_info['data']['objectPHID'])
+        logger.debug('Processing %s' % event_info['data']['objectPHID'])
 
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         task_info = self.maniphest_info(phid_info['name'])
@@ -224,6 +224,7 @@ class Wikibugs2(object):
                 task_page, event_info['data']['transactionPHIDs']
             )
         except Exception as e:
+            logger.exception("Could not retrieve anchor for %s" % event_info['data']['transactionPHIDs'])
             if self.raise_errors:
                 raise
             open("/data/project/wikibugs/errors/XACT-anchor/" + event_info['data']['objectPHID'], "w").write(
@@ -234,6 +235,7 @@ class Wikibugs2(object):
         try:
             projects = self.get_tags(task_page)
         except Exception as e:
+            logger.exception("Could not retrieve tags for %s" % event_info['data']['transactionPHIDs'])
             if self.raise_errors:
                 raise
             open("/data/project/wikibugs/errors/scrape-tags/" + event_info['data']['objectPHID'], "w").write(
@@ -258,6 +260,10 @@ class Wikibugs2(object):
         ]
         for event in ignored:
             if event in transactions and len(transactions) == 1:
+                logging.debug("Skipping {PHID} which only has an event of type {ttype}".format(
+                    PHID=event_info['data']['transactionPHIDs'],
+                    ttype=event,
+                ))
                 return
 
         if 'title' in transactions:
@@ -307,6 +313,14 @@ if __name__ == '__main__':
         from collections import OrderedDict  # noqa
         bugs.process_event(eval(open(file).readline()))
 
-    while 1:
-        bugs.poll()
-        time.sleep(1)
+    logger.info("Starting polling cycle")
+    try:
+        while 1:
+            bugs.poll()
+            time.sleep(1)
+    except Exception as e:
+        print("dafuq")
+        logger.exception("Uncaught Exception in polling cycle:")
+        raise
+    finally:
+        logger.info("Shutting down")
