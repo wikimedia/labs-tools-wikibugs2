@@ -17,8 +17,9 @@ channels:
 
     "#wikidata":
         - Wikidata
-        - MediaWiki-extensions-WikidataRepository
-        - MediaWiki-extensions-WikidataClient
+        - Wikibase(-.*)?
+        - MediaWiki-extensions-WikibaseRepository
+        - MediaWiki-extensions-WikibaseClient
         - Wikimedia-Wikidata
 
     "#wikimedia-collaboration":
