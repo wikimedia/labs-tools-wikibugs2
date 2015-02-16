@@ -145,10 +145,12 @@ def main():
             __name__,  # this register MyPlugin
         ],
         ctcp={
-            'version': 'wikibugs2 %s running on irc3 {version}. See {url} for more details.' % __version__,
+            'finger': '{userinfo}',
+            'source': '{userinfo}',
+            'version': '{userinfo}',
             'userinfo': '{userinfo}',
             'ping': 'PONG',
-        }
+        },
     )
     asyncio.Task(redisrunner(bot))
     bot.run()
