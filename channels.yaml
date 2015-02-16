@@ -68,6 +68,7 @@ channels:
     "#wikimedia-releng":
         # teams
         - Release-Engineering
+        - Blocked-on-RelEng
         # projects
         - Continuous-integration
         - Quality-Assurance
