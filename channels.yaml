@@ -9,6 +9,9 @@ channels:
     "#huggle":
         - Huggle(-.*)?
 
+    "#autowikibrowser":
+        - AutoWikiBrowser
+
     "#pywikibot":
         - Pywikibot(-.*)?
 
