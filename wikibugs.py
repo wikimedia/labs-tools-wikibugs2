@@ -95,11 +95,11 @@ class Wikibugs2(object):
         :param task_id: T###
         :type task_id: basestring
         """
-        logger.info('Getting maniphest.info for %s' % task_id)
         task_id = int(task_id[1:])
         info = self.phab.request('maniphest.info', {
             'task_id': task_id
         })
+        logger.debug('maniphest.info for %r = %s' % (task_id, json.dumps(info)))
         return info
 
     @functools.lru_cache(maxsize=200)
@@ -130,7 +130,7 @@ class Wikibugs2(object):
                 }
                 if trans['comments'] is not None:
                     transactions[trans['transactionType']]['comments'] = trans['comments']
-
+        logger.debug('get_transaction_info(%r,%r) = %s' % (task_id, transaction_phids, json.dumps(transactions)))
         return transactions
 
     def get_task_page(self, url):
@@ -212,7 +212,7 @@ class Wikibugs2(object):
         if phid_type != 'TASK':  # Only handle Maniphest Tasks for now
             logger.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
             return
-        logger.debug('Processing %s' % event_info['data']['objectPHID'])
+        logger.debug('Processing %s' % json.dumps(event_info))
 
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         task_info = self.maniphest_info(phid_info['name'])
