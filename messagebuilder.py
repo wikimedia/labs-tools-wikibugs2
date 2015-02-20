@@ -91,13 +91,12 @@ class IRCMessageBuilder(object):
         Build project text to be shown.
         Requirement:
             (1) Show matched projects first, and bold
-            (2) Only show other projects if they are in self.OUTPUT_PROJECT_TYPES
-                and not disabled
-            (3) Colors match phabricator colors
-            (4) If the list is empty (e.g. only tags and firehose channel), show
-                all projects, irrespective of type.
-            (4a) If there are no projects at all, show "(no projects)" in bright red
-            (5) Never show more than self.MAX_NUM_PROJECTS, even if they are matched
+            (2) Next, show other projects if they are in self.OUTPUT_PROJECT_TYPES
+            (3) Then other tags
+            (4) But never show disabled text
+            (5) Unless there aren't any tags at all otherwise
+            (6) If there are no projects at all, show "(no projects)" in bright red
+            (7) Never show more than self.MAX_NUM_PROJECTS, even if they are matched
 
         :param all_projects: dict[project name, info] (scraped) or
                              list[project name] (failed scraping)
@@ -126,36 +125,41 @@ class IRCMessageBuilder(object):
 
             projects[project] = info
 
-        # (1)
-        matched_parts = [projects[project]['irc_text'] for project in sorted(matched_projects)]
-
-        # (2)
-        other_projects = [proj for proj in all_projects if proj not in matched_projects]
-        other_parts = []
+        # We map projects in four categories:
+        matched_parts = []
+        other_projects = []
+        other_tags = []
         hidden_parts = []
-        for project in sorted(other_projects):
-            info = projects[project]
-            if info['tagtype'] in self.OUTPUT_PROJECT_TYPES and not info['disabled']:
-                other_parts.append(info['irc_text'])
-            else:
-                hidden_parts.append(info['irc_text'])
 
-        # (4)
-        show_parts = matched_parts + other_parts
+        # We use them in that order, limiting to N (or (N-1) + 'and M others') projects
+        for project in sorted(projects):
+            info = projects[project]
+            if info['matched']:
+                matched_parts.append(info['irc_text'])
+            elif info['disabled']:
+                hidden_parts.append(info['irc_text'])
+            elif info['tagtype'] in self.OUTPUT_PROJECT_TYPES:
+                other_projects.append(info['irc_text'])
+            else:
+                other_tags.append(info['irc_text'])
+
+        # (1), (2), (3), (4)
+        show_parts = matched_parts + other_projects + other_tags
+
+        # (5), (6)
         if len(show_parts) == 0:
             show_parts = hidden_parts
-            hidden_parts = []
         if len(show_parts) == 0:
-            show_parts = self.ircformat('(no projects)', 'red', 'bold')
+            show_parts = [self.ircformat('(no projects)', 'red', style='bold')]
 
-        # (5)
-        hidden_parts.extend(show_parts[self.MAX_NUM_PROJECTS:])
+        # (7)
+        overflow_parts = show_parts[self.MAX_NUM_PROJECTS:]
         show_parts = show_parts[:self.MAX_NUM_PROJECTS]
 
-        if len(hidden_parts) == 1:
-            show_parts.append("and 1 other")
+        if len(overflow_parts) == 1:
+            show_parts.append(overflow_parts[0])
         elif len(hidden_parts) > 0:
-            show_parts.append("and %i others" % len(hidden_parts))
+            show_parts.append("and %i others" % len(overflow_parts))
         return ", ".join(show_parts)
 
     def build_message(self, useful_info):
