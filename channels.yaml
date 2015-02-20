@@ -119,7 +119,7 @@ channels:
         - Phabricator.org
 
     "#wikimedia-fundraising":
-        - Wikimedia-Fundraising
+        - Wikimedia-Fundraising(.*?)
         - § Fundraising.* # workaround for T88747
 
     "#wikimedia-operations":
