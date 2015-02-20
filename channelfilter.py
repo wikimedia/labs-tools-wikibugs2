@@ -71,7 +71,7 @@ class ChannelFilter(object):
             for project in projects:
                 if self.config['channels'][channel].match(project):
                     channels[channel].append(project)
-                    break
+
         if not channels:
             channels[self.default_channel] = []
 
