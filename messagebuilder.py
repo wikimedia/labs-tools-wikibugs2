@@ -36,7 +36,7 @@ class IRCMessageBuilder(object):
         '80': 'High',
         '50': 'Normal',
         '25': 'Low',
-        '10': 'Volunteer?',
+        '10': 'Lowest',
     }
 
     # FIXME: Incomplete
