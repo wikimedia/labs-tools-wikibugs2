@@ -20,7 +20,7 @@ class IRCMessageBuilder(object):
         # Matches phabricator project colors to IRC colors
         'blue': 'teal',
         'red': 'brown',
-        'orange': 'red',
+        'orange': 'brown',
         'yellow': 'orange',
         'indigo': 'royal',
         'violet': 'purple',
