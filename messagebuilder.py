@@ -158,7 +158,7 @@ class IRCMessageBuilder(object):
 
         if len(overflow_parts) == 1:
             show_parts.append(overflow_parts[0])
-        elif len(hidden_parts) > 0:
+        elif len(overflow_parts) > 0:
             show_parts.append("and %i others" % len(overflow_parts))
         return ", ".join(show_parts)
 
