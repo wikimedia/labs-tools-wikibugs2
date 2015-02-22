@@ -120,8 +120,7 @@ class IRCMessageBuilder(object):
             info['matched'] = project in matched_projects
 
             color = self.PHAB_COLORS.get(info['shade'], 'teal')
-            style = 'underline' if info['matched'] else None
-            info['irc_text'] = self.ircformat(project, color, style=style)
+            info['irc_text'] = self.ircformat(project, color)
 
             projects[project] = info
 
