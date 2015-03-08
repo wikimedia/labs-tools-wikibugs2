@@ -131,5 +131,8 @@ channels:
     "#wikimedia-teampractices":
         - team-practices
 
+    "#wmt":
+        - Tool-Labs-tools-WMT-bots
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
