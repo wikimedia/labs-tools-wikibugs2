@@ -54,10 +54,12 @@ channels:
         - Wikipedia-App(-.*)?
         - MobileFrontend(-.*)?
         - Mobile-Web
+        - Gather.*
 
     "#wikimedia-devtools":
         # teams
         - Phabricator
+        - Engineering-Community
         # projects
         - Wikibugs
         - Phabricator.org
@@ -67,6 +69,7 @@ channels:
         - Project-Management
         - Code-Review
         - Gitblit-Deprecate
+        - Project-Creators
 
     "#wikimedia-releng":
         # teams
