@@ -26,13 +26,15 @@ channels:
         - Wikimedia-Wikidata
 
     "#wikimedia-collaboration":
+        # teams
+        - Collaboration-Team
+        # projects
         - Echo
         - Flow
         - MoodBar
         - MediaWiki-extensions-PageCuration
         - Thanks
         - WikiLove
-        - Collaboration-Team
 
     "#mediawiki-i18n":
         - .*-ContentTranslation
@@ -88,6 +90,7 @@ channels:
         - OOjs-UI(-.*)?
         - TemplateData
         - Cite
+        - Citoid
         - WikiEditor
         - MediaWiki-Page-editing
         - MediaWiki-ResourceLoader
@@ -120,6 +123,11 @@ channels:
         - MediaWiki(-.*)?
         - Phabricator
         - Phabricator.org
+        - Design
+        - Living-Style-Guide
+        - WMF-Design
+        - WMF-Design-Research
+        - UI-Standardization
 
     "#wikimedia-fundraising":
         - Wikimedia-Fundraising(.*?)
@@ -136,6 +144,13 @@ channels:
 
     "#wmt":
         - Tool-Labs-tools-WMT-bots
+
+    "#wikimedia-design":
+        - Design
+        - Living-Style-Guide
+        - WMF-Design
+        - WMF-Design-Research
+        - UI-Standardization
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
