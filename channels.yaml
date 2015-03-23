@@ -117,6 +117,9 @@ channels:
         - MediaWiki-Core-Team
         - Blocked-on-MediaWiki-Core
 
+    "#wikimedia-commons-tech":
+        - Commons
+
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
     "#wikimedia-dev":
