@@ -135,8 +135,7 @@ channels:
         - UI-Standardization
 
     "#wikimedia-fundraising":
-        - Wikimedia-Fundraising(.*?)
-        - § Fundraising.* # workaround for T88747
+        - .*Fundraising.*
 
     "#wikimedia-operations":
         - ops(-.*)?
