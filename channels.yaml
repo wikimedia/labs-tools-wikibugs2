@@ -116,6 +116,8 @@ channels:
     "#mediawiki-core":
         - MediaWiki-Core-Team
         - Blocked-on-MediaWiki-Core
+        - MediaWiki-API-Team
+        - Blocked-on-MediaWiki-API-Team
 
     "#wikimedia-commons-tech":
         - Commons
