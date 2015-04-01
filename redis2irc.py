@@ -52,8 +52,9 @@ class Redis2Irc(irc3.IrcBot):
             self.channels.remove(target)
 
     def privmsg(self, target, message):
-        if target not in self.channels:
-            self.join(target)
+        # if target not in self.channels:
+        #     self.join(target)
+        self.join(target)  # FIXME HACK
         super(Redis2Irc, self).privmsg(target, message)
 
     @property
