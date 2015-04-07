@@ -79,7 +79,6 @@ channels:
         - Blocked-on-RelEng
         # projects
         - Continuous-integration
-        - Quality-Assurance
         - Beta-Cluster
         - Staging
         - Deployment-Systems
