@@ -53,7 +53,7 @@ channels:
     "#wikimedia-mobile":
         - Wikimedia-Mobile(-.*)?
         - Commons-App(-.*)?
-        - Wikipedia-App(-.*)?
+        - Wikipedia(-.*)?-App
         - MobileFrontend(-.*)?
         - Mobile-Web
         - Gather.*
