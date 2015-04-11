@@ -148,7 +148,7 @@ channels:
         - team-practices
 
     "##wmt":
-        - Tool-Labs-tools-WMT-bots
+        - WMT-bots
 
     "#wikimedia-design":
         - Design
