@@ -157,5 +157,8 @@ channels:
         - WMF-Design-Research
         - UI-Standardization
 
+    "#xtools":
+        - Tool-Labs-xTools
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
