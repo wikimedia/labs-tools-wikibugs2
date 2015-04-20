@@ -156,6 +156,7 @@ channels:
         - WMF-Design
         - WMF-Design-Research
         - UI-Standardization
+        - mediawiki-skins-Blueprint
 
     "#xtools":
         - Tool-Labs-xTools
