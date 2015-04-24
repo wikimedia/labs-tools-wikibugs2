@@ -13,7 +13,7 @@ def assertEquals(expected, actual):
 
 assertEquals(
     {'#mediawiki-feed', '#wikimedia-releng'},
-    set(chanfilter.channels_for(['Continuous-Integration'])))
+    set(chanfilter.channels_for(['Release-Engineering'])))
 
 assertEquals(
     {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-dev'},

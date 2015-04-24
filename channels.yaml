@@ -78,7 +78,7 @@ channels:
         - Release-Engineering
         - Blocked-on-RelEng
         # projects
-        - Continuous-integration
+        - Continuous-Integration-Infrastructure
         - Beta-Cluster
         - Staging
         - Deployment-Systems
