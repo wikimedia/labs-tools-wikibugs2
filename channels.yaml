@@ -79,17 +79,31 @@ channels:
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
-        - OOjs(-.*)?
-        - OOjs-UI(-.*)?
         - TemplateData
         - Cite
         - Citoid
         - WikiEditor
+        - UnicodeJS
+
+    "#wikimedia-editing":
+        - Editing-Department
+        - Blocked-on-Editing
+        - OOjs(-.*)?
+        - OOjs-UI(-.*)?
+        - CiteThisPage
+        - CodeEditor
+        - Graph
+        - Graphoid
+        - Math
+        - Mathoid
         - MediaWiki-Page-editing
         - MediaWiki-ResourceLoader
+        - Apex
+        - Vector
 
     "#mediawiki-parsoid":
         - Parsoid(-.*)?
+        - MediaWiki-extensions-ParserFunctions
 
     "#wikimedia-services":
         - restbase(-.*)?
