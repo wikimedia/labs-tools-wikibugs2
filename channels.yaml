@@ -50,14 +50,6 @@ channels:
         - Gerrit-Patch-Uploader
         - LabsDB-Auditor
 
-    "#wikimedia-mobile":
-        - Wikimedia-Mobile(-.*)?
-        - Commons-App(-.*)?
-        - Wikipedia(-.*)?-App
-        - MobileFrontend(-.*)?
-        - Mobile-Web
-        - Gather.*
-
     "#wikimedia-devtools":
         # teams
         - Phabricator
