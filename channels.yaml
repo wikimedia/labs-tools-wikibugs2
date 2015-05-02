@@ -84,6 +84,7 @@ channels:
         - Citoid
         - WikiEditor
         - UnicodeJS
+        - MediaWiki-extensions-Graph-VE
 
     "#wikimedia-editing":
         - Editing-Department
