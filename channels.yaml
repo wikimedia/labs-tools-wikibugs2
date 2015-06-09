@@ -98,9 +98,12 @@ channels:
         - Math
         - Mathoid
         - MediaWiki-Page-editing
-        - MediaWiki-ResourceLoader
         - Apex
         - Vector
+
+    "#wikimedia-perf":
+        - Performance-Team
+        - MediaWiki-ResourceLoader
 
     "#mediawiki-parsoid":
         - Parsoid(-.*)?
