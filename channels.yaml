@@ -36,6 +36,11 @@ channels:
         - Thanks
         - WikiLove
 
+    "#wikimedia-de-tech":
+        - TCB-Team
+        - German-Community-Wishlist
+        - Phragile
+
     "#mediawiki-i18n":
         - .*-ContentTranslation
         - translatewiki\.net
