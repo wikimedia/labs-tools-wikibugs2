@@ -18,7 +18,7 @@ channels:
     "#wm-bot":
         - WM-Bot
 
-    "#wikidata":
+    "#wikidata-feed":
         - Wikidata
         - Wikibase(-.*)?
         - MediaWiki-extensions-WikibaseRepository
