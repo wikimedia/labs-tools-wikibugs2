@@ -51,11 +51,11 @@ class Redis2Irc(irc3.IrcBot):
         if target in self.channels:
             self.channels.remove(target)
 
-    def notice(self, target, message):
+    def privmsg(self, target, message):
         # if target not in self.channels:
         #     self.join(target)
         self.join(target)  # FIXME HACK
-        super(Redis2Irc, self).notice(target, message)
+        super(Redis2Irc, self).privmsg(target, message)
 
     @property
     def conf(self):
@@ -82,7 +82,7 @@ def handle_useful_info(bot, useful_info):
         return
     updated = bot.chanfilter.update()
     if updated:
-        bot.notice('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
+        bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
         logger.info('Updated channels.yaml to: %s' % updated)
 
     channels = bot.chanfilter.channels_for(useful_info['projects'])
@@ -90,7 +90,7 @@ def handle_useful_info(bot, useful_info):
         useful_info['channel'] = chan
         useful_info['matched_projects'] = matched_projects
         text = bot.builder.build_message(useful_info)
-        bot.notice(chan, text)
+        bot.privmsg(chan, text)
 
 
 @asyncio.coroutine
