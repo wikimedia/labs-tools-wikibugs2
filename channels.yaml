@@ -173,7 +173,7 @@ channels:
         - UI-Standardization
         - mediawiki-skins-Blueprint
 
-    "#xtools":
+    "#wikimedia-xtools":
         - Tool-Labs-xTools
 
 firehose-channel: '#mediawiki-feed'
