@@ -258,13 +258,19 @@ class Wikibugs2(object):
             'core:subscribers',  # Ignore any only-CC updates
             'projectcolumn',  # Ignore column changes, see T1204
         ]
+        removed = []
         for event in ignored:
-            if event in transactions and len(transactions) == 1:
-                logging.debug("Skipping {PHID} which only has an event of type {ttype}".format(
-                    PHID=event_info['data']['transactionPHIDs'],
-                    ttype=event,
-                ))
-                return
+            if event in transactions:
+                removed.append(event)
+                transactions.pop(event)
+
+        if not transactions:
+            # We removed everything, skip.
+            logging.debug("Skipping {PHID} which only has an event of type {ttype}".format(
+                PHID=event_info['data']['transactionPHIDs'],
+                ttype=', '.join(removed),
+            ))
+            return
 
         if 'title' in transactions:
             useful_event_metadata['title'] = transactions['title']['new']
