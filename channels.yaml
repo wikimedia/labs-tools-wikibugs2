@@ -151,7 +151,7 @@ channels:
         - UI-Standardization
 
     "#wikimedia-fundraising":
-        - .*Fundraising.*
+        - .*(?<!WMDE-)Fundraising.*
 
     "#wikimedia-operations":
         - ops(-.*)?
