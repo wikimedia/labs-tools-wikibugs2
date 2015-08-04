@@ -129,6 +129,9 @@ channels:
     '#wikimedia-research':
         - Quarry
 
+    '#wikimedia-rename':
+        - GlobalRename
+
     "#mediawiki-core":
         - MediaWiki-Core-Team
         - Blocked-on-MediaWiki-Core
