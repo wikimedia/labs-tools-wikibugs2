@@ -74,13 +74,17 @@ channels:
         # teams
         - Release-Engineering
         - Blocked-on-RelEng
+        - Releng-Admin
         # projects
         - Continuous-Integration-Infrastructure
+        - Continuous-Integration-Config
+        - Continuous-Integration-Isolation
         - Beta-Cluster
         - Staging
         - Deployment-Systems
+        - Scap3
         - Browser-Tests
-        - Continuous-Integration-Isolation
+
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
