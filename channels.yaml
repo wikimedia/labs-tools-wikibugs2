@@ -27,7 +27,7 @@ channels:
 
     "#wikimedia-collaboration":
         # teams
-        - Collaboration-Team
+        - Collaboration-Team(-.*)?
         # projects
         - Echo
         - Flow
