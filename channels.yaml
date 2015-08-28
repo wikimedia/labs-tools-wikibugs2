@@ -41,6 +41,9 @@ channels:
         - German-Community-Wishlist
         - Phragile
 
+    "#wikimedia-commtech":
+        - Community-Tech
+
     "#mediawiki-i18n":
         - .*-ContentTranslation
         - translatewiki\.net
