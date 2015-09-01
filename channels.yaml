@@ -81,7 +81,7 @@ channels:
         # projects
         - Continuous-Integration-Infrastructure
         - Continuous-Integration-Config
-        - Continuous-Integration-Isolation
+        - Continuous-Integration-Scaling
         - Beta-Cluster
         - Staging
         - Deployment-Systems
