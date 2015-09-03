@@ -76,9 +76,9 @@ def handle_useful_info(bot, useful_info):
     :type bot: Redis2Irc
     :type useful_info: dict
     """
-    if useful_info['user'] in ('gerritbot', 'Forrestbot'):
+    if useful_info['user'] in ('gerritbot', 'ReleaseTaggerBot'):
         # Ignore "Patch to review" stuff or deploy tagging
-        logger.debug("Skipped %s by gerritbot/Forrestbot" % useful_info['url'])
+        logger.debug("Skipped %s by gerritbot/ReleaseTaggerBot" % useful_info['url'])
         return
     updated = bot.chanfilter.update()
     if updated:
