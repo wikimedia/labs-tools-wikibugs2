@@ -87,6 +87,8 @@ channels:
         - Deployment-Systems
         - Scap3
         - Browser-Tests
+        - Gitblit-Deprecate
+        - Gerrit-Migration
 
 
     "#mediawiki-visualeditor":
