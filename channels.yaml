@@ -189,5 +189,8 @@ channels:
     "#wikimedia-xtools":
         - Tool-Labs-xTools
 
+    "#wikimedia-ios":
+        - Wikipedia-iOS-.*
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
