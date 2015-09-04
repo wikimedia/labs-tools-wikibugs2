@@ -89,6 +89,7 @@ channels:
         - Browser-Tests
         - Gitblit-Deprecate
         - Gerrit-Migration
+        - Differential
 
 
     "#mediawiki-visualeditor":
