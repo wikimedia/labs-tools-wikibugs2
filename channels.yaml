@@ -24,6 +24,7 @@ channels:
         - MediaWiki-extensions-WikibaseRepository
         - MediaWiki-extensions-WikibaseClient
         - Wikimedia-Wikidata
+        - ArticlePlaceholder
 
     "#wikimedia-collaboration":
         # teams
