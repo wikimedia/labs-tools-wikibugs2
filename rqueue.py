@@ -2,16 +2,22 @@
 
 import json
 import redis
+import time
 
 
 class RedisQueue(object):
     def __init__(self, name, host='localhost'):
         self.redis = redis.StrictRedis(host=host, port=6379, db=0)
         self.key = name
+        self.last_pushed = 0
 
     def put(self, item):
         """Put item into the queue."""
+        diff = time.time() - self.last_pushed
+        if diff < 1:
+            time.sleep(1 - diff)
         self.redis.rpush(self.key, json.dumps(item))
+        self.last_pushed = time.time()
 
     def get(self):
         """Remove and return an item from the queue.
