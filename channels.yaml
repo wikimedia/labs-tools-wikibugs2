@@ -63,15 +63,10 @@ channels:
     "#wikimedia-devtools":
         # teams
         - Phabricator
-        - Engineering-Community
         # projects
         - Wikibugs
         - Phabricator.org
-        - Bugzilla-Migration
-        - Bugzilla-Preview
         - RT-Migration
-        - Project-Management
-        - Code-Review
         - Gitblit-Deprecate
         - Project-Creators
 
