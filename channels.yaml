@@ -75,7 +75,7 @@ channels:
 
     "#wikimedia-releng":
         # teams
-        - Release-Engineering
+        - Release-Engineering-Team
         - Blocked-on-RelEng
         - Releng-Admin
         # projects
