@@ -37,6 +37,7 @@ channels:
         - MediaWiki-extensions-PageCuration
         - Thanks
         - WikiLove
+        - Pywikibot-Flow
 
     "#wikimedia-de-tech":
         - TCB-Team

@@ -19,6 +19,9 @@ assertEquals(
     {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-dev'},
     set(chanfilter.channels_for(['Phabricator'])))
 
+assertEquals(
+    {'#mediawiki-feed', '#wikimedia-collaboration', '#pywikibot'},
+    set(chanfilter.channels_for(['Pywikibot-Flow'])))
 
 json.load(open("config.json.example"))
 print('config.json.example is valid json')
