@@ -45,7 +45,7 @@ channels:
         - Phragile
 
     "#wikimedia-commtech":
-        - Community-Tech
+        - Community-Tech(-.*)?
 
     "#mediawiki-i18n":
         - .*-ContentTranslation
