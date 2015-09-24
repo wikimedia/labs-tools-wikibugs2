@@ -78,10 +78,11 @@ channels:
         # teams
         - Release-Engineering-Team
         - Blocked-on-RelEng
-        - Releng-Admin
         # Planning (eg: #releng-201516-q2 or #releng-admin or any future ones)
         - releng-(.*)
+        - Release-Engineering(.*) # Release-Engineering-Epics and any others
         # projects
+        - Releng-Admin
         - Continuous-Integration-Infrastructure
         - Continuous-Integration-Config
         - Continuous-Integration-Scaling
