@@ -94,7 +94,7 @@ channels:
         - Gitblit-Deprecate
         - Gerrit-Migration
         - Differential
-
+        - MediaWiki-Releasing
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
