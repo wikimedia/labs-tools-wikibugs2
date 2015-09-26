@@ -95,6 +95,7 @@ channels:
         - Gerrit-Migration
         - Differential
         - MediaWiki-Releasing
+        - MediaWiki-Codesniffer
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
