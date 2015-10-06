@@ -86,7 +86,7 @@ channels:
         - Continuous-Integration-Infrastructure
         - Continuous-Integration-Config
         - Continuous-Integration-Scaling
-        - Beta-Cluster
+        - Beta-Cluster-Infrastructure
         - Staging
         - Deployment-Systems
         - Scap3
