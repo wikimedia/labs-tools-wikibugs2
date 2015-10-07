@@ -169,7 +169,7 @@ channels:
         - UI-Standardization
 
     "#wikimedia-fundraising":
-        - .*(?<!WMDE-)Fundraising.*
+        - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*
 
     "#wikimedia-operations":
         - ops(-.*)?
