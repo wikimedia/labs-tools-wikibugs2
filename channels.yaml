@@ -43,6 +43,7 @@ channels:
         - TCB-Team
         - German-Community-Wishlist
         - Phragile
+        - WMDE-Analytics-Engineering
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
