@@ -72,6 +72,9 @@ channels:
         - Gitblit-Deprecate
         - Project-Creators
 
+    "#wikimedia-mailman":
+        - Wikimedia-Mailing-lists
+
     "#wikimedia-otrs":
         - OTRS
 
