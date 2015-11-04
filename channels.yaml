@@ -3,7 +3,7 @@ channels:
         - foobarbaz
 
     "/dev/null":
-        - User-Bd808-Test
+        - User(-.*)?
         - Spam(-.*)?
 
     "#huggle":
