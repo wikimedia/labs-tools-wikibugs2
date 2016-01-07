@@ -55,7 +55,7 @@ channels:
 
     "#wikimedia-labs":
         - Tool-Labs(.*)?
-        - Labs
+        - Labs(-.*)?
         - Wikimedia-Labs(-.*)?
         - MediaWiki-extensions-OpenStackManager
         - Quarry
