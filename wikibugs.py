@@ -281,8 +281,8 @@ class Wikibugs2(object):
             # in another event before our API request is made, but meh
             # Name is in the format "T123: FooBar", so get rid of the prefix
             useful_event_metadata['title'] = phid_info['fullName'].split(':', 1)[1].strip()
-        if 'core:comment' in transactions:
-            useful_event_metadata['comment'] = transactions['core:comment'].get('comments', 'Removed.')
+        if 'core:comment' in transactions and 'comments' in transactions['core:comment']:
+            useful_event_metadata['comment'] = transactions['core:comment']['comments']
         for _type in ['status', 'priority']:
             if _type in transactions:
                 useful_event_metadata[_type] = transactions[_type]
