@@ -13,9 +13,10 @@ class RedisQueue(object):
 
     def put(self, item):
         """Put item into the queue."""
+        delaytime = 2
         diff = time.time() - self.last_pushed
-        if diff < 1:
-            time.sleep(1 - diff)
+        if diff < delaytime:
+            time.sleep(delaytime - diff)
         self.redis.rpush(self.key, json.dumps(item))
         self.last_pushed = time.time()
 
