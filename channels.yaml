@@ -184,6 +184,15 @@ channels:
         - puppet
         - Blocked-on-Operations
 
+    "#wikimedia-traffic":
+        - traffic
+        - netops
+        - varnish
+        - wikimedia-dns
+        - wikimedia-apache-configuration
+        - domains
+        - HTTPS
+
     "#wikimedia-teampractices":
         - team-practices
 
