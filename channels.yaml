@@ -49,6 +49,9 @@ channels:
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
 
+    "#wikimedia-ed":
+        - Education-.*
+
     "#mediawiki-i18n":
         - .*-ContentTranslation
         - translatewiki\.net
