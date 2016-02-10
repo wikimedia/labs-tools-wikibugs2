@@ -74,8 +74,12 @@ channels:
         - Wikibugs
         - Phabricator.org
         - RT-Migration
+        - GitHub-Mirrors
         - Gitblit-Deprecate
+        - Gerrit-Migration
         - Project-Creators
+        - Differential
+        - Diffusion
 
     "#wikimedia-mailman":
         - Wikimedia-Mailing-lists
@@ -99,12 +103,13 @@ channels:
         - Staging
         - Deployment-Systems
         - Scap3
+        - scap
         - Browser-Tests
         - Gitblit-Deprecate
         - Gerrit-Migration
-        - Differential
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
+        - Browser-Tests-infrastructure
         - Testing-Initiative-2015
 
     "#mediawiki-visualeditor":
