@@ -53,7 +53,6 @@ channels:
         - Education-.*
 
     "#mediawiki-i18n":
-        - .*-ContentTranslation
         - translatewiki\.net
 
     "#wikimedia-labs":
