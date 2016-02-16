@@ -80,6 +80,10 @@ def handle_useful_info(bot, useful_info):
         # Ignore "Patch to review" stuff or deploy tagging
         logger.debug("Skipped %s by gerritbot/ReleaseTaggerBot" % useful_info['url'])
         return
+    if useful_info['user'] == 'Stashbot':
+        # Ignore Stashbot's comments about SAL messages
+        logger.debug("Skipped %s by Stashbot" % useful_info['url'])
+        return
     updated = bot.chanfilter.update()
     if updated:
         bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
