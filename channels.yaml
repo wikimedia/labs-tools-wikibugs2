@@ -48,6 +48,7 @@ channels:
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
+        - Community-Wishlist-Survey
 
     "#wikimedia-ed":
         - Education-.*
