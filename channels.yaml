@@ -31,8 +31,10 @@ channels:
     "#wikimedia-collaboration":
         # teams
         - Collaboration-Team(-.*)?
+        - Collab-Team-2016-Q4
         # projects
         - Echo
+        - Collab-Notifications-Page
         - Flow
         - MoodBar
         - MediaWiki-extensions-PageCuration
