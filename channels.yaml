@@ -19,6 +19,9 @@ channels:
     "#wm-bot":
         - WM-Bot
 
+    "#wikimedia-ai":
+        - Revision-Scoring-As-A-Service(-.*)?
+
     "#wikidata-feed":
         - Wikidata
         - Wikibase(-.*)?
