@@ -6,9 +6,10 @@ class IRCMessageBuilder(object):
     MAX_NUM_PROJECTS = 4
 
     COLORS = {
-        'white': 0, 'black': 1, 'blue': 2, 'green': 3, 'red': 4, 'brown': 5,
-        'purple': 6, 'orange': 7, 'yellow': 8, 'lime': 9, 'teal': 10,
-        'cyan': 11, 'royal': 12, 'pink': 13, 'grey': 14, 'silver': 15,
+        'white': "00", 'black': "01", 'blue': "02", 'green': "03", 'red': "04",
+        'brown': "05", 'purple': "06", 'orange': "07", 'yellow': "08", 'lime': "09",
+        'teal': "10", 'cyan': "11", 'royal': "12", 'pink': "13", 'grey': "14",
+        'silver': "15"
     }
 
     # The following colors are safe for use on both black and white backgrounds:
@@ -61,9 +62,9 @@ class IRCMessageBuilder(object):
         if foreground or background:
             outtext += "\x03"
         if foreground:
-            outtext += str(self.COLORS[foreground])
+            outtext += self.COLORS[foreground]
         if background:
-            outtext += "," + str(self.COLORS[background])
+            outtext += "," + self.COLORS[background]
         if style:
             outtext += self.TEXT_STYLE[style]
         outtext += text
