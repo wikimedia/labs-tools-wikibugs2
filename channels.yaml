@@ -226,8 +226,5 @@ channels:
     "#wikimedia-ios":
         - Wikipedia-iOS-.*
 
-    "#wmhack":
-        - Wikimedia-Hackathon-.*
-
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
