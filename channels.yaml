@@ -141,6 +141,16 @@ channels:
         - Apex
         - Vector
 
+    "#wikimedia-interactive":
+        - Graph
+        - Graphoid
+        - Kartographer
+        - Maps
+        - Map-Styles
+        - Kartotherian
+        - Tilerator
+        - Discovery-Maps-Sprint
+
     "#wikimedia-perf":
         - Performance-Team
         - MediaWiki-ResourceLoader
