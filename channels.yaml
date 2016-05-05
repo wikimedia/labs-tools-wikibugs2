@@ -34,7 +34,7 @@ channels:
     "#wikimedia-collaboration":
         # teams
         - Collaboration-Team(-.*)?
-        - Collab-Team-2016-Q4
+        - Collab-Team(-.*)?
         # projects
         - Collab-Notifications-Page
         - Flow
