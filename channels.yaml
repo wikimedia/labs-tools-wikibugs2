@@ -50,6 +50,7 @@ channels:
         - German-Community-Wishlist
         - Phragile
         - WMDE-Analytics-Engineering
+        - WMDE-Design
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
