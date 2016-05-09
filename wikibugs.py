@@ -256,7 +256,7 @@ class Wikibugs2(object):
         transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
         ignored = [
             'core:subscribers',  # Ignore any only-CC updates
-            'projectcolumn',  # Ignore column changes, see T1204
+            'core:columns',  # Ignore column changes, see T1204
         ]
         removed = []
         for event in ignored:
