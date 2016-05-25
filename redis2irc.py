@@ -6,6 +6,7 @@ import asyncio_redis.encoders
 import json
 import irc3
 import logging
+import socket
 
 import channelfilter
 import configfetcher
@@ -13,6 +14,7 @@ import messagebuilder
 from wblogging import LoggingSetupParser
 
 __version__ = '3.0alpha'
+current_host = socket.getfqdn()
 
 parser = LoggingSetupParser(
     description="Read bugs from redis, format them and send them to irc",
@@ -143,7 +145,8 @@ def main():
         port=6667,
         password=conf.get('IRC_PASSWORD'),
         realname='wikibugs2',
-        userinfo='Wikibugs v2.1, http://tools.wmflabs.org/wikibugs/',
+        userinfo=('Wikibugs v2.1, http://tools.wmflabs.org/wikibugs/ ,' +
+                  'running on ' + current_host),
         includes=[
             'irc3.plugins.core',
             'irc3.plugins.ctcp',
