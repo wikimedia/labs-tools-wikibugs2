@@ -237,5 +237,9 @@ channels:
     "#wikimedia-ios":
         - Wikipedia-iOS-.*
 
+    "#wikimedia-databases":
+        - DBA
+        - Blocked-on-schema-change
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
