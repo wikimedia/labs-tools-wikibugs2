@@ -94,23 +94,21 @@ channels:
         - OTRS
 
     "#wikimedia-releng":
-        # teams
-        - Release-Engineering-Team
+        # Meta 
+        - Release-Engineering(.*)
         - Blocked-on-RelEng
-        # Planning (eg: #releng-201516-q2 or #releng-admin or any future ones)
         - releng-(.*)
-        - Release-Engineering(.*) # Release-Engineering-Epics and any others
         # projects
         - Releng-Admin
-        - Continuous-Integration-Infrastructure
-        - Continuous-Integration-Config
-        - Continuous-Integration-Scaling
-        - Beta-Cluster-Infrastructure
+        - Continuous-Integration-Infrastructure(.*)
+        - Continuous-Integration-Config(.*)
+        - Continuous-Integration-Scaling(.*)
+        - Beta-Cluster-Infrastructure(.*)
         - Staging
-        - Deployment-Systems
-        - Scap3
-        - scap
-        - Browser-Tests
+        - Deployment-Systems(.*)
+        - Scap3(.*)
+        - scap(.*)
+        - Browser-Tests(.*)
         - Gitblit-Deprecate
         - Gerrit-Migration
         - MediaWiki-Releasing
