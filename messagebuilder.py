@@ -199,7 +199,7 @@ class IRCMessageBuilder(object):
         text = self.escape(text)
         text = text.replace('\t', ' ')
         if len(text) > self.MAX_MESSAGE_LENGTH:
-            text = text[:self.MAX_MESSAGE_LENGTH-3].rstrip() + "..."
+            text = text[:self.MAX_MESSAGE_LENGTH - 3].rstrip() + "..."
 
         # Make sure the URL is always fully present
         if useful_info['url'] not in text:
