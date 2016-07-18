@@ -51,7 +51,11 @@ channels:
         - German-Community-Wishlist
         - Phragile
         - WMDE-Analytics-Engineering
+        - WMDE-Fundraising-Software
         - WMDE-Design
+        - Revision-Slider
+        - Attribution-Generator
+        - CatWatch
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
