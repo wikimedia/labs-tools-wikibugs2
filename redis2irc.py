@@ -78,13 +78,10 @@ def handle_useful_info(bot, useful_info):
     :type bot: Redis2Irc
     :type useful_info: dict
     """
-    if useful_info['user'] in ('gerritbot', 'ReleaseTaggerBot'):
-        # Ignore "Patch to review" stuff or deploy tagging
-        logger.debug("Skipped %s by gerritbot/ReleaseTaggerBot" % useful_info['url'])
-        return
-    if useful_info['user'] == 'Stashbot':
-        # Ignore Stashbot's comments about SAL messages
-        logger.debug("Skipped %s by Stashbot" % useful_info['url'])
+    ignored = ('gerritbot', 'ReleaseTaggerBot', 'Stashbot', 'Phabricator_maintenance')
+    if useful_info['user'] in ignored:
+        # Ignore some Phabricator bots
+        logger.debug("Skipped %(url)s by %(user)s" % useful_info)
         return
     updated = bot.chanfilter.update()
     if updated:
