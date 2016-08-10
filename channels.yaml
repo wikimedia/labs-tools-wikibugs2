@@ -121,6 +121,7 @@ channels:
         - MediaWiki-Codesniffer
         - Browser-Tests-infrastructure
         - Testing-Initiative-2015
+        - commit-message-validator
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
