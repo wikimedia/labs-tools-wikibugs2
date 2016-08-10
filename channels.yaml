@@ -114,12 +114,11 @@ channels:
         - Deployment-Systems(.*)
         - Scap3(.*)
         - scap(.*)
-        - Browser-Tests(.*)
         - Gitblit-Deprecate
         - Gerrit-Migration
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
-        - Browser-Tests-infrastructure
+        - Browser-Tests-Infrastructure
         - Testing-Initiative-2015
         - commit-message-validator
 
