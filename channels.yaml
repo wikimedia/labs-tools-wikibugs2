@@ -37,6 +37,7 @@ channels:
         - Collaboration-Team(-.*)?
         - Collab-Team(-.*)?
         # projects
+        - Augmented-Changes-Feed
         - Collab-Notifications-Page
         - Edit-Review-Improvements
         - Flow
