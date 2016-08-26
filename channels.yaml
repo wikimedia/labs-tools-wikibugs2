@@ -79,6 +79,7 @@ channels:
         - Gerrit-Patch-Uploader
         - LabsDB-Auditor
         - PAWS
+        - Striker
 
     "#wikimedia-devtools":
         # teams
