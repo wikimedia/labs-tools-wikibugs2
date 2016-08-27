@@ -117,6 +117,7 @@ channels:
         - Scap3(.*)
         - scap(.*)
         - Gitblit-Deprecate
+        - Gerrit
         - Gerrit-Migration
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
