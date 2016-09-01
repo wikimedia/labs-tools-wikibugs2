@@ -37,9 +37,8 @@ channels:
         - Collaboration-Team(-.*)?
         - Collab-Team(-.*)?
         # projects
-        - Augmented-Changes-Feed
         - Collab-Notifications-Page
-        - Edit-Review-Improvements
+        - Edit-Review-Improvements(-.*)?
         - Flow
         - MoodBar
         - MediaWiki-extensions-PageCuration
