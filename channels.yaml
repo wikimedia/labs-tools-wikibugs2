@@ -172,6 +172,7 @@ channels:
         - blocked-on-services
 
     "#wikimedia-multimedia":
+        - FileAnnotations
         - Multimedia
 
     "#wikimedia-analytics":
