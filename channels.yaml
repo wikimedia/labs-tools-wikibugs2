@@ -90,7 +90,7 @@ channels:
         - GitHub-Mirrors
         - Gitblit-Deprecate
         - Gerrit-Migration
-        - Project-Creators
+        - Project-Admins
         - Differential
         - Diffusion
 
