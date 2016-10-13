@@ -167,8 +167,10 @@ channels:
         - MediaWiki-extensions-ParserFunctions
 
     "#wikimedia-services":
-        - restbase(-.*)?
-        - services(-.*)?
+        - restbase.*
+        - services.*
+        - service-runner
+        - cassandra
         - blocked-on-services
 
     "#wikimedia-multimedia":
