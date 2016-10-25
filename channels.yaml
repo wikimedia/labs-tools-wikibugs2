@@ -57,6 +57,7 @@ channels:
         - Revision-Slider
         - Attribution-Generator
         - CatWatch
+        - Cognate
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
