@@ -58,6 +58,7 @@ channels:
         - Attribution-Generator
         - CatWatch
         - Cognate
+        - WMDE-(.*)-Team(-Board)?
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
