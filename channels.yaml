@@ -252,5 +252,10 @@ channels:
         - DBA
         - Blocked-on-schema-change
 
+    "#wikisource":
+        - Wikisource
+        - Wikisource-Community-User-Group
+        - ProofreadPage
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
