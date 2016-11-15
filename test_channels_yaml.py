@@ -11,6 +11,7 @@ print('channels.yaml has valid syntax')
 def assertEquals(expected, actual):
     assert expected == actual, "\nExpected: %s\nActual:   %s" % (expected, actual)
 
+
 assertEquals(
     {'#mediawiki-feed', '#wikimedia-releng'},
     set(chanfilter.channels_for(['Release-Engineering-Team'])))

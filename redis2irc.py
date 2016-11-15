@@ -161,6 +161,7 @@ def main():
     asyncio.Task(redisrunner(bot))
     bot.run()
 
+
 if __name__ == '__main__':
     try:
         logger.info("Started")

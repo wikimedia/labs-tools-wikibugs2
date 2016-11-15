@@ -56,6 +56,7 @@ class Redis2Stdout(object):
                 channels = self.get_channels_for_projects(useful_info['projects'])
                 print(','.join(channels) + ': ' + repr(text))
 
+
 if __name__ == '__main__':
     bot = Redis2Stdout(
         configfetcher.ConfigFetcher(),
