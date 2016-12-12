@@ -103,7 +103,7 @@ channels:
         - OTRS
 
     "#wikimedia-releng":
-        # Meta 
+        # Meta
         - Release-Engineering(.*)
         - Blocked-on-RelEng
         - releng-(.*)
@@ -152,13 +152,14 @@ channels:
 
     "#wikimedia-interactive":
         - Graph
-        - Graphoid
-        - Kartographer
-        - Maps
-        - Map-Styles
-        - Kartotherian
-        - Tilerator
-        - Discovery-Maps-Sprint
+        - Graphoid(.*)?
+        - Kartographer(.*)?
+        - Maps(.*)?
+        - Map-Styles(.*)?
+        - Kartotherian(.*)?
+        - Tilerator(.*)?
+        - Interactive-Sprint(.*)?
+        - Tabular-Data(.*)?
 
     "#wikimedia-perf":
         - Performance-Team
