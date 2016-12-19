@@ -16,6 +16,7 @@ python = '{}/py-wikibugs2/bin/python'.format(home_dir)
 jobs = {
     'wb2-phab': '{python} {code_dir}/wikibugs.py --logfile {home_dir}/wikibugs.log',
     'wb2-irc': '{python} {code_dir}/redis2irc.py --logfile {home_dir}/redis2irc.log',
+    'wb2-grrrrit': '{python} {code_dir}/grrrrit.py --logfile {home_dir}/grrrrit.log',
 }
 
 jsub = '/usr/bin/jsub'
@@ -67,8 +68,8 @@ def restart_job(name):
 @task
 def start_jobs():
     with settings(warn_only=True):
-        start_job('wb2-phab')
-        start_job('wb2-irc')
+        for job in jobs:
+            start_job(job)
 
 
 @task

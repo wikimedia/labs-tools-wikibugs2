@@ -1,0 +1,198 @@
+default-channel: "#wikimedia-dev"
+firehose-channel: "#mediawiki-feed"
+channels:
+    "#mediawiki-i18n":
+        mediawiki/extensions/Babel:
+        mediawiki/extensions/CLDR:
+        mediawiki/extensions/ContentTranslation:
+        mediawiki/extensions/Translate:
+        mediawiki/extensions/TranslationNotifications:
+        mediawiki/extensions/TwnMainPage:
+        mediawiki/extensions/UniversalLanguageSelector:
+        mediawiki/services/cxserver:
+        mediawiki/services/cxserver/deploy:
+        translatewiki.*:
+    "#mediawiki-parsoid":
+        mediawiki/services/parsoid:
+        mediawiki/services/parsoid/deploy:
+        mediawiki/services/parsoid/node_modules:
+        mediawiki/extensions/Parsoid:
+    "#mediawiki-visualeditor":
+        mediawiki/extensions/Citoid:
+        mediawiki/extensions/TemplateData:
+        mediawiki/extensions/VisualEditor:
+        mediawiki/extensions/WikiEditor:
+        unicodejs:
+        VisualEditor/.*:
+    "#wikimedia-editing":
+        mediawiki/extensions/Cite$:
+        mediawiki/extensions/CiteThisPage:
+        mediawiki/extensions/CodeEditor:
+        mediawiki/extensions/Graph:
+        mediawiki/extensions/Kartographer:
+        mediawiki/extensions/Math:
+        mediawiki/extensions/ParserFunctions:
+        mediawiki/skins/apex:
+        mediawiki/skins/Vector:
+        oojs/.*:
+        # Also in #wikimedia-services
+        mediawiki/services/citoid:
+        mediawiki/services/graphoid:
+        mediawiki/services/mathoid:
+    "#wikimedia-interactive":
+        mediawiki/extensions/JsonConfig:
+        mediawiki/extensions/Graph:
+        mediawiki/extensions/Kartographer:
+        mediawiki/services/graphoid:
+        maps/.*:
+        mapdata:
+    "#pywikibot":
+        pywikipediabot.*:
+        pywikibot.*:
+    "#semantic-mediawiki":
+        mediawiki/extensions/PageForms:
+        mediawiki/extensions/Semantic.*:
+        mediawiki/extensions/SMW.*:
+        mediawiki/extensions/Ask:
+        mediawiki/extensions/Validator:
+        mediawiki/extensions/Maps:
+        mediawiki/extensions/RDFIO:
+        mediawiki/extensions/SolrStore:
+    "#wikimedia-ai":
+        mediawiki/extensions/ORES:
+    "#wikimedia-analytics":
+        analytics/.*:
+    "#wikimedia-perf":
+        performance.*:
+    "#wikimedia-dev":
+        # This is also sent to #wikimedia-ai
+        mediawiki/extensions/ORES:
+        # These are sent to #wikimedia-collaboration too
+        mediawiki/extensions/Echo:
+        mediawiki/extensions/Flow:
+        mediawiki/extensions/PageTriage:
+        mediawiki/extensions/Thanks:
+        # These are sent to #wikimedia-multimedia too
+        mediawiki/extensions/TimedMediaHandler.*:
+        mediawiki/extensions/PronunciationRecording:
+        # These are sent to #wikimedia-labs too
+        labs/tools/grrrit:
+        # These are sent to #wikipedia-en-ambassadors too
+        mediawiki/extensions/Campaigns:
+        mediawiki/extensions/EducationProgram:
+        # These are sent to #mediawiki-visualeditor too
+        mediawiki/extensions/WikiEditor:
+        # These are sent to #wikimedia-editing too
+        mediawiki/extensions/Cite$:
+        mediawiki/extensions/CiteThisPage:
+        mediawiki/extensions/CodeEditor:
+        mediawiki/extensions/Math:
+        mediawiki/extensions/ParserFunctions:
+        mediawiki/skins/Vector:
+        # These are sent to #brickimedia too
+        mediawiki/extensions/MediaWikiChat:
+        # Sent to #wikimedia-design as well
+        mediawiki/skins/Blueprint:
+        mediawiki/extensions/OOUIPlayground:
+        mediawiki/extensions/Popups:
+        oojs/oojs-ui:
+        # Sent to #wikimedia-codereview as well
+        mediawiki/core:
+    "#wikimedia-design":
+        mediawiki/skins/Blueprint:
+        mediawiki/extensions/OOUIPlayground:
+        mediawiki/extensions/Popups:
+        oojs/oojs-ui:
+    "#wikimedia-fundraising":
+        mediawiki/extensions/DonationInterface:
+        mediawiki/extensions/CentralNotice:
+        mediawiki/extensions/ContributionTracking:
+        mediawiki/extensions/ContributionReporting:
+        mediawiki/extensions/FundraiserLandingPage:
+        mediawiki/extensions/FundraiserStatistics:
+        mediawiki/extensions/FundraisingChart:
+        mediawiki/extensions/FundraisingEmailUnsubscribe:
+        mediawiki/extensions/FundraisingTranslateWorkflow:
+        mediawiki/extensions/LandingCheck:
+        wikimedia/fundraising/.*:
+        mediawiki/core:
+            branch: ^fundraising
+    "#wikimedia-collaboration":
+        mediawiki/extensions/Echo:
+        mediawiki/extensions/Flow:
+        mediawiki/extensions/MoodBar:
+        mediawiki/extensions/PageTriage:
+        mediawiki/extensions/Thanks:
+        mediawiki/extensions/WikiLove:
+        # This is sent to #wikimedia-mobile too.
+        mediawiki/extensions/Mantle:
+    "#wikimedia-labs":
+        labs/.*:
+    "#wikimedia-operations":
+        # Do not post betacluster stuff here
+        operations(?!/debs/wikistats).*:
+            branch: "^(?!betacluster)"
+        wikimedia/bugzilla/modifications:
+        wikimedia/bots/jouncebot:
+        labs/private:
+        # This is sent to #wikimedia-releng too.
+    "#wikimedia-releng":
+        mediawiki/selenium:
+        mediawiki/ruby/.*:
+        integration/.*:
+        mediawiki/tools/codesniffer:
+        mediawiki/tools/code-utils:
+        mediawiki/tools/release:
+        mediawiki/tools/releng:
+        mediawiki/tools/scap:
+        # All commits to a betacluster branch goes here
+        .*:
+            branch: "betacluster"
+    "#wikidata-feed":
+        purtle:
+        data-values/.*:
+        mediawiki/extensions/Wikibase.*:
+        mediawiki/extensions/Wikidata.*:
+        mediawiki/extensions/DataTypes:
+        mediawiki/extensions/DataValues.*:
+        mediawiki/extensions/DataValueImplementations:
+        mediawiki/extensions/ValueView:
+        mediawiki/extensions/Capiunto:
+        mediawiki/extensions/ArticlePlaceholder:
+        mediawiki/extensions/WikimediaBadges:
+        wikidata/.*:
+        mediawiki/extensions/WikibaseLexeme:
+    "#wikimedia-de-tech":
+        analytics/wmde/.*:
+        mediawiki/extensions/Cognate:
+        mediawiki/extensions/TwoColConflict:
+        mediawiki/extensions/ElectronPdfService:
+        mediawiki/extensions/InterwikiSorting:
+        mediawiki/extensions/RevisionSlider:
+    "#wikimedia-multimedia":
+        mediawiki/extensions/CommonsMetadata.*:
+        mediawiki/extensions/UploadWizard.*:
+        mediawiki/extensions/TimedMediaHandler.*:
+        mediawiki/extensions/PronunciationRecording:
+        mediawiki/extensions/ImageMetrics:
+        mediawiki/extensions/FileAnnotations:
+        analytics/multimedia.*:
+    "#wikipedia-en-ambassadors":
+        mediawiki/extensions/Campaigns:
+        mediawiki/extensions/EducationProgram:
+    "#brickimedia":
+        mediawiki/extensions/MediaWikiChat:
+    "#wikimedia-services":
+        # Also in #wikimedia-editing
+        mediawiki/services/citoid:
+        mediawiki/services/graphoid:
+        mediawiki/services/mathoid:
+        mediawiki/services/rashomon:
+        mediawiki/services/restbase:
+        mediawiki/services/restbase/deploy:
+        mediawiki/services/service-runner:
+        mediawiki/services/service-template-node:
+    "#wikimedia-codereview":
+        mediawiki/core:
+    "##Zppix-Wikipedia":
+         labs/tools/zppixbot:

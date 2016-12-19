@@ -53,6 +53,10 @@ class Redis2Irc(irc3.IrcBot):
         if target in self.channels:
             self.channels.remove(target)
 
+    def privmsg_many(self, targets, message):
+        for target in targets:
+            self.privmsg(target, message)
+
     def privmsg(self, target, message):
         # if target not in self.channels:
         #     self.join(target)
@@ -124,7 +128,11 @@ def redislistener(bot):
         try:
             future = yield from connection.blpop([bot.conf.get('REDIS_QUEUE_NAME')])
             useful_info = json.loads(future.value)
-            asyncio.Task(handle_useful_info(bot, useful_info))  # Do not wait for response
+            if useful_info.get('raw'):
+                # grrrrit messages.
+                asyncio.Task(bot.privmsg_many(useful_info['channels'], useful_info['msg']))
+            else:
+                asyncio.Task(handle_useful_info(bot, useful_info))  # Do not wait for response
         except Exception:
             logger.exception("Redis configuration failed; retrying.")
 
