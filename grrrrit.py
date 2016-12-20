@@ -225,7 +225,7 @@ def main():
             try:
                 msg = build_message(processed)
                 channels = channel_filter(processed['repo'], processed['branch'])
-                queue.put({'raw': True, 'msg': ', '.join(channels) + ': ' + msg, 'channels': list(channels)})
+                queue.put({'raw': True, 'msg': msg, 'channels': list(channels)})
             except:
                 logger.exception('Error queuing message')
         ssh.stdout.flush()
