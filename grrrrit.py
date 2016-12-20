@@ -205,7 +205,7 @@ def main():
     )
     ssh = subprocess.Popen(
         ['ssh', 'suchabot@gerrit.wikimedia.org',
-         '-i', 'id_rsa',
+         '-i', os.path.join(os.path.dirname(__file__), 'id_rsa'),
          '-p', '29418',
          'gerrit', 'stream-events'
          ],
