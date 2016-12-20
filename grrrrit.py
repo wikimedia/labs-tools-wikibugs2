@@ -235,5 +235,5 @@ if __name__ == '__main__':
     while True:
         try:
             main()
-        except json.decoder.JSONDecodeError:
-            logger.exception('JSONDecodeError, probably SSH connection dropped.')
+        except:
+            logger.exception('Error, probably SSH connection dropped.')
