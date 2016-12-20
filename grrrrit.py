@@ -167,6 +167,7 @@ def build_message(processed: dict) -> str:
     text += ' [{}]'.format(trim_repo(processed['repo']))
     if processed['branch'] not in ('master', 'production'):
         text += ' ({})'.format(processed['branch'])
+    text += ' -'
     text += ' {}'.format(helper(processed['url'], foreground='teal'))
     if processed['task']:
         text += ' (https://phabricator.wikimedia.org/{})'.format(processed['task'])
