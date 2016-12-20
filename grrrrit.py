@@ -81,7 +81,7 @@ def process_event(event: dict):
                 except ValueError:
                     pass
                 # cheat! Get rid of (# comments) from the text
-                original_comment.replace(inline_match.group(0), '')
+                original_comment = original_comment.replace(inline_match.group(0), '')
             comment = "\n".join(original_comment.split('\n')[1:]).strip().split('\n')[0].strip()
         if comment:
             comment = '"' + comment[:138] + '"'
