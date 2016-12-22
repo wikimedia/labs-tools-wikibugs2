@@ -47,6 +47,8 @@ def process_event(event: dict):
         owner = event['change']['owner']['name']
         if ret['user'] != owner:
             ret['owner'] = owner
+        if ret['user'] == 'L10n-bot':
+            return None
     elif event['type'] == 'draft-published':
         ret = {
             'type': 'Draft' + event['patchSet']['number'],
@@ -108,6 +110,8 @@ def process_event(event: dict):
                         ret['user'] = 'jerkins-bot'  # For MaxSem
                 elif approval['type'] == 'Code-Review' and value != 0:
                     ret['approvals']['C'] = value
+        if ret['user'] == 'L10n-bot':
+            return None
     elif event['type'] == 'change-merged':
         ret = process_simple(event, 'Merged', 'submitter')
         if ret['user'] == 'jenkins-bot' and ret['owner'] == 'L10n-bot':
