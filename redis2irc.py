@@ -149,7 +149,8 @@ def main():
         nick=conf.get('IRC_NICK'),
         autojoins=['#wikimedia-cloud'],
         host=conf.get('IRC_SERVER'),
-        port=6667,
+        port=6697,
+        ssl=True,
         password=conf.get('IRC_PASSWORD'),
         realname='wikibugs2',
         userinfo=('Wikibugs v2.1, https://tools.wmflabs.org/wikibugs/ ,' +
