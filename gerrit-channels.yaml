@@ -90,7 +90,14 @@ channels:
         mediawiki/extensions/ParserFunctions:
         mediawiki/skins/Vector:
         # These are sent to #brickimedia too
+        mediawiki/extensions/ArticleFeedbackv5:
+        mediawiki/extensions/ArticleRatings:
+        mediawiki/extensions/GlobalContribs:
         mediawiki/extensions/MediaWikiChat:
+        mediawiki/extensions/Snippet:
+        mediawiki/extensions/UnusedRedirects:
+        mediawiki/skins/DeepSea:
+        mediawiki/skins/Refreshed:
         # Sent to #wikimedia-design as well
         mediawiki/skins/Blueprint:
         mediawiki/extensions/OOUIPlayground:
@@ -181,7 +188,14 @@ channels:
         mediawiki/extensions/Campaigns:
         mediawiki/extensions/EducationProgram:
     "#brickimedia":
+        mediawiki/extensions/ArticleFeedbackv5:
+        mediawiki/extensions/ArticleRatings:
+        mediawiki/extensions/GlobalContribs:
         mediawiki/extensions/MediaWikiChat:
+        mediawiki/extensions/Snippet:
+        mediawiki/extensions/UnusedRedirects:
+        mediawiki/skins/DeepSea:
+        mediawiki/skins/Refreshed:
     "#wikimedia-services":
         # Also in #wikimedia-editing
         mediawiki/services/citoid:
