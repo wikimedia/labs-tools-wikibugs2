@@ -65,6 +65,8 @@ channels:
     "#wikimedia-perf":
         performance.*:
     "#wikimedia-dev":
+        # This is also sent to #mediawiki-i18n
+        mediawiki/extensions/Babel:
         # This is also sent to #wikimedia-ai
         mediawiki/extensions/ORES:
         # These are sent to #wikimedia-collaboration too
