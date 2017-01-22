@@ -102,6 +102,7 @@ channels:
 
     "#wikimedia-devtools":
         # teams
+        - phabricator-upstream
         - Phabricator
         - phab-.*
         # projects
@@ -219,6 +220,7 @@ channels:
     # are also reported elsewhere.
     "#wikimedia-dev":
         - MediaWiki(-.*)?
+        - phabricator-upstream
         - Phabricator
         - phab-.*
         - Design
