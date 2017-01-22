@@ -103,9 +103,9 @@ channels:
     "#wikimedia-devtools":
         # teams
         - Phabricator
+        - phab-.*
         # projects
         - Wikibugs
-        - Phabricator.org
         - RT-Migration
         - GitHub-Mirrors
         - Gitblit-Deprecate
@@ -220,7 +220,7 @@ channels:
     "#wikimedia-dev":
         - MediaWiki(-.*)?
         - Phabricator
-        - Phabricator.org
+        - phab-.*
         - Design
         - Living-Style-Guide
         - WMF-Design
