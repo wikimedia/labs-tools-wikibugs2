@@ -257,6 +257,8 @@ channels:
         - Wikisource
         - Wikisource-Community-User-Group
         - ProofreadPage
+    "#wikimedia-lta":
+        - Tool-Labs-tools-LTA-Knowledgebase
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
