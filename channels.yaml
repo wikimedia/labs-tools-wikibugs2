@@ -58,6 +58,7 @@ channels:
         - Attribution-Generator
         - CatWatch
         - Cognate
+        - Two-Column-Edit-Conflict-Merge
         - WMDE-(.*)-Team(-Board)?
 
     "#wikimedia-commtech":
