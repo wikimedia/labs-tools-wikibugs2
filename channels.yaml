@@ -7,6 +7,9 @@ channels:
         - Spam(-.*)?
         - Trash
 
+    "##add":
+        - Addwiki
+
     "#huggle":
         - Huggle(-.*)?
 
