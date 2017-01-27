@@ -58,6 +58,7 @@ channels:
         - Attribution-Generator
         - CatWatch
         - Cognate
+        - MediaWiki-extensions-InterwikiSorting
         - Two-Column-Edit-Conflict-Merge
         - WMDE-(.*)-Team(-Board)?
 
