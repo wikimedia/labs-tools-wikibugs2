@@ -177,8 +177,8 @@ channels:
         mediawiki/extensions/ElectronPdfService:
         mediawiki/extensions/InterwikiSorting:
         mediawiki/extensions/RevisionSlider:
-        mediawiki/extensions/MoveToCommons:
-        mediawiki/extensions/MoveToCommonsClient:
+        mediawiki/extensions/FileImporter:
+        mediawiki/extensions/FileExporter:
     "#wikimedia-multimedia":
         mediawiki/extensions/CommonsMetadata.*:
         mediawiki/extensions/UploadWizard.*:
