@@ -213,3 +213,5 @@ channels:
         mediawiki/core:
     "##Zppix-Wikipedia":
          labs/tools/zppixbot:
+         labs/tools/quarrybot-enwiki:
+
