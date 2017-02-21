@@ -264,6 +264,9 @@ channels:
         - ProofreadPage
     "#wikimedia-lta":
         - Tool-Labs-tools-LTA-Knowledgebase
+    "##Zppix-Wikimedia":
+        -Tool-Labs-tools-Zppixbot
+        -QuarryBot-enwiki
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
