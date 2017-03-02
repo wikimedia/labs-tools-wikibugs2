@@ -44,6 +44,8 @@ channels:
         - Edit-Review-Improvements(-.*)?
         - Flow
         - MoodBar
+        - MediaWiki-Recent-changes
+        - MediaWiki-Watchlist
         - MediaWiki-extensions-PageCuration
         - Notifications
         - Thanks
