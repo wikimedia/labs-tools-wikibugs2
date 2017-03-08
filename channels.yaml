@@ -266,7 +266,7 @@ channels:
         - ProofreadPage
     "#wikimedia-lta":
         - Tool-Labs-tools-LTA-Knowledgebase
-    "##Zppix-Wikimedia":
+    "##Zppix-Wikipedia":
         -Tool-Labs-tools-Zppixbot
         -QuarryBot-enwiki
 
