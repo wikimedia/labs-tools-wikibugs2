@@ -150,7 +150,7 @@ def main():
         port=6667,
         password=conf.get('IRC_PASSWORD'),
         realname='wikibugs2',
-        userinfo=('Wikibugs v2.1, http://tools.wmflabs.org/wikibugs/ ,' +
+        userinfo=('Wikibugs v2.1, https://tools.wmflabs.org/wikibugs/ ,' +
                   'running on ' + current_host),
         includes=[
             'irc3.plugins.core',
