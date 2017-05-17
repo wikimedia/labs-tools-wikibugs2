@@ -116,9 +116,7 @@ channels:
         - releng-(.*)
         # projects
         - Releng-Admin
-        - Continuous-Integration-Infrastructure(.*)
-        - Continuous-Integration-Config(.*)
-        - Continuous-Integration-Scaling(.*)
+        - Continuous-Integration-(.*)
         - Beta-Cluster-Infrastructure(.*)
         - Staging
         - Deployment-Systems(.*)
