@@ -89,7 +89,9 @@ def handle_useful_info(bot, useful_info):
         return
     updated = bot.chanfilter.update()
     if updated:
-        bot.privmsg('#wikimedia-labs', '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
+        bot.privmsg(
+            '#wikimedia-cloud',  # T166420
+            '!log tools.wikibugs Updated channels.yaml to: %s' % updated)
         logger.info('Updated channels.yaml to: %s' % updated)
 
     channels = bot.chanfilter.channels_for(useful_info['projects'])

@@ -47,7 +47,7 @@ class Redis2Stdout(object):
             print(useful_info)
             if useful_info:
                 useful_info['matched_projects'] = list(useful_info['projects'])[:]
-                useful_info['channel'] = '#wikimedia-labs'
+                useful_info['channel'] = '#wikimedia-cloud'  # T166420
                 text = self.builder.build_message(useful_info)
                 updated = self.channelfilter.update()
                 if updated:
