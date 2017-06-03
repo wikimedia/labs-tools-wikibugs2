@@ -280,6 +280,8 @@ channels:
     "##Zppix-Wikipedia":
         -Tool-Labs-tools-Zppixbot
         -QuarryBot-enwiki
+    "#wikimedia-ops":
+        - wikimedia-irc-freenode
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
