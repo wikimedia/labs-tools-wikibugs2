@@ -77,7 +77,7 @@ channels:
         # These are sent to #wikimedia-multimedia too
         mediawiki/extensions/TimedMediaHandler.*:
         mediawiki/extensions/PronunciationRecording:
-        # These are sent to #wikimedia-labs too
+        # These are sent to #wikimedia-cloud too
         labs/tools/grrrit:
         # These are sent to #wikipedia-en-ambassadors too
         mediawiki/extensions/Campaigns:
@@ -135,7 +135,10 @@ channels:
         mediawiki/extensions/WikiLove:
         # This is sent to #wikimedia-mobile too.
         mediawiki/extensions/Mantle:
+    # wikimedia-labs is being renamed to wikimedia-cloud (T166420)
     "#wikimedia-labs":
+        labs/.*:
+    "#wikimedia-cloud":
         labs/.*:
     "#wikimedia-operations":
         # Do not post betacluster stuff here

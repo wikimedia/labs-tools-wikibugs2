@@ -77,7 +77,20 @@ channels:
     "#mediawiki-i18n":
         - translatewiki\.net
 
+    # wikimedia-labs is being renamed to wikimedia-cloud (T166420)
     "#wikimedia-labs":
+        - Tool-Labs(.*)?
+        - Labs(-.*)?
+        - Wikimedia-Labs(-.*)?
+        - MediaWiki-extensions-OpenStackManager
+        - Quarry
+        - Wikibugs
+        - Gerrit-Patch-Uploader
+        - LabsDB-Auditor
+        - PAWS
+        - Striker
+
+    "#wikimedia-cloud":
         - Tool-Labs(.*)?
         - Labs(-.*)?
         - Wikimedia-Labs(-.*)?

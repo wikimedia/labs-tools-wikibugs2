@@ -25,6 +25,6 @@ print(message)
 
 requests.post('http://ircnotifier-test-01/v1/send', data={
     'token': token,
-    'channels': '#wikimedia-labs',
+    'channels': '#wikimedia-cloud',  # T166420
     'message': message
 })
