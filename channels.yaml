@@ -24,7 +24,8 @@ channels:
         - WM-Bot
 
     "#wikimedia-ai":
-        - Revision-Scoring-As-A-Service(-.*)?
+        - Scoring-platform-team
+        - Scoring-platform-team-Backlog
 
     "#wikidata-feed":
         - Wikidata
