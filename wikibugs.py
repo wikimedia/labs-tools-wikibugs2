@@ -149,7 +149,7 @@ class Wikibugs2(object):
 
             classes = taglink['class'] + marker['class']
 
-            shade = [cls.split("-")[3] for cls in classes if cls.startswith("phui-tag-shade-")][0]
+            shade = [cls.split("-")[-1] for cls in classes if cls.startswith("phui-tag-shade")][0]
             disabled = shade == "disabled"
             tagtype = [cls.split("-")[1] for cls in classes if cls.startswith("fa-")][0]
             uri = taglink['href']
