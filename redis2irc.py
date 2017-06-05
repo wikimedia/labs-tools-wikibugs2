@@ -147,7 +147,7 @@ def main():
         builder=messagebuilder.IRCMessageBuilder(),
         chanfilter=chanfilter,
         nick=conf.get('IRC_NICK'),
-        autojoins=['#wikimedia-labs', '#wikimedia-cloud'],
+        autojoins=['#wikimedia-cloud'],
         host=conf.get('IRC_SERVER'),
         port=6667,
         password=conf.get('IRC_PASSWORD'),

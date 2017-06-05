@@ -135,9 +135,6 @@ channels:
         mediawiki/extensions/WikiLove:
         # This is sent to #wikimedia-mobile too.
         mediawiki/extensions/Mantle:
-    # wikimedia-labs is being renamed to wikimedia-cloud (T166420)
-    "#wikimedia-labs":
-        labs/.*:
     "#wikimedia-cloud":
         labs/.*:
     "#wikimedia-operations":
