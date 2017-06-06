@@ -89,6 +89,7 @@ channels:
         - LabsDB-Auditor
         - PAWS
         - Striker
+        - cloud-services-team
 
     "#wikimedia-devtools":
         # teams
