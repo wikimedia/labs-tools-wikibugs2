@@ -179,6 +179,7 @@ channels:
         mediawiki/extensions/RevisionSlider:
         mediawiki/extensions/FileImporter:
         mediawiki/extensions/FileExporter:
+        mediawiki/extensions/AdvancedSearch:
     "#wikimedia-multimedia":
         mediawiki/extensions/CommonsMetadata.*:
         mediawiki/extensions/UploadWizard.*:
