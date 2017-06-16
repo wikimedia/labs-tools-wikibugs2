@@ -215,4 +215,5 @@ channels:
     "##Zppix-Wikipedia":
          labs/tools/zppixbot:
          labs/tools/quarrybot-enwiki:
+         labs/icinga2:
 
