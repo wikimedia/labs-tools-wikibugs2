@@ -168,7 +168,7 @@ channels:
         - Interactive-Sprint(.*)?
         - Tabular-Data(.*)?
 
-    "#wikimedia-perf":
+    "#wikimedia-perf-bots":
         - Performance-Team
         - MediaWiki-ResourceLoader
 
