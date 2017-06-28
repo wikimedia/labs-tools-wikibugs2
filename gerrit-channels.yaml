@@ -62,7 +62,7 @@ channels:
         mediawiki/extensions/ORES:
     "#wikimedia-analytics":
         analytics/.*:
-    "#wikimedia-perf":
+    "#wikimedia-perf-bots":
         performance.*:
     "#wikimedia-dev":
         # This is also sent to #mediawiki-i18n
