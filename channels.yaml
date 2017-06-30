@@ -30,8 +30,7 @@ channels:
     "#wikidata-feed":
         - Wikidata
         - Wikibase(-.*)?
-        - MediaWiki-extensions-WikibaseRepository
-        - MediaWiki-extensions-WikibaseClient
+        - MediaWiki-extensions-Wikibase(.*)?
         - Wikimedia-Wikidata
         - ArticlePlaceholder
         - Wikidata.org
