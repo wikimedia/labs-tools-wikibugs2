@@ -9,6 +9,7 @@ channels:
 
     "##add":
         - Addwiki
+        - User-Addshore
 
     "#huggle":
         - Huggle(-.*)?
