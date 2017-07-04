@@ -76,17 +76,25 @@ channels:
         - translatewiki\.net
 
     "#wikimedia-cloud":
-        - Tool-Labs(.*)?
-        - Labs(-.*)?
-        - Wikimedia-Labs(-.*)?
-        - MediaWiki-extensions-OpenStackManager
-        - Quarry
-        - Wikibugs
+        - Cloud-Services
+        - cloud-services-team(.*)?
+        - Cloud-VPS
+        - Data-Services
         - Gerrit-Patch-Uploader
+        - Horizon
         - LabsDB-Auditor
+        - MediaWiki-extensions-OpenStackManager
         - PAWS
+        - Quarry
         - Striker
-        - cloud-services-team
+        - Tool-(.*)
+        - Toolforge
+        - Tools
+        - Tools-Kubernetes
+        - VPS-Project-(.*)
+        - VPS-Projects
+        - Wikibugs
+        - wikitech.wikimedia.org
 
     "#wikimedia-devtools":
         # teams
