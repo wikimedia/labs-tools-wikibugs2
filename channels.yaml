@@ -78,7 +78,7 @@ channels:
     "#wikimedia-cloud":
         - Cloud-Services
         - cloud-services-team(.*)?
-        - Cloud-VPS
+        - Cloud-VPS(.*)?
         - Data-Services
         - Gerrit-Patch-Uploader
         - Horizon
