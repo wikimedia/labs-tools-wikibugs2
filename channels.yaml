@@ -256,7 +256,7 @@ channels:
         - mediawiki-skins-Blueprint
 
     "#wikimedia-xtools":
-        - Tool-Labs-tools-Xtools
+        - XTools
 
     "#wikimedia-ios":
         - Wikipedia-iOS-.*
