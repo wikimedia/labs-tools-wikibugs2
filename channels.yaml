@@ -222,6 +222,9 @@ channels:
         - WMF-Design
         - WMF-Design-Research
         - UI-Standardization
+        - OOjs-UI(-.*)?
+        - accessibility
+        - mediawiki-interface
 
     "#wikimedia-fundraising":
         - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*
@@ -254,6 +257,9 @@ channels:
         - WMF-Design-Research
         - UI-Standardization
         - mediawiki-skins-Blueprint
+        - OOjs-UI(-.*)?
+        - accessibility
+        - mediawiki-interface
 
     "#wikimedia-xtools":
         - XTools
