@@ -272,9 +272,9 @@ channels:
     "#wikimedia-lta":
         - Tool-Labs-tools-LTA-Knowledgebase
     "##Zppix-Wikipedia":
-        - Tool-project-tools-Zppixbot
+        - Tools-Zppixbot
         - QuarryBot-enwiki
-        - Labs-project-icinga2
+        - VPS-project-icinga2
     "#wikimedia-ops":
         - wikimedia-irc-freenode
 
