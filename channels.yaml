@@ -71,6 +71,7 @@ channels:
 
     "#wikimedia-anti-harassment-tools":
         - Anti-Harassment
+        - Anti-Harassment .*
 
     "#wikimedia-ed":
         - Education-.*
