@@ -290,5 +290,8 @@ channels:
     "##goat":
         - Goatification
 
+    "#wiki-dev-africa":
+        - Africa-Wikimedia-Developers
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
