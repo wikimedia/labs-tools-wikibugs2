@@ -281,8 +281,7 @@ channels:
         - Wikisource
         - Wikisource-Community-User-Group
         - ProofreadPage
-    "#wikimedia-lta":
-        - Tool-Labs-tools-LTA-Knowledgebase
+
     "##Zppix-Wikipedia":
         - Tools-Zppixbot
         - QuarryBot-enwiki
