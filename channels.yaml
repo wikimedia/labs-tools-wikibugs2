@@ -283,7 +283,7 @@ channels:
         - ProofreadPage
 
     "##Zppix-Wikipedia":
-        - Tools-Zppixbot
+        - Tool-Zppixbot
         - QuarryBot-enwiki
         - VPS-project-icinga2
     "#wikimedia-ops":
