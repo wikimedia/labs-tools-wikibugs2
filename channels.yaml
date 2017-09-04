@@ -293,6 +293,7 @@ channels:
 
     "#wiki-dev-africa":
         - Africa-Wikimedia-Developers
+        - MediaWiki-extensions-SendGrid
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
