@@ -153,7 +153,7 @@ channels:
         - MediaWiki-extensions-Graph-VE
 
     "#wikimedia-editing":
-        - Editing-Department
+        - Contributors-Team
         - Blocked-on-Editing
         - OOjs(-.*)?
         - OOjs-UI(-.*)?
