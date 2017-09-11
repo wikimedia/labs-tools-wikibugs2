@@ -60,6 +60,10 @@ channels:
         mediawiki/extensions/SolrStore:
     "#wikimedia-ai":
         mediawiki/extensions/ORES:
+        mediawiki/services/ores/deploy:
+        mediawiki/services/ores:
+        mediawiki/services/ores/wikiclass:
+        mediawiki/services/ores/editquality:
     "#wikimedia-analytics":
         analytics/.*:
     "#wikimedia-perf-bots":
