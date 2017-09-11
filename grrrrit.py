@@ -12,6 +12,9 @@ import configfetcher
 import rqueue
 from wblogging import LoggingSetupParser
 
+IGNORED_USERS = ['L10n-bot', 'libraryupgrader']
+JENKINS_USER = 'jenkins-bot'
+
 parser = LoggingSetupParser(
     description='Sends events from Gerrit to IRC'
 )
@@ -33,6 +36,9 @@ def extract_bug(commit_msg: str):
 
 
 def process_event(event: dict):
+    if event['uploader']['name'] in IGNORED_USERS:
+        return None
+
     ret = None
     if event['type'] == 'patchset-created':
         ret = {
@@ -47,8 +53,6 @@ def process_event(event: dict):
         owner = event['change']['owner']['name']
         if ret['user'] != owner:
             ret['owner'] = owner
-        if ret['user'] == 'L10n-bot':
-            return None
     elif event['type'] == 'draft-published':
         ret = {
             'type': 'Draft' + event['patchSet']['number'],
@@ -72,6 +76,7 @@ def process_event(event: dict):
             'owner': event['change']['owner']['name'],
             'task': extract_bug(event['change']['commitMessage']),
         }
+
         comment = ''
         original_comment = event.get('comment')
         inline = 0
@@ -90,33 +95,41 @@ def process_event(event: dict):
         else:
             comment = event['change']['subject'][:140]
         ret['message'] = comment
-        if ret['user'] == 'jenkins-bot':
+        if ret['user'] == JENKINS_USER:
             ret['message'] = event['change']['subject']
         ret['inline'] = inline
         ret['approvals'] = {}
+
         if event.get('approvals'):
             for approval in event['approvals']:
                 value = int(approval['value'])
+
                 # First, if it's jenkins-bot, skip if the value is not negative
-                if ret['user'] == 'jenkins-bot' and value >= 0:
+                if ret['user'] == JENKINS_USER and value >= 0:
+                    # Jenkins' comments are only relevant if they are -1; +1 does not need
+                    # notification and +2 gets followed immediately by a merge notification
+                    # which /is/ shown.
                     return None
+
                 old_value = int(approval.get('oldValue', 0))
-                # If the value didn't change, don't mention a score.
                 if value == old_value:
+                    # if the review value didn't change, don't mention the score
                     continue
+
                 if approval['type'] == 'Verified' and value != 0:
                     ret['approvals']['V'] = value
-                    if ret['user'] == 'jenkins-bot' and value == -1:
+                    if ret['user'] == JENKINS_USER and value == -1:
                         ret['user'] = 'jerkins-bot'  # For MaxSem
                 elif approval['type'] == 'Code-Review' and value != 0:
                     ret['approvals']['C'] = value
-        if ret['user'] == 'L10n-bot':
-            return None
+
     elif event['type'] == 'change-merged':
         ret = process_simple(event, 'Merged', 'submitter')
-        if ret['user'] == 'jenkins-bot' and ret['owner'] == 'L10n-bot':
+        if ret['user'] == JENKINS_USER and ret['owner'] in IGNORED_USERS:
             return None
-        elif ret['user'] != 'jenkins-bot':
+        elif ret['user'] != JENKINS_USER:
+            # Ignore any merges by anyone that is not jenkins-bot
+            # This is always preceded by a C:2 by them, so we need not spam
             return None
     elif event['type'] == 'change-restored':
         ret = process_simple(event, 'Restored', 'restorer')
