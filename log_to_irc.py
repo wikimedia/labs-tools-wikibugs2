@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import sys
 import os
-import requests
 import subprocess
 import json
 
@@ -22,9 +21,3 @@ message = '!log {user} {sudo_user}: Deployed {rev} {msg}'.format(
 )
 
 print(message)
-
-requests.post('http://ircnotifier-test-01/v1/send', data={
-    'token': token,
-    'channels': '#wikimedia-cloud',  # T166420
-    'message': message
-})
