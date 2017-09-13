@@ -36,7 +36,8 @@ def extract_bug(commit_msg: str):
 
 
 def process_event(event: dict):
-    if event['uploader']['name'] in IGNORED_USERS:
+    user = event.get('uploader', {}).get('name') or event.get('author', {}).get('name')
+    if user in IGNORED_USERS:
         return None
 
     ret = None
