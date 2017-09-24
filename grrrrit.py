@@ -12,7 +12,7 @@ import configfetcher
 import rqueue
 from wblogging import LoggingSetupParser
 
-IGNORED_USERS = ['L10n-bot', 'libraryupgrader']
+IGNORED_USERS = ['L10n-bot', 'Libraryupgrader']
 JENKINS_USER = 'jenkins-bot'
 
 parser = LoggingSetupParser(
