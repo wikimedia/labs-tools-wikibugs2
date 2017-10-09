@@ -78,7 +78,7 @@ channels:
     "#mediawiki-i18n":
         - translatewiki\.net
 
-    "#wikimedia-cloud":
+    "#wikimedia-cloud-feed":
         - Cloud-Services
         - cloud-services-team(.*)?
         - Cloud-VPS(.*)?
