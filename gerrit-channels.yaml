@@ -109,7 +109,6 @@ channels:
         mediawiki/extensions/OOUIPlayground:
         mediawiki/extensions/Popups:
         oojs/oojs-ui:
-        # Sent to #wikimedia-codereview as well
         mediawiki/core:
     "#wikimedia-design":
         mediawiki/skins/Blueprint:
@@ -214,8 +213,6 @@ channels:
         mediawiki/services/restbase/deploy:
         mediawiki/services/service-runner:
         mediawiki/services/service-template-node:
-    "#wikimedia-codereview":
-        mediawiki/core:
     "##Zppix-Wikipedia":
          labs/tools/zppixbot:
          labs/tools/quarrybot-enwiki:
