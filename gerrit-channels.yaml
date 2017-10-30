@@ -64,6 +64,9 @@ channels:
         mediawiki/services/ores:
         mediawiki/services/ores/wikiclass:
         mediawiki/services/ores/editquality:
+        research/ores:
+        research/ores/deploy:
+        research/ores/wheels:
     "#wikimedia-analytics":
         analytics/.*:
     "#wikimedia-perf-bots":
