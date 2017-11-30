@@ -160,6 +160,8 @@ channels:
         mediawiki/tools/release:
         mediawiki/tools/releng:
         mediawiki/tools/scap:
+        All-Projects:
+        All-Users:
         # All commits to a betacluster branch goes here
         .*:
             branch: "betacluster"
@@ -220,4 +222,3 @@ channels:
          labs/tools/zppixbot:
          labs/tools/quarrybot-enwiki:
          labs/icinga2:
-
