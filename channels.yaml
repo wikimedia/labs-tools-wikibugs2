@@ -126,20 +126,13 @@ channels:
         - Blocked-on-RelEng
         - releng-(.*)
         # projects
-        - Releng-Admin
         - Continuous-Integration-(.*)
         - Beta-Cluster-Infrastructure(.*)
-        - Staging
-        - Deployment-Systems(.*)
-        - Scap3(.*)
+        - Deployments
         - scap(.*)
-        - Gitblit-Deprecate
         - Gerrit
-        - Gerrit-Migration
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
-        - Browser-Tests-Infrastructure
-        - Testing-Initiative-2015
         - commit-message-validator
 
     "#mediawiki-visualeditor":
