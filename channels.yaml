@@ -279,8 +279,9 @@ channels:
         - Tool-Zppixbot
         - QuarryBot-enwiki
         - VPS-project-icinga2
+
     "#ZppixBot":
-         - Tool-ZppixBot
+        - Tool-Zppixbot
 
     "#wikimedia-ops":
         - wikimedia-irc-freenode
