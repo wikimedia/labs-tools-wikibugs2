@@ -279,7 +279,7 @@ channels:
         - Tool-Zppixbot
         - QuarryBot-enwiki
         - VPS-project-icinga2
-    "ZppixBot":
+    "#ZppixBot":
          - Tool-ZppixBot
 
     "#wikimedia-ops":
