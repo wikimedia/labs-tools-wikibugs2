@@ -279,10 +279,12 @@ channels:
         - Tool-Zppixbot
         - QuarryBot-enwiki
         - VPS-project-icinga2
-    "#ZppixBot":
-         -Tool-ZppixBot
+    "ZppixBot":
+         - Tool-ZppixBot
+
     "#wikimedia-ops":
         - wikimedia-irc-freenode
+
     "##goat":
         - Goatification
 
