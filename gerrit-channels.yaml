@@ -219,6 +219,8 @@ channels:
         mediawiki/services/service-runner:
         mediawiki/services/service-template-node:
     "##Zppix-Wikipedia":
-         labs/tools/zppixbot:
+         labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
          labs/icinga2:
+    "#ZppixBot":
+         labs/tools/ZppixBot:
