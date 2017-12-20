@@ -42,41 +42,14 @@ def process_event(event: dict):
 
     ret = None
     if event['type'] == 'patchset-created':
-        ret = {
-            'type': 'PS' + str(event['patchSet']['number']),
-            'user': event['uploader']['name'],
-            'message': event['change']['subject'],
-            'repo': event['change']['project'],
-            'branch': event['change']['branch'],
-            'url': event['change']['url'],
-            'task': extract_bug(event['change']['commitMessage']),
-        }
-        owner = event['change']['owner']['name']
-        if ret['user'] != owner:
-            ret['owner'] = owner
-    elif event['type'] == 'draft-published':
-        ret = {
-            'type': 'Draft' + str(event['patchSet']['number']),
-            'user': event['uploader']['name'],
-            'message': event['change']['subject'],
-            'repo': event['change']['project'],
-            'branch': event['change']['branch'],
-            'url': event['change']['url'],
-            'task': extract_bug(event['change']['commitMessage']),
-        }
-        owner = event['change']['owner']['name']
-        if ret['user'] != owner:
-            ret['owner'] = owner
+        ps = 'PS' + str(event['patchSet']['number'])
+        ret = process_simple(event, ps, 'uploader', True)
+    elif event['type'] == 'wip-state-changed':
+        if not event['change']['wip']:
+            wip = 'WIP' + str(event['patchSet']['number'])
+            ret = process_simple(event, wip, 'uploader', True)
     elif event['type'] == 'comment-added':
-        ret = {
-            'type': 'CR',
-            'user': event['author']['name'],
-            'repo': event['change']['project'],
-            'branch': event['change']['branch'],
-            'url': event['change']['url'],
-            'owner': event['change']['owner']['name'],
-            'task': extract_bug(event['change']['commitMessage']),
-        }
+        ret = process_simple(event, 'CR', 'author', False)
 
         comment = ''
         original_comment = event.get('comment')
@@ -125,7 +98,7 @@ def process_event(event: dict):
                     ret['approvals']['C'] = value
 
     elif event['type'] == 'change-merged':
-        ret = process_simple(event, 'Merged', 'submitter')
+        ret = process_simple(event, 'Merged', 'submitter', False)
         if ret['user'] == JENKINS_USER and ret['owner'] in IGNORED_USERS:
             return None
         elif ret['user'] != JENKINS_USER:
@@ -133,24 +106,32 @@ def process_event(event: dict):
             # This is always preceded by a C:2 by them, so we need not spam
             return None
     elif event['type'] == 'change-restored':
-        ret = process_simple(event, 'Restored', 'restorer')
+        ret = process_simple(event, 'Restored', 'restorer', False)
     elif event['type'] == 'change-abandoned':
-        ret = process_simple(event, 'Abandoned', 'abandoner')
+        ret = process_simple(event, 'Abandoned', 'abandoner', False)
 
     return ret
 
 
-def process_simple(event: dict, type_: str, user_property: str) -> dict:
-    return {
+def process_simple(event: dict, type_: str, user_property: str, check_owner: bool) -> dict:
+    ret = {
         'type': type_,
         'user': event[user_property]['name'],
         'message': event['change']['subject'],
         'repo': event['change']['project'],
         'branch': event['change']['branch'],
         'url': event['change']['url'],
-        'owner': event['change']['owner']['name'],
         'task': extract_bug(event['change']['commitMessage']),
     }
+
+    owner = event['change']['owner']['name']
+    if check_owner:
+        if ret['user'] != owner:
+            ret['owner'] = owner
+    else:
+        ret['owner'] = owner
+
+    return ret
 
 
 def build_message(processed: dict) -> str:
