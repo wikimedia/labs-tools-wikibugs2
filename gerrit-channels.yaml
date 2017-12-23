@@ -178,6 +178,7 @@ channels:
         mediawiki/extensions/ArticlePlaceholder:
         mediawiki/extensions/WikimediaBadges:
         wikidata/.*:
+        wikibase/.*:
     "#wikimedia-de-tech":
         analytics/wmde/.*:
         mediawiki/extensions/Cognate:
