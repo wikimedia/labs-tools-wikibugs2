@@ -107,7 +107,7 @@ channels:
         mediawiki/extensions/UnusedRedirects:
         mediawiki/skins/DeepSea:
         mediawiki/skins/Refreshed:
-        # Sent to #wiki-dev-africa as well
+        # Sent to #wikimedia-dev-africa as well
         mediawiki/extensions/SendGrid:
         mediawiki/extensions/MassMessage:
         # Sent to #wikimedia-design as well
@@ -222,8 +222,8 @@ channels:
         mediawiki/services/restbase/deploy:
         mediawiki/services/service-runner:
         mediawiki/services/service-template-node:
-    "#wiki-dev-africa":
-        # Send notifications to #wiki-dev-africa
+    "#wikimedia-dev-africa":
+        # Send notifications to #wikimedia-dev-africa
         mediawiki/extensions/SendGrid:
         mediawiki/extensions/MassMessage:
         labs/tools/ZppixBot:

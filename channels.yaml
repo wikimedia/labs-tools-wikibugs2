@@ -289,7 +289,7 @@ channels:
     "##goat":
         - Goatification
 
-    "#wiki-dev-africa":
+    "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
         - MediaWiki-extensions-SendGrid
 
