@@ -99,21 +99,6 @@ channels:
         - Wikibugs
         - wikitech.wikimedia.org
 
-    "#wikimedia-devtools":
-        # teams
-        - phabricator-upstream
-        - Phabricator
-        - phab-.*
-        # projects
-        - Wikibugs
-        - RT-Migration
-        - GitHub-Mirrors
-        - Gitblit-Deprecate
-        - Gerrit-Migration
-        - Project-Admins
-        - Differential
-        - Diffusion
-
     "#wikimedia-mailman":
         - Wikimedia-Mailing-lists
 
@@ -131,6 +116,10 @@ channels:
         - Deployments
         - scap(.*)
         - Gerrit
+        - Phabricator
+        - Differential
+        - Diffusion
+        - Project-Admins
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
         - commit-message-validator

@@ -17,7 +17,7 @@ assertEquals(
     set(chanfilter.channels_for(['Release-Engineering-Team'])))
 
 assertEquals(
-    {'#mediawiki-feed', '#wikimedia-devtools', '#wikimedia-dev'},
+    {'#mediawiki-feed', '#wikimedia-dev', '#wikimedia-releng'},
     set(chanfilter.channels_for(['Phabricator'])))
 
 assertEquals(
