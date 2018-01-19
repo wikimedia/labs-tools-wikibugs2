@@ -116,7 +116,7 @@ channels:
         - Deployments
         - scap(.*)
         - Gerrit
-        - Phabricator
+        - Phabricator(.*)
         - Differential
         - Diffusion
         - Project-Admins
