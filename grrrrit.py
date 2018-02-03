@@ -43,7 +43,7 @@ def process_event(event: dict):
     ret = None
     if event['type'] == 'patchset-created':
         ret = {
-            'type': 'PS' + event['patchSet']['number'],
+            'type': 'PS' + str(event['patchSet']['number']),
             'user': event['uploader']['name'],
             'message': event['change']['subject'],
             'repo': event['change']['project'],
@@ -56,7 +56,7 @@ def process_event(event: dict):
             ret['owner'] = owner
     elif event['type'] == 'draft-published':
         ret = {
-            'type': 'Draft' + event['patchSet']['number'],
+            'type': 'Draft' + str(event['patchSet']['number']),
             'user': event['uploader']['name'],
             'message': event['change']['subject'],
             'repo': event['change']['project'],
