@@ -59,6 +59,7 @@ channels:
         mediawiki/extensions/RDFIO:
         mediawiki/extensions/SolrStore:
     "#wikimedia-ai":
+        mediawiki/extensions/JADE:
         mediawiki/extensions/ORES:
         mediawiki/services/ores/deploy:
         mediawiki/services/ores:
