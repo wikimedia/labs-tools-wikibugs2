@@ -67,8 +67,6 @@ channels:
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
         - Community-Wishlist-Survey
-
-    "#wikimedia-anti-harassment-tools":
         - Anti-Harassment
         - Anti-Harassment .*
 
