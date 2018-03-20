@@ -52,7 +52,7 @@ channels:
         - WikiLove
         - Pywikibot-Flow
 
-    "#wikimedia-de-tech":
+    "#wikimedia-de-tech-feed":
         - TCB-Team
         - German-Community-Wishlist
         - Phragile

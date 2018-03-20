@@ -184,7 +184,7 @@ channels:
         mediawiki/extensions/WikimediaBadges:
         wikidata/.*:
         wikibase/.*:
-    "#wikimedia-de-tech":
+    "#wikimedia-de-tech-feed":
         analytics/wmde/.*:
         mediawiki/extensions/Cognate:
         mediawiki/extensions/TwoColConflict:
