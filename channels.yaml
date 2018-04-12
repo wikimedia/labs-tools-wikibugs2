@@ -167,6 +167,7 @@ channels:
 
     "#mediawiki-parsoid":
         - Parsoid(-.*)?
+        - Parsing-Team
         - MediaWiki-extensions-ParserFunctions
 
     "#wikimedia-services":
