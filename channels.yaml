@@ -168,7 +168,9 @@ channels:
     "#mediawiki-parsoid":
         - Parsoid(-.*)?
         - Parsing-Team
-        - MediaWiki-extensions-ParserFunctions
+        - MediaWiki-Parser
+        - MediaWiki-extensions-(ParserFunctions|Linter)
+        - RemexHtml
 
     "#wikimedia-services":
         - restbase.*
