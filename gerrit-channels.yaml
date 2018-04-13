@@ -68,6 +68,7 @@ channels:
         research/ores:
         research/ores/deploy:
         research/ores/wheels:
+        scoring/ores/assets:
     "#wikimedia-analytics":
         analytics/.*:
     "#wikimedia-perf-bots":
