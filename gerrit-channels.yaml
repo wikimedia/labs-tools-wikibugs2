@@ -227,9 +227,10 @@ channels:
         mediawiki/services/service-template-node:
     "#wikimedia-dev-africa":
         # Send notifications to #wikimedia-dev-africa
-        mediawiki/extensions/SendGrid:
+        mediawiki/extensions/Cargo:
         mediawiki/extensions/MassMessage:
-        labs/tools/ZppixBot:
+        mediawiki/extensions/SendGrid:
+        labs/tools/Commons-twitter-bot:
     "##Zppix-Wikipedia":
          labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
