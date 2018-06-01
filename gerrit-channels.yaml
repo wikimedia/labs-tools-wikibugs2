@@ -73,6 +73,10 @@ channels:
         analytics/.*:
     "#wikimedia-perf-bots":
         performance.*:
+        analytics/statsv:
+        mediawiki/extensions/NavigationTiming:
+        mediawiki/extensions/PerformanceInspector:
+        mediawiki/extensions/WikimediaEvents:
     "#wikimedia-dev":
         # This is also sent to #mediawiki-i18n
         mediawiki/extensions/Babel:
