@@ -282,6 +282,9 @@ channels:
     "##goat":
         - Goatification
 
+    "#wikimedia-ri-ci":
+        - Reading-Infrastructure-Team-Backlog
+
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
         - MediaWiki-extensions-SendGrid

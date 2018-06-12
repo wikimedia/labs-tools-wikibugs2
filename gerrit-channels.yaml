@@ -239,5 +239,10 @@ channels:
          labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
          labs/icinga2:
+    "#wikimedia-ri-ci":
+         mediawiki/services/mobileapps:
+         mediawiki/services/mobileapps/deploy:
+         mediawiki/extensions/MobileApp:
+         mediawiki/extensions/ReadingLists:
     "#ZppixBot":
          labs/tools/ZppixBot:
