@@ -283,7 +283,7 @@ channels:
         - Goatification
 
     "#wikimedia-ri-ci":
-        - Reading-Infrastructure-Team-Backlog
+        - Reading-Infrastructure-Team(-.*)?
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
