@@ -90,3 +90,24 @@ def deploy(*args):
 def grab_config():
     with cd(code_dir):
         get('config.json', '.')
+
+
+def listify(users):
+    return "\n".join("- " + u for u in sorted(users, key=str.lower))
+
+
+@task
+def update_contributors():
+    all_git_authors = set(x.strip() for x in local('git log --format=%an', capture=True).split("\n"))
+
+    maintainers = {"Kunal Mehta", "YuviPanda", "Merlijn van Deen"}
+    duplicates = {"Legoktm", "Adam Wight", "Florian", "jenkins-bot", "quiddity-wp"}
+
+    contributors = (all_git_authors - maintainers - duplicates)
+    marked_maintainers = {m + " (maintainer)" for m in maintainers}
+
+    with open('CREDITS', 'w') as f:
+        f.write("We would like to thank all of our contributors for helping improve wikibugs!\n")
+        f.write("\n")
+        f.write(listify(contributors | marked_maintainers))
+        f.write("\n")
