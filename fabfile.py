@@ -80,6 +80,10 @@ def deploy(*args):
             abort('No jobs provided. Usage: fab deploy:[job]')
             return
         args = alljobs
+
+    unknown_jobs = set(args) - set(jobs.keys())
+    if unknown_jobs:
+        raise Exception("Jobs {} are unknown".format(unknown_jobs))
     pull()
     for job in args:
         restart_job(job)
