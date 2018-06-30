@@ -1,0 +1,4 @@
+[
+  {"submitter":{"name":"UserName","email":"user@example.com","username":"UserName"},"refUpdate":{"oldRev":"a41649b44bb9f07201756f61af70566e483134f4","newRev":"2eeacf2755bae6a6c537028acde7ecd8b771adbc","refName":"refs/changes/01/2001/meta","project":"test"},"type":"ref-updated","eventCreatedOn":1530373912},
+  {"changer":{"name":"UserName","email":"user@example.com","username":"UserName"},"change":{"project":"test","branch":"master","id":"I5a0210ada1104a378c2ecbc1dc7ec6c683d0eccd","number":2001,"subject":"test","owner":{"name":"UserName","email":"user@example.com","username":"UserName"},"url":"https://gerrit.git.wmflabs.org/r/2001","commitMessage":"test\n\nChange-Id: I5a0210ada1104a378c2ecbc1dc7ec6c683d0eccd\n","createdOn":1530373839,"status":"NEW","wip":true},"project":"test","refName":"refs/heads/master","changeKey":{"id":"I5a0210ada1104a378c2ecbc1dc7ec6c683d0eccd"},"type":"wip-state-changed","eventCreatedOn":1530373912}
+]

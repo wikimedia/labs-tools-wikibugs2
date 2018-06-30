@@ -15,11 +15,6 @@ from wblogging import LoggingSetupParser
 IGNORED_USERS = ['L10n-bot', 'Libraryupgrader']
 JENKINS_USER = 'jenkins-bot'
 
-parser = LoggingSetupParser(
-    description='Sends events from Gerrit to IRC'
-)
-args = parser.parse_args()
-
 logger = logging.getLogger('wikibugs.wb2-grrrrit')
 
 
@@ -234,6 +229,11 @@ def main():
 
 
 if __name__ == '__main__':
+    parser = LoggingSetupParser(
+        description='Sends events from Gerrit to IRC'
+    )
+    parser.parse_args()
+
     while True:
         try:
             main()
