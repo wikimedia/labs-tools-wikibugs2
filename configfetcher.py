@@ -11,11 +11,11 @@ class ConfigFetcher(object):
     maybe!
     """
 
-    filename = 'config.json'
+    def __init__(self, filename=None):
+        if not filename:
+            filename = os.path.join(os.path.dirname(__file__), "config.json")
 
-    def __init__(self):
-        self.filename = os.path.join(os.path.dirname(__file__), self.filename)
-        with open(self.filename) as f:
+        with open(filename) as f:
             self.file_options = json.load(f)
 
     def get(self, name):

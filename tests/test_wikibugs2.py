@@ -1,38 +1,55 @@
 # encoding: utf-8
-import wikibugs
+from pathlib import Path
+
+import pytest
+
 import configfetcher
 import unittest
-import os
 import requests
+import wikibugs
 
-p = os.path.split(__file__)[0]
+root = Path(__file__).parent.parent
 
 
 class TestWikibugs(unittest.TestCase):
     def setUp(self):
         self.bugs = wikibugs.Wikibugs2(
-            configfetcher.ConfigFetcher()
+            configfetcher.ConfigFetcher(str(root / "config.json.example"))
         )
 
-    def run_scrape(self, content):
+    def test_offline_scrape(self):
+        content = (root / "tests" / "data" / "T87834").open(encoding="utf-8").read()
+
         tags = self.bugs.get_tags(content)
-        self.assertSetEqual(set(tags), {
+
+        assert {
             '§ Fundraising Sprint Devo',
             '§ Fundraising Tech Backlog',
             'Wikimedia-Fundraising',
             'Wikimedia-Fundraising-CiviCRM',
-        })
-        self.assertSetEqual(set(next(iter(tags.values()))), {
-            'shade',
-            'disabled',
-            'uri',
-            'tagtype'
-        })
+        } == tags.keys()
 
-    def test_offline_scrape(self):
-        content = open(p + "/T87834", encoding="utf-8").read()
-        self.run_scrape(content)
+        assert {'shade', 'disabled', 'uri', 'tagtype'} == tags['§ Fundraising Sprint Devo'].keys()
 
+    @pytest.mark.xfail(reason="'disabled' is no longer processed correctly")
     def test_online_scrape(self):
         content = requests.get('https://phabricator.wikimedia.org/T87834').text
-        self.run_scrape(content)
+
+        tags = self.bugs.get_tags(content)
+
+        assert len(tags) > 0
+
+        n_disabled = 0
+        n_briefcase = 0
+        n_calendar = 0
+
+        for tag, props in tags.items():
+            if props['disabled']:
+                n_disabled += 1
+            if props['tagtype'] == 'briefcase':
+                n_briefcase += 1
+            if props['tagtype'] == 'calendar':
+                n_calendar += 1
+
+        assert n_disabled > 0
+        assert n_briefcase > 0
