@@ -10,12 +10,18 @@ import yaml
 import messagebuilder
 import configfetcher
 import rqueue
+from enum import Enum
 from wblogging import LoggingSetupParser
 
 IGNORED_USERS = ['L10n-bot', 'Libraryupgrader']
 JENKINS_USER = 'jenkins-bot'
 
 logger = logging.getLogger('wikibugs.wb2-grrrrit')
+
+
+class IncludeOwner(Enum):
+        IF_NOT_USER = 1
+        ALWAYS = 2
 
 
 def trim_repo(repo: str) -> str:
@@ -38,13 +44,13 @@ def process_event(event: dict):
     ret = None
     if event['type'] == 'patchset-created':
         ps = 'PS' + str(event['patchSet']['number'])
-        ret = process_simple(event, ps, 'uploader', True)
+        ret = process_simple(event, ps, 'uploader', IncludeOwner.IF_NOT_USER)
     elif event['type'] == 'wip-state-changed':
         if not event['change']['wip']:
             wip = 'WIP' + str(event['patchSet']['number'])
-            ret = process_simple(event, wip, 'uploader', True)
+            ret = process_simple(event, wip, 'uploader', IncludeOwner.IF_NOT_USER)
     elif event['type'] == 'comment-added':
-        ret = process_simple(event, 'CR', 'author', False)
+        ret = process_simple(event, 'CR', 'author')
 
         comment = ''
         original_comment = event.get('comment')
@@ -93,7 +99,7 @@ def process_event(event: dict):
                     ret['approvals']['C'] = value
 
     elif event['type'] == 'change-merged':
-        ret = process_simple(event, 'Merged', 'submitter', False)
+        ret = process_simple(event, 'Merged', 'submitter')
         if ret['user'] == JENKINS_USER and ret['owner'] in IGNORED_USERS:
             return None
         elif ret['user'] != JENKINS_USER:
@@ -101,14 +107,15 @@ def process_event(event: dict):
             # This is always preceded by a C:2 by them, so we need not spam
             return None
     elif event['type'] == 'change-restored':
-        ret = process_simple(event, 'Restored', 'restorer', False)
+        ret = process_simple(event, 'Restored', 'restorer')
     elif event['type'] == 'change-abandoned':
-        ret = process_simple(event, 'Abandoned', 'abandoner', False)
+        ret = process_simple(event, 'Abandoned', 'abandoner')
 
     return ret
 
 
-def process_simple(event: dict, type_: str, user_property: str, check_owner: bool) -> dict:
+def process_simple(event: dict, type_: str, user_property: str,
+                   include_owner: IncludeOwner = IncludeOwner.ALWAYS) -> dict:
     ret = {
         'type': type_,
         'user': event[user_property]['name'],
@@ -120,11 +127,11 @@ def process_simple(event: dict, type_: str, user_property: str, check_owner: boo
     }
 
     owner = event['change']['owner']['name']
-    if check_owner:
-        if ret['user'] != owner:
+    if (
+        (include_owner == IncludeOwner.ALWAYS) or
+        (include_owner == IncludeOwner.IF_NOT_USER and ret['user'] != owner)
+    ):
             ret['owner'] = owner
-    else:
-        ret['owner'] = owner
 
     return ret
 
