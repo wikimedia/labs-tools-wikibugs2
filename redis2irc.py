@@ -82,7 +82,7 @@ def handle_useful_info(bot, useful_info):
     :type bot: Redis2Irc
     :type useful_info: dict
     """
-    ignored = ('gerritbot', 'ReleaseTaggerBot', 'Stashbot', 'Phabricator_maintenance')
+    ignored = ('gerritbot', 'ReleaseTaggerBot', 'Stashbot', 'Phabricator_maintenance', 'CommunityTechBot')
     if useful_info['user'] in ignored:
         # Ignore some Phabricator bots
         logger.debug("Skipped %(url)s by %(user)s" % useful_info)
