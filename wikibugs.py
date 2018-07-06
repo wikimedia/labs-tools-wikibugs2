@@ -322,7 +322,7 @@ if __name__ == '__main__':
     try:
         while 1:
             bugs.poll()
-            time.sleep(1)
+            time.sleep(12)
     except Exception as e:
         print("dafuq")
         logger.exception("Uncaught Exception in polling cycle:")
