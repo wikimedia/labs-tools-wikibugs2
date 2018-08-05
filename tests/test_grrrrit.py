@@ -24,7 +24,7 @@ def test_new_patchset_created():
 
     assert processed[0] == {
         'type': 'PS1',
-        'user': 'UserName',
+        'user': 'RealName 1',
         'message': 'test',
         'branch': 'master',
         'repo': 'test',
