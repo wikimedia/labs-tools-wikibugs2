@@ -12,7 +12,7 @@ replace = {
 def recursive_replace(key, value, replacements_used):
     if key in replace:
         if value not in replacements_used[key]:
-            replacements_used[key][value] = replace[key].format(len(replacements_used[key]) + 1)
+            replacements_used[key][value] = replace[key].format(len(replacements_used[key]))
         return replacements_used[key][value]
 
     if isinstance(value, list):
@@ -31,9 +31,9 @@ for f in Path(__file__).parent.glob("*.json"):
     parsed = json.load(f.open(), object_pairs_hook=OrderedDict)
 
     replacements_used = {
-        'name': {},
-        'email': {},
-        'username': {}
+        'name': {'jenkins-bot': 'jenkins-bot'},
+        'email': {'no-jenkins-bot-email': 'no-jenkins-bot-email'},
+        'username': {'jenkins-bot': 'jenkins-bot'}
     }
 
     f.open('w').write(json.dumps(recursive_replace(None, parsed, replacements_used), indent=2))

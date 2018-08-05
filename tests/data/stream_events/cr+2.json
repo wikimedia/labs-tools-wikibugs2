@@ -1,0 +1,90 @@
+[
+  {
+    "submitter": {
+      "name": "RealName 1",
+      "email": "email.1@example.com",
+      "username": "UserName 1"
+    },
+    "refUpdate": {
+      "oldRev": "d048a1bc324d1659e0c7ae9beca5cab5fdeffcb9",
+      "newRev": "10b18f4cda2f8e6d5e7b8728df2d9014d068c9c6",
+      "refName": "refs/changes/47/450447/meta",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533469415
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/47/450447/meta",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "type": "ref-replication-scheduled",
+    "eventCreatedOn": 1533469415
+  },
+  {
+    "author": {
+      "name": "RealName 1",
+      "email": "email.1@example.com",
+      "username": "UserName 1"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "0"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "2",
+        "oldValue": "0"
+      }
+    ],
+    "comment": "Patch Set 2: Code-Review+2",
+    "patchSet": {
+      "number": 2,
+      "revision": "02965146595c7a8a74e737ee48e21c228aab09c1",
+      "parents": [
+        "c4a7eecd9ab7e550d7a3fa28d11b19afb86980d7"
+      ],
+      "ref": "refs/changes/47/450447/2",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1533469181,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "TRIVIAL_REBASE",
+      "sizeInsertions": 37,
+      "sizeDeletions": -28
+    },
+    "change": {
+      "project": "labs/tools/wikibugs2",
+      "branch": "master",
+      "id": "I7d46f42e390f0d5e456f9cfd3bc3e5cf718571cf",
+      "number": 450447,
+      "subject": "Refactor json-loaded tests",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/450447",
+      "commitMessage": "Refactor json-loaded tests\n\nChange-Id: I7d46f42e390f0d5e456f9cfd3bc3e5cf718571cf\n",
+      "createdOn": 1533467889,
+      "status": "NEW"
+    },
+    "project": "labs/tools/wikibugs2",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I7d46f42e390f0d5e456f9cfd3bc3e5cf718571cf"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1533469415
+  }
+]

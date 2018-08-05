@@ -1,0 +1,68 @@
+[
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "2",
+        "oldValue": "0"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 3: Verified+2\n\nMain test build succeeded.\n\n- noop https://integration.wikimedia.org/ci/job/noop/None/console : SUCCESS",
+    "patchSet": {
+      "number": 3,
+      "revision": "9ce8728ba62960895a293c1aeb78b106fb8d6675",
+      "parents": [
+        "1b9f07b57098cc9d7e50c8e714a56aa8d2170ae5"
+      ],
+      "ref": "refs/changes/46/429546/3",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1530442744,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "NO_CODE_CHANGE",
+      "sizeInsertions": 1,
+      "sizeDeletions": 0
+    },
+    "change": {
+      "project": "test/gerrit-ping",
+      "branch": "master",
+      "topic": "test-draft",
+      "id": "I26e7bf2b2fbc55b307e67479d43722842219ab30",
+      "number": 429546,
+      "subject": "Testing draft changes for https://github.com/valhallasw/gerrit-reviewer-bot/issues/12#issuecomment-384482876",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/429546",
+      "commitMessage": "Testing draft changes for https://github.com/valhallasw/gerrit-reviewer-bot/issues/12#issuecomment-384482876\n\nModifying some text in to description\n\nChange-Id: I26e7bf2b2fbc55b307e67479d43722842219ab30\n",
+      "createdOn": 1524911699,
+      "status": "NEW"
+    },
+    "project": "test/gerrit-ping",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I26e7bf2b2fbc55b307e67479d43722842219ab30"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1530442751
+  }
+]

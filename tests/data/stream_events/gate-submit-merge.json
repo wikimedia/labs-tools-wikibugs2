@@ -1,0 +1,324 @@
+[
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "refUpdate": {
+      "oldRev": "909cab481130080b3f78d665f3a498a7d7c24c79",
+      "newRev": "479fc98af27c60f60193d04c35ec97fb1974c8b3",
+      "refName": "refs/changes/46/450446/meta",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468522
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "0",
+        "oldValue": "2"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 2: -Verified\n\nStarting gate-and-submit jobs.\nhttps://integration.wikimedia.org/zuul/",
+    "patchSet": {
+      "number": 2,
+      "revision": "00d57d3cb2a56ef0f4deff75ba075708568be253",
+      "parents": [
+        "4297c9ff661b728ad56b4387593aa0c39ea73965"
+      ],
+      "ref": "refs/changes/46/450446/2",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1533468355,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 291,
+      "sizeDeletions": -13
+    },
+    "change": {
+      "project": "labs/tools/wikibugs2",
+      "branch": "master",
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d",
+      "number": 450446,
+      "subject": "Add simple anonimization script for stream_events data",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/450446",
+      "commitMessage": "Add simple anonimization script for stream_events data\n\nChange-Id: I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d\n",
+      "createdOn": 1533467889,
+      "status": "NEW"
+    },
+    "project": "labs/tools/wikibugs2",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1533468522
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/46/450446/meta",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "status": "succeeded",
+    "refStatus": "OK",
+    "type": "ref-replicated",
+    "eventCreatedOn": 1533468532
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/46/450446/meta",
+    "nodesCount": 1,
+    "type": "ref-replication-done",
+    "eventCreatedOn": 1533468532
+  },
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "refUpdate": {
+      "oldRev": "479fc98af27c60f60193d04c35ec97fb1974c8b3",
+      "newRev": "e194e83ef935cc7b6624fde26511424820b219d0",
+      "refName": "refs/changes/46/450446/meta",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468547
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/46/450446/meta",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "status": "succeeded",
+    "refStatus": "OK",
+    "type": "ref-replicated",
+    "eventCreatedOn": 1533468532
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/46/450446/meta",
+    "nodesCount": 1,
+    "type": "ref-replication-done",
+    "eventCreatedOn": 1533468532
+  },
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "refUpdate": {
+      "oldRev": "479fc98af27c60f60193d04c35ec97fb1974c8b3",
+      "newRev": "e194e83ef935cc7b6624fde26511424820b219d0",
+      "refName": "refs/changes/46/450446/meta",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468547
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/changes/46/450446/meta",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "type": "ref-replication-scheduled",
+    "eventCreatedOn": 1533468547
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "2",
+        "oldValue": "0"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 2: Verified+2\n\nGate pipeline build succeeded.\n\n- tox-docker https://integration.wikimedia.org/ci/job/tox-docker/3035/console : SUCCESS in 23s",
+    "patchSet": {
+      "number": 2,
+      "revision": "00d57d3cb2a56ef0f4deff75ba075708568be253",
+      "parents": [
+        "4297c9ff661b728ad56b4387593aa0c39ea73965"
+      ],
+      "ref": "refs/changes/46/450446/2",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1533468355,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 291,
+      "sizeDeletions": -13
+    },
+    "change": {
+      "project": "labs/tools/wikibugs2",
+      "branch": "master",
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d",
+      "number": 450446,
+      "subject": "Add simple anonimization script for stream_events data",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/450446",
+      "commitMessage": "Add simple anonimization script for stream_events data\n\nChange-Id: I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d\n",
+      "createdOn": 1533467889,
+      "status": "NEW"
+    },
+    "project": "labs/tools/wikibugs2",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1533468547
+  },
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "refUpdate": {
+      "oldRev": "ef41d4982dc42d0196cff1e7033945055b4c2f90",
+      "newRev": "c4a7eecd9ab7e550d7a3fa28d11b19afb86980d7",
+      "refName": "refs/heads/master",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/heads/master",
+    "targetNode": "github.com",
+    "type": "ref-replication-scheduled",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/heads/master",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "type": "ref-replication-scheduled",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "refUpdate": {
+      "oldRev": "b0174d2625b3c1ed3570b3a1414cf5c6c837c7af",
+      "newRev": "76e4c0cf32a86a5bdd0474d132856f64f8aa0d7b",
+      "refName": "refs/notes/review",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "project": "labs/tools/wikibugs2",
+    "ref": "refs/notes/review",
+    "targetNode": "gerrit2001.wikimedia.org",
+    "type": "ref-replication-scheduled",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "refUpdate": {
+      "oldRev": "e194e83ef935cc7b6624fde26511424820b219d0",
+      "newRev": "58c8306f5f9b84b8ddbef576ea7ad29126ce4614",
+      "refName": "refs/changes/46/450446/meta",
+      "project": "labs/tools/wikibugs2"
+    },
+    "type": "ref-updated",
+    "eventCreatedOn": 1533468548
+  },
+  {
+    "submitter": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "newRev": "c4a7eecd9ab7e550d7a3fa28d11b19afb86980d7",
+    "patchSet": {
+      "number": 2,
+      "revision": "00d57d3cb2a56ef0f4deff75ba075708568be253",
+      "parents": [
+        "4297c9ff661b728ad56b4387593aa0c39ea73965"
+      ],
+      "ref": "refs/changes/46/450446/2",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1533468355,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 291,
+      "sizeDeletions": -13
+    },
+    "change": {
+      "project": "labs/tools/wikibugs2",
+      "branch": "master",
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d",
+      "number": 450446,
+      "subject": "Add simple anonimization script for stream_events data",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/450446",
+      "commitMessage": "Add simple anonimization script for stream_events data\n\nChange-Id: I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d\n",
+      "createdOn": 1533467889,
+      "status": "MERGED"
+    },
+    "project": "labs/tools/wikibugs2",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I9a99a1017f85eb7398d201bd9f7ed4080bd0d88d"
+    },
+    "type": "change-merged",
+    "eventCreatedOn": 1533468548
+  }
+]
