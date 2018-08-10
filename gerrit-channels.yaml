@@ -33,6 +33,7 @@ channels:
         mediawiki/extensions/Math:
         mediawiki/extensions/ParserFunctions:
         mediawiki/skins/apex:
+        # Sent to #wikimedia-dev-africa as well
         mediawiki/skins/Vector:
         oojs/.*:
         # Also in #wikimedia-services
@@ -48,6 +49,7 @@ channels:
         mapdata:
     "#pywikibot":
         pywikipediabot.*:
+        # Sent to #wikimedia-dev-africa as well
         pywikibot.*:
     "#semantic-mediawiki":
         mediawiki/extensions/PageForms:
@@ -235,6 +237,8 @@ channels:
         mediawiki/extensions/MassMessage:
         mediawiki/extensions/SendGrid:
         labs/tools/Commons-twitter-bot:
+        mediawiki/skins/Vector:
+        pywikibot.*:
     "##Zppix-Wikipedia":
          labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
