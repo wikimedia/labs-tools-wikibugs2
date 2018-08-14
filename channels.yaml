@@ -200,6 +200,9 @@ channels:
     "#wikimedia-commons-tech":
         - Commons
 
+    "#wikimedia-commons-sd":
+        - Structured-Data-Commons
+
     # The following changes should ALWAYS be in #wikimedia-dev, even if the bugs
     # are also reported elsewhere.
     "#wikimedia-dev":
