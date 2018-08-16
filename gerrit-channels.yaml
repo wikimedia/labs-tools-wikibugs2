@@ -239,6 +239,7 @@ channels:
         labs/tools/Commons-twitter-bot:
         mediawiki/skins/Vector:
         pywikibot.*:
+        labs/tools/awmd-stats:
     "##Zppix-Wikipedia":
          labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
