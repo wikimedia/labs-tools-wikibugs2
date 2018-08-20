@@ -154,6 +154,7 @@ channels:
         mediawiki/extensions/Mantle:
     "#wikimedia-cloud":
         labs/.*:
+        analytics/quarry.*:
     "#wikimedia-operations":
         # Do not post betacluster stuff here
         operations(?!/debs/wikistats).*:
