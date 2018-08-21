@@ -1,3 +1,12 @@
+## WARNING
+## Do **NOT** add new channels here without arranging with FreeNode staff to get the wikibugs bot
+## exempt from Sigyn in the given channel.
+## This applies regardless of whether Sigyn is currently present in the channel or not, we are not
+## about to trust random channel ops who could ask for Sigyn to be added later without knowing about
+## or mentioning the bot exemption requirement.
+## Failure to do so may lead to wikibugs being banned across the whole network the next time it
+## forwards something strange to a channel where it has no exemption.
+
 default-channel: "#wikimedia-dev"
 firehose-channel: "#mediawiki-feed"
 channels:
@@ -252,3 +261,12 @@ channels:
          mediawiki/extensions/ReadingLists:
     "#ZppixBot":
          labs/tools/ZppixBot:
+
+## WARNING
+## Do **NOT** add new channels here without arranging with FreeNode staff to get the wikibugs bot
+## exempt from Sigyn in the given channel.
+## This applies regardless of whether Sigyn is currently present in the channel or not, we are not
+## about to trust random channel ops who could ask for Sigyn to be added later without knowing about
+## or mentioning the bot exemption requirement.
+## Failure to do so may lead to wikibugs being banned across the whole network the next time it
+## forwards something strange to a channel where it has no exemption.
