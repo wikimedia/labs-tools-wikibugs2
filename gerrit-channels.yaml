@@ -244,12 +244,13 @@ channels:
     "#wikimedia-dev-africa":
         # Send notifications to #wikimedia-dev-africa
         mediawiki/extensions/Cargo:
+        mediawiki/extensions/examples:
         mediawiki/extensions/MassMessage:
         mediawiki/extensions/SendGrid:
-        labs/tools/Commons-twitter-bot:
         mediawiki/skins/Vector:
-        pywikibot.*:
+        labs/tools/Commons-twitter-bot:
         labs/tools/awmd-stats:
+        pywikibot.*:
     "##Zppix-Wikipedia":
          labs/tools/ZppixBot:
          labs/tools/quarrybot-enwiki:
