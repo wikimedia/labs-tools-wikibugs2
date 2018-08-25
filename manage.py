@@ -26,12 +26,25 @@ jsub_params = [
 ]
 
 
-def run(cwd, command, fail_ok=False):
-    print(cwd + '$ ' + ' '.join(shlex.quote(x) for x in command))
-    if fail_ok:
-        subprocess.call(command, cwd=cwd)
-    else:
-        subprocess.check_call(command, cwd=cwd)
+class RealRun:
+    def run(self, wd, command, fail_ok=False):
+        print(wd + '$ ' + ' '.join(shlex.quote(x) for x in command))
+
+        if fail_ok:
+            subprocess.call(command, cwd=wd)
+        else:
+            subprocess.check_call(command, cwd=wd)
+
+
+class MockRun:
+    cwd = home_dir
+
+    def run(self, wd, command, fail_ok=False):
+        if wd is not None and wd != self.cwd:
+            print()
+            print("cd " + shlex.quote(wd))
+            self.cwd = wd
+        print(' '.join(shlex.quote(x) for x in command))
 
 
 def check_job(name):
@@ -41,22 +54,34 @@ def check_job(name):
 
 
 @click.group()
-def cli():
-    pass
+@click.option('--dry-run/--no-dry-run', default=False, help='do not execute commands')
+def cli(dry_run):
+    if not socket.getfqdn().endswith('tools.eqiad.wmflabs') and not dry_run:
+        print('Running on a non-tools host; cannot execute commands.')
+        print('To show expected commands, pass --dry-run')
+        print('To execute the commands, ssh into the tool and run the script there, or run:')
+        print('ssh tools-login.wmflabs.org sudo -niu tools.{toolname} {python} {code_dir}/manage.py {args}'.format(
+            toolname=tool_name, python=python, code_dir=code_dir, args=' '.join(shlex.quote(x) for x in sys.argv[1:]))
+        )
+
+        raise click.Abort()
+
+    global R
+    R = MockRun() if dry_run else RealRun()
 
 
 @cli.command()
 def pull():
-    run(code_dir, ['git', 'rev-list', 'HEAD', '--max-count=1'])
-    run(code_dir, ['git', 'reset', '--hard', 'origin/master'])
-    run(code_dir, ['git', 'pull'])
+    R.run(code_dir, ['git', 'rev-list', 'HEAD', '--max-count=1'])
+    R.run(code_dir, ['git', 'reset', '--hard', 'origin/master'])
+    R.run(code_dir, ['git', 'pull'])
 
 
 @cli.command()
 @click.argument('job')
 def start_job(job):
     check_job(job)
-    run(home_dir, [jsub, '-N', job] + jsub_params + ['-continuous'] + job_definitions[job], fail_ok=True)
+    R.run(home_dir, [jsub, '-N', job] + jsub_params + ['-continuous'] + job_definitions[job], fail_ok=True)
 
 
 @cli.command()
@@ -70,7 +95,7 @@ def start_jobs(ctx):
 @click.argument('job')
 def restart_job(job):
     check_job(job)
-    run(home_dir, ['qmod', '-rj', job])
+    R.run(home_dir, ['qmod', '-rj', job], fail_ok=True)
 
 
 @cli.command()
@@ -90,9 +115,4 @@ def deploy(ctx, jobs):
 
 
 if __name__ == "__main__":
-    if socket.getfqdn().endswith('tools.eqiad.wmflabs'):
-        cli()
-    else:
-        print("Cannot run this script on a non-tools host. Please ssh into the tool and run the script there, or run:")
-        print('ssh tools-login.wmflabs.org sudo -niu tools.{toolname} {python} {code_dir}/manage.py {args}'.format(
-            toolname=tool_name, python=python, code_dir=code_dir, args=' '.join(shlex.quote(x) for x in sys.argv[1:])))
+    cli()
