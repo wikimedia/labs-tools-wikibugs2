@@ -1,0 +1,33 @@
+[
+  {
+    "changer": {
+      "name": "RealName 1",
+      "email": "email.1@example.com",
+      "username": "UserName 1"
+    },
+    "change": {
+      "project": "operations/mediawiki-config",
+      "branch": "master",
+      "topic": "T201491",
+      "id": "I96ce68f074b1c1820df8cb25ce0b3a81a4e0f60e",
+      "number": 455354,
+      "subject": "Fix \"seperated\" typo in MWMultiVersion.php file",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/455354",
+      "commitMessage": "Fix \"seperated\" typo in MWMultiVersion.php file\n\nChange-Id: I96ce68f074b1c1820df8cb25ce0b3a81a4e0f60e\n",
+      "createdOn": 1535216715,
+      "status": "NEW"
+    },
+    "project": "operations/mediawiki-config",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I96ce68f074b1c1820df8cb25ce0b3a81a4e0f60e"
+    },
+    "type": "wip-state-changed",
+    "eventCreatedOn": 1535216740
+  }
+]
