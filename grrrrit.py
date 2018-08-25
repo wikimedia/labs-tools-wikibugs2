@@ -45,10 +45,6 @@ def process_event(event: dict):
     if event['type'] == 'patchset-created':
         ps = 'PS' + str(event['patchSet']['number'])
         ret = process_simple(event, ps, 'uploader', IncludeOwner.IF_NOT_USER)
-    elif event['type'] == 'wip-state-changed':
-        if not event['change']['wip']:
-            wip = 'WIP' + str(event['patchSet']['number'])
-            ret = process_simple(event, wip, 'uploader', IncludeOwner.IF_NOT_USER)
     elif event['type'] == 'comment-added':
         ret = process_simple(event, 'CR', 'author')
 
