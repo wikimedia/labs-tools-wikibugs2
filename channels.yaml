@@ -227,6 +227,7 @@ channels:
         - OOjs-UI(-.*)?
         - accessibility
         - mediawiki-interface
+        - Google-Code-in-2018
 
     "#wikimedia-fundraising":
         - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*
@@ -298,6 +299,7 @@ channels:
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
         - MediaWiki-extensions-SendGrid
+        - Google-Code-in-2018
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'

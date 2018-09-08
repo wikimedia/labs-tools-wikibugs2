@@ -127,6 +127,7 @@ channels:
         # Sent to #wikimedia-dev-africa as well
         mediawiki/extensions/SendGrid:
         mediawiki/extensions/MassMessage:
+        mediawiki/extensions/examples:
         # Sent to #wikimedia-design as well
         mediawiki/skins/Blueprint:
         mediawiki/extensions/OOUIPlayground:
