@@ -300,6 +300,7 @@ channels:
         - Africa-Wikimedia-Developers
         - MediaWiki-extensions-SendGrid
         - Google-Code-in-2018
+        - Pywikibot-core
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
