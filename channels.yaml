@@ -249,6 +249,7 @@ channels:
         - wikimedia-apache-configuration
         - domains
         - HTTPS
+        - Certcentral
 
     "#wikimedia-teampractices":
         - team-practices
