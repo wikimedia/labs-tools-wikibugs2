@@ -297,7 +297,7 @@ channels:
     "##goat":
         - Goatification
 
-    "#wikimedia-ri-ci":
+    "#wikimedia-infrastructure":
         - Reading-Infrastructure-Team(-.*)?
 
     "#wikimedia-dev-africa":
