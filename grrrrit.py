@@ -31,7 +31,7 @@ def trim_repo(repo: str) -> str:
 
 
 def extract_bug(commit_msg: str):
-    search = re.search('Bug: T(\d+)', commit_msg)
+    search = re.search(r'Bug: T(\d+)', commit_msg)
     if search:
         return 'T' + search.group(1)
 
@@ -52,7 +52,7 @@ def process_event(event: dict):
         original_comment = event.get('comment')
         inline = 0
         if original_comment:
-            inline_match = re.search('\((\d+) comments?\)', original_comment)
+            inline_match = re.search(r'\((\d+) comments?\)', original_comment)
             if inline_match:
                 try:
                     inline = int(inline_match.group(1))

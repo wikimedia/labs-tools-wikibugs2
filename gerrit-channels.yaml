@@ -162,7 +162,7 @@ channels:
         mediawiki/extensions/WikiLove:
         # This is sent to #wikimedia-mobile too.
         mediawiki/extensions/Mantle:
-    "#wikimedia-cloud":
+    "#wikimedia-cloud-feed":
         labs/.*:
         analytics/quarry.*:
     "#wikimedia-operations":

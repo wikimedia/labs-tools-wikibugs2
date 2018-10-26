@@ -177,7 +177,7 @@ if __name__ == '__main__':
     try:
         logger.info("Started")
         main()
-    except Exception as e:
+    except Exception:
         logger.exception("Uncaught Exception:")
         raise
     finally:
