@@ -2,15 +2,7 @@
 import sys
 import os
 import subprocess
-import json
 
-config_file = os.path.join(
-    os.path.dirname(__file__),
-    'config.json'
-)
-config = json.load(open(config_file))
-
-token = config['IRCNOTIFIER_KEY']
 message = '!log {user} {sudo_user}: Deployed {rev} {msg}'.format(
     user=os.environ['USER'],
     sudo_user=os.environ['SUDO_USER'],
