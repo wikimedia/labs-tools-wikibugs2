@@ -85,7 +85,7 @@ class IRCMessageBuilder(object):
         :param text: possibly unsafe input
         :return: safe output
         """
-        return text.replace('\n', ' ').replace('\r', ' ')
+        return text.replace('\n', ' ').replace('\r', ' ').replace('```', '`')
 
     def build_project_text(self, all_projects, matched_projects):
         """
