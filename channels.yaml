@@ -231,6 +231,7 @@ channels:
         - accessibility
         - mediawiki-interface
         - Google-Code-in-2018
+        - MobileFrontend
 
     "#wikimedia-fundraising":
         - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*
@@ -302,8 +303,9 @@ channels:
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
-        - MediaWiki-extensions-SendGrid
         - Google-Code-in-2018
+        - goodfirstbug
+        - Needs-volunteer
         - Pywikibot
 
 firehose-channel: '#mediawiki-feed'
