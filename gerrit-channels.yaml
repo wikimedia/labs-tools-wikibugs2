@@ -254,16 +254,18 @@ channels:
         labs/tools/awmd-stats:
         pywikibot.*:
     "##Zppix-Wikipedia":
-         labs/tools/ZppixBot:
-         labs/tools/quarrybot-enwiki:
-         labs/icinga2:
+        labs/tools/ZppixBot:
+        labs/tools/quarrybot-enwiki:
+        labs/icinga2:
     "#wikimedia-infrastructure":
-         mediawiki/services/mobileapps:
-         mediawiki/services/mobileapps/deploy:
-         mediawiki/extensions/MobileApp:
-         mediawiki/extensions/ReadingLists:
+        mediawiki/services/mobileapps:
+        mediawiki/services/mobileapps/deploy:
+        mediawiki/extensions/MobileApp:
+        mediawiki/extensions/ReadingLists:
+        maps/.*:
+        mapdata:
     "#ZppixBot":
-         labs/tools/ZppixBot:
+        labs/tools/ZppixBot:
 
 ## WARNING
 ## Do **NOT** add new channels here without arranging with FreeNode staff to get the wikibugs bot
