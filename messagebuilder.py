@@ -173,14 +173,14 @@ class IRCMessageBuilder(object):
         elif 'status' in useful_info:
             status = useful_info['status']
             text += self.ircformat(self._human_status(status['old']), 'brown')
-            text += '>'
+            text += '→'
             text += self.ircformat(self._human_status(status['new']), 'green') + ' '
         if 'priority' in useful_info:
             prio = useful_info['priority']
             text += 'p:'
             if prio['old']:
                 text += self.ircformat(self._human_prio(prio['old']), 'brown')
-                text += '>'
+                text += '→'
             text += self.ircformat(self._human_prio(prio['new']), 'green')
             text += ' '
         if 'assignee' in useful_info:
@@ -188,7 +188,7 @@ class IRCMessageBuilder(object):
             text += 'a:'
             if ass['old']:
                 text += self.ircformat(ass['old'], 'brown')
-                text += '>'
+                text += '→'
             text += self.ircformat(str(ass['new']), 'green')
             text += ' '
 
