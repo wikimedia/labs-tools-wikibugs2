@@ -139,11 +139,11 @@ def build_message(processed: dict) -> str:
     if 'approvals' in processed and processed['approvals']:
         def format_approval(value: int) -> str:
             if value == 1:
-                return helper(str(value), foreground='green')
+                return helper("+1", foreground='green')
             elif value == 2:
-                return helper(str(value), foreground='green', style='bold')
+                return helper("+2", foreground='green', style='bold')
             elif value == -1:
-                return helper(str(value), foreground='red')
+                return helper("-1", foreground='red')
             else:  # -2
                 return helper(str(value), foreground='red', style='bold')
 
