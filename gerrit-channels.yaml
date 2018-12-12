@@ -183,6 +183,7 @@ channels:
         mediawiki/tools/release:
         mediawiki/tools/releng:
         mediawiki/tools/scap:
+        blubber:
         All-Projects:
         All-Users:
         All-Groups:
