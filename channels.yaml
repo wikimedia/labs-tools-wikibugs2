@@ -308,6 +308,9 @@ channels:
         - Needs-volunteer
         - Pywikibot
 
+    "#wmcz-tracker":
+        - WMCZ-Tracker
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
 
