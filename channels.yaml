@@ -242,6 +242,9 @@ channels:
         - puppet
         - Blocked-on-Operations
 
+    "#wikimedia-serviceops":
+        - serviceops
+
     "#wikimedia-traffic":
         - traffic
         - netops
