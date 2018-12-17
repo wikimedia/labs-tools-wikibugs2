@@ -267,6 +267,8 @@ channels:
         mapdata:
     "#ZppixBot":
         labs/tools/ZppixBot:
+    "#wmcz-tracker":
+        wikimedia-cz/tracker:
 
 ## WARNING
 ## Do **NOT** add new channels here without arranging with FreeNode staff to get the wikibugs bot
