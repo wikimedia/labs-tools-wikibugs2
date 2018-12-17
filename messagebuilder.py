@@ -40,12 +40,13 @@ class IRCMessageBuilder(object):
         '10': 'Lowest',
     }
 
-    # FIXME: Incomplete
     STATUSES = {
         'open': 'Open',
         'needsinfo': 'Needs info',
         'invalid': 'Invalid',
         'resolved': 'Resolved',
+        'declined': 'Declined',
+        'stalled': 'Stalled',
     }
 
     OUTPUT_PROJECT_TYPES = ['briefcase', 'users', 'umbrella']
