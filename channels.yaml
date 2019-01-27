@@ -131,6 +131,7 @@ channels:
         - MediaWiki-Releasing
         - MediaWiki-Codesniffer
         - commit-message-validator
+        - Zuul
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
