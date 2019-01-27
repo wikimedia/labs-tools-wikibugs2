@@ -1,7 +1,7 @@
-PyYAML==3.11
+PyYAML
 fab==1.4.1
 redis==2.10.3
-requests==2.4.3
+requests>=2.20.0,<3.0
 asyncio-redis==0.12.3
 irc3==0.5.1
 beautifulsoup4==4.3.2
