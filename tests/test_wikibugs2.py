@@ -1,8 +1,6 @@
 # encoding: utf-8
 from pathlib import Path
 
-import pytest
-
 import configfetcher
 import unittest
 import requests
@@ -36,7 +34,6 @@ class TestWikibugs(unittest.TestCase):
         assert tags['§ Fundraising Sprint Devo']['uri'] == '/tag/§_fundraising_sprint_devo/'
         assert tags['§ Fundraising Sprint Devo']['tagtype'] == 'calendar'
 
-    @pytest.mark.xfail(reason="'disabled' is no longer processed correctly")
     def test_online_scrape(self):
         content = requests.get('https://phabricator.wikimedia.org/T87834').text
 

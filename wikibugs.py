@@ -137,7 +137,7 @@ class Wikibugs2(object):
         return self.phab.req_session.get(url).text
 
     def get_tags(self, task_page):
-        soup = BeautifulSoup(task_page)
+        soup = BeautifulSoup(task_page, features='html.parser')
         alltags = {}
 
         for tag in soup.findAll(class_='phabricator-handle-tag-list-item'):
