@@ -221,6 +221,7 @@ channels:
         mediawiki/extensions/PronunciationRecording:
         mediawiki/extensions/ImageMetrics:
         mediawiki/extensions/FileAnnotations:
+        mediawiki/extensions/WikibaseMediaInfo:
         analytics/multimedia.*:
     "#wikipedia-en-ambassadors":
         mediawiki/extensions/Campaigns:
