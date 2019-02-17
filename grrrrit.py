@@ -20,8 +20,8 @@ logger = logging.getLogger('wikibugs.wb2-grrrrit')
 
 
 class IncludeOwner(Enum):
-        IF_NOT_USER = 1
-        ALWAYS = 2
+    IF_NOT_USER = 1
+    ALWAYS = 2
 
 
 def trim_repo(repo: str) -> str:
@@ -127,7 +127,7 @@ def process_simple(event: dict, type_: str, user_property: str,
         (include_owner == IncludeOwner.ALWAYS) or
         (include_owner == IncludeOwner.IF_NOT_USER and ret['user'] != owner)
     ):
-            ret['owner'] = owner
+        ret['owner'] = owner
 
     return ret
 
