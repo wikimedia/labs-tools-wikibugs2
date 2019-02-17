@@ -254,7 +254,7 @@ channels:
         - wikimedia-apache-configuration
         - domains
         - HTTPS
-        - Certcentral
+        - Acme-chief
 
     "#wikimedia-teampractices":
         - team-practices
