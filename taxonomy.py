@@ -31,12 +31,15 @@ else:
 
 # Build taxanomy
 projecttypes = OrderedDict([
-    ('briefcase', 'Projects'),
-    ('users', 'User groups'),
-    ('tags', 'Tags'),
-    ('truck', 'Releases'),
-    ('calendar', 'Sprints'),
+    ('project', 'Projects'),
+    ('group', 'User groups'),
+    ('tag', 'Tags'),
     ('umbrella', 'Umbrella projects'),
+    ('account', 'User projects'),
+    ('goal', 'Goals'),
+    ('milestone', 'Milestones'),
+    ('release', 'Releases'),
+    ('timeline', 'Sprints'),
 ])
 
 for icon in sorted(set((x['icon']) for x in projects)):
