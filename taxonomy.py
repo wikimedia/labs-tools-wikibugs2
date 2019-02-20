@@ -1,20 +1,7 @@
 from collections import OrderedDict
 import phabricator
 import configfetcher
-
-# work around pywikibot defaults
-import os
-pwb_path = os.path.join(
-    os.path.split(__file__)[0],
-    '.pywikibot'
-)
-try:
-    os.mkdir(pwb_path)
-except IOError:
-    pass
-os.environ["PYWIKIBOT2_NO_USER_CONFIG"] = "1"
-os.environ["PYWIKIBOT2_DIR"] = pwb_path
-import pywikibot  # noqa
+import pywikibot
 
 conf = configfetcher.ConfigFetcher()
 
@@ -24,6 +11,8 @@ phab = phabricator.Phabricator(
     conf.get('PHAB_USER'),
     conf.get('PHAB_CERT')
 )
+
+# note: Pywikibot config is loaded from ~/.pywikibot
 
 projects = []
 
@@ -85,11 +74,7 @@ wikipage += "\n{{/Footer}}"
 
 
 # Save to page on-wiki
-site = pywikibot.Site(
-    fam='mediawiki', code='mediawiki',
-    user=conf.get('MEDIAWIKI_USER')
-)
-site.login(password=conf.get('MEDIAWIKI_PASS'))
+site = pywikibot.Site(fam='mediawiki', code='mediawiki')
 page = pywikibot.Page(site, 'Phabricator/Projects')
 page.text = wikipage
 page.save(comment='Updating project taxonomy', botflag=False)
