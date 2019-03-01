@@ -51,6 +51,7 @@ channels:
         # teams
         - Collaboration-Team(-.*)?
         - Collab-Team(-.*)?
+        - Growth-Team(-.*)?
         # projects
         - Collab-Notifications-Page
         - Edit-Review-Improvements(-.*)?
@@ -63,6 +64,7 @@ channels:
         - Thanks
         - WikiLove
         - Pywikibot-Flow
+        - MediaWiki-extensions-GrowthExperiments
 
     "#wikimedia-de-tech-feed":
         - TCB-Team

@@ -155,6 +155,7 @@ channels:
         mediawiki/core:
             branch: ^fundraising
     "#wikimedia-collaboration":
+        mediawiki/extensions/GrowthExperiments:
         mediawiki/extensions/Echo:
         mediawiki/extensions/Flow:
         mediawiki/extensions/MoodBar:
