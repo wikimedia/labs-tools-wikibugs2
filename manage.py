@@ -9,7 +9,7 @@ tool_name = 'wikibugs'
 
 home_dir = '/data/project/{}'.format(tool_name)
 code_dir = '{}/wikibugs2'.format(home_dir)
-python = '{}/py-wikibugs2/bin/python'.format(home_dir)
+python = '{}/py35-stretch/bin/python'.format(home_dir)
 
 job_definitions = {
     'wb2-phab': [python, code_dir + '/wikibugs.py', '--logfile', home_dir + '/wikibugs.log'],
@@ -19,7 +19,6 @@ job_definitions = {
 
 jsub = '/usr/bin/jsub'
 jsub_params = [
-    '-l', 'release=trusty',
     '-mem', '1G',
     '-once',
     '-v', 'PYTHONIOENCODING="utf8:backslashreplace"'
