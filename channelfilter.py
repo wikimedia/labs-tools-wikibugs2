@@ -63,8 +63,8 @@ class ChannelFilter(object):
 
     def channels_for(self, projects):
         """
-        :param project: Get all channels to spam for given projects
-        :type project: iterable
+        :param projects: Get all channels to spam for given projects
+        :type projects: iterable
         :returns: dict[channel: matched projects]
         """
         channels = collections.defaultdict(list)
