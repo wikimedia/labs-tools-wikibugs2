@@ -62,9 +62,5 @@ def test_events(bugs):
         event = json.loads(r"""{"class": "PhabricatorTokenGivenFeedStory", "epoch": 1577833604, "authorPHID": "PHID-USER-g7ljr7obhy5hgp4qpuiw", "chronologicalKey": "6776743729549210107", "data": {"authorPHID": "PHID-USER-g7ljr7obhy5hgp4qpuiw", "tokenPHID": "PHID-TOKN-misc-1", "objectPHID": "PHID-TASK-bc37zzm5ct4wi2ill4xq"}}""")  # noqa
         bugs.process_event(event)
 
-        assert len(bugs.errors) == 1
-        t, exc, ev = bugs.errors[0]
-        assert t == "XACT-anchor"
-        assert ev == event
-
+        assert len(bugs.errors) == 0
         assert bugs.queue.empty()

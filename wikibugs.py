@@ -212,6 +212,12 @@ class Wikibugs2(object):
         if phid_type != 'TASK':  # Only handle Maniphest Tasks for now
             logger.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
             return
+
+        if 'transactionPHIDs' not in event_info['data']:
+            logger.debug('Skipping %s, does not contain transactions' % (event_info['data']['objectPHID'], ))
+            # If there are no transactions, it's something weird like tokens
+            return
+
         logger.debug('Processing %s' % json.dumps(event_info))
 
         phid_info = self.phid_info(event_info['data']['objectPHID'])
@@ -246,9 +252,6 @@ class Wikibugs2(object):
             'user': self.get_user_name(event_info['authorPHID']),
         }
 
-        if 'transactionPHIDs' not in event_info['data']:
-            # If there are no transactions, it's something weird like tokens
-            return
         transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
         ignored = [
             'core:subscribers',  # Ignore any only-CC updates
