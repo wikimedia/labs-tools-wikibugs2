@@ -171,11 +171,13 @@ channels:
         # Do not post betacluster stuff here
         operations(?!/debs/wikistats).*:
             branch: "^(?!betacluster)"
+        operations/software/gerrit.*:
         wikimedia/bugzilla/modifications:
         wikimedia/bots/jouncebot:
         labs/private:
         # This is sent to #wikimedia-releng too.
     "#wikimedia-releng":
+        operations/software/gerrit.*:
         mediawiki/selenium:
         mediawiki/ruby/.*:
         integration/.*:
