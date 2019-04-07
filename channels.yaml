@@ -230,7 +230,6 @@ channels:
         - OOjs-UI(-.*)?
         - accessibility
         - mediawiki-interface
-        - Google-Code-in-2018
         - MobileFrontend
 
     "#wikimedia-fundraising":
@@ -306,7 +305,6 @@ channels:
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
-        - Google-Code-in-2018
         - goodfirstbug
         - Needs-volunteer
         - Pywikibot
