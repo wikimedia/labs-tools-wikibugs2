@@ -181,6 +181,7 @@ channels:
         mediawiki/selenium:
         mediawiki/ruby/.*:
         integration/.*:
+        releng/.*:
         mediawiki/tools/codesniffer:
         mediawiki/tools/code-utils:
         mediawiki/tools/release:
