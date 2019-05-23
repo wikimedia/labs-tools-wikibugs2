@@ -14,6 +14,7 @@ from enum import Enum
 from wblogging import LoggingSetupParser
 
 IGNORED_USERS = ['L10n-bot', 'Libraryupgrader']
+IGNORED_POSITIVE_VOTES = ['jenkins-bot']
 JENKINS_USER = 'jenkins-bot'
 
 logger = logging.getLogger('wikibugs.wb2-grrrrit')
@@ -76,8 +77,8 @@ def process_event(event: dict):
                 value = int(approval['value'])
 
                 # First, if it's jenkins-bot, skip if the value is not negative
-                if ret['user'] == JENKINS_USER and value >= 0:
-                    # Jenkins' comments are only relevant if they are -1; +1 does not need
+                if ret['user'] in IGNORED_POSITIVE_VOTES and value >= 0:
+                    # Comments by CI bots are only relevant if they are -1; +1 does not need
                     # notification and +2 gets followed immediately by a merge notification
                     # which /is/ shown.
                     return None
