@@ -39,6 +39,9 @@ channels:
         - ORES
         - Scoring-platform-team(.*)?
 
+    "#wikimedia-codehealth":
+        - Code-Health(-.*)?
+
     "#wikidata-feed":
         - Wikidata
         - Wikibase(-.*)?
