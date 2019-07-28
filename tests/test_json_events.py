@@ -135,16 +135,4 @@ def test_gate_submit_merge():
 def test_post_merge_build():
     messages = process_events_file(data_path / "post-merge-build.json")
 
-    assert len(messages) == 1
-    assert messages[0] == {
-        'type': 'CR',
-        'approvals': {},
-        'inline': 0,
-        'branch': 'master',
-        'url': 'https://gerrit.wikimedia.org/r/450446',
-        'message': 'Add simple anonimization script for stream_events data',  # noqa
-        'owner': 'RealName 1',
-        'user': 'jenkins-bot',
-        'task': None,
-        'repo': 'labs/tools/wikibugs2'
-    }
+    assert len(messages) == 0

@@ -37,6 +37,17 @@ def extract_bug(commit_msg: str):
         return 'T' + search.group(1)
 
 
+def is_post_merge_build_comment(ret: dict, event: dict):
+    comment = event.get('comment')
+
+    return (
+        ret['user'] == JENKINS_USER and
+        event['change']['status'] == 'MERGED' and
+        comment and
+        'Post-merge build succeeded' in comment
+    )
+
+
 def process_event(event: dict):
     user = event.get('uploader', {}).get('name') or event.get('author', {}).get('name')
     if user in IGNORED_USERS:
@@ -49,9 +60,13 @@ def process_event(event: dict):
     elif event['type'] == 'comment-added':
         ret = process_simple(event, 'CR', 'author')
 
+        if is_post_merge_build_comment(ret, event):
+            return None
+
         comment = ''
         original_comment = event.get('comment')
         inline = 0
+
         if original_comment:
             inline_match = re.search(r'\((\d+) comments?\)', original_comment)
             if inline_match:
