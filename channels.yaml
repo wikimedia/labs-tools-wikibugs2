@@ -304,7 +304,7 @@ channels:
         - Goatification
 
     "#wikimedia-infrastructure":
-        - Reading-Infrastructure-Team(-.*)?
+        - Product-Infrastructure-Team(-.*)?
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
