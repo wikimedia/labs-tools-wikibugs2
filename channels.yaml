@@ -290,7 +290,6 @@ channels:
         - ProofreadPage
 
     "##Zppix-Wikipedia":
-        - Tool-Zppixbot
         - QuarryBot-enwiki
         - VPS-project-icinga2
 
