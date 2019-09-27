@@ -260,7 +260,6 @@ channels:
         labs/tools/awmd-stats:
         pywikibot.*:
     "##Zppix-Wikipedia":
-        labs/tools/ZppixBot:
         labs/tools/quarrybot-enwiki:
         labs/icinga2:
     "#wikimedia-infrastructure":
