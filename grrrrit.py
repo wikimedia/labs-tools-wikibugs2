@@ -233,15 +233,16 @@ def main():
     logger.info('Opened SSH connection')
 
     for line in ssh.stdout:
-        logger.info(line.decode())
+        logger.info("%s: %s", "stream-events", line.decode())
         parsed = json.loads(line.decode())
         processed = process_event(parsed)
         if processed:
-            logger.info(json.dumps(processed))
+            logger.info("%s: %s", "processed", json.dumps(processed))
             try:
                 msg = build_message(processed)
-                channels = channel_filter(processed['repo'], processed['branch'])
-                queue.put({'raw': True, 'msg': msg, 'channels': list(channels)})
+                channels = list(channel_filter(processed['repo'], processed['branch']))
+                queue.put({'raw': True, 'msg': msg, 'channels': channels})
+                logger.info("%s: '%s' to [%s]", "message", msg, ", ".join(channels))
             except:
                 logger.exception('Error queuing message')
         ssh.stdout.flush()
