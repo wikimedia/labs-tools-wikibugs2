@@ -4,8 +4,12 @@ lib/
 bin/
 include/
 .idea/
+.pytest_cache
+
 config.json
 pywikibot.lwp
 throttle.ctrl
 user-config.py
 apicache
+
+/tests/data/grrrrit.log*
