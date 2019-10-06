@@ -1,0 +1,319 @@
+[
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 10:\n\nPost-merge build failed.\n\n- mwselenium-quibble-docker https://integration.wikimedia.org/ci/job/mwselenium-quibble-docker/18915/console : FAILURE in 3m 08s\n- mwext-node10-docs-docker-publish https://integration.wikimedia.org/ci/job/mwext-node10-docs-docker-publish/1587/console : SUCCESS in 43s\n- mwext-doxygen-publish https://integration.wikimedia.org/ci/job/mwext-doxygen-publish/9248/console : SUCCESS in 6s",
+    "patchSet": {
+      "number": 10,
+      "revision": "8ee17cf2b056372115f034d22c6bafd1971453ed",
+      "parents": [
+        "783e391bb96d3b54938acdf976646a08a366f44b"
+      ],
+      "ref": "refs/changes/62/538062/10",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1570114755,
+      "author": {
+        "name": "RealName 2",
+        "email": "email.2@example.com",
+        "username": "UserName 2"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 16,
+      "sizeDeletions": -76
+    },
+    "change": {
+      "project": "mediawiki/skins/MinervaNeue",
+      "branch": "master",
+      "topic": "(HEAD",
+      "id": "I71ef7377e91e38f9ccc13493d52ab629d433f8f4",
+      "number": 538062,
+      "subject": "Remove wgMinervaErrorLogSamplingRate",
+      "owner": {
+        "name": "RealName 2",
+        "email": "email.2@example.com",
+        "username": "UserName 2"
+      },
+      "url": "https://gerrit.wikimedia.org/r/538062",
+      "commitMessage": "Remove wgMinervaErrorLogSamplingRate\n\nWe are counting errors rather than sending them via EventLogging.\nThis code is thus being shipped unnecessarily to our users and is\nnot ever enabled in production\n\nGiven our work to use Sentry (T106915) let's remove this code.\n\nBug: T233663\nChange-Id: I71ef7377e91e38f9ccc13493d52ab629d433f8f4\n",
+      "createdOn": 1568911048,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/skins/MinervaNeue",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I71ef7377e91e38f9ccc13493d52ab629d433f8f4"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570116613
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 1:\n\nPost-merge build failed.\n\n- phpunit-coverage-docker-publish https://integration.wikimedia.org/ci/job/phpunit-coverage-docker-publish/1558/console : FAILURE in 26s",
+    "patchSet": {
+      "number": 1,
+      "revision": "d9d93e3071589fbb2867c858252156ab3f42efc5",
+      "parents": [
+        "016c042dd6c9448dfdda800e9dddc157ff744ee5"
+      ],
+      "ref": "refs/changes/75/540575/1",
+      "uploader": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "createdOn": 1570098954,
+      "author": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 12,
+      "sizeDeletions": -1
+    },
+    "change": {
+      "project": "mediawiki/tools/codesniffer",
+      "branch": "master",
+      "topic": "rel",
+      "id": "I734d7e35324bc1b129723359fbc89fac918abf7f",
+      "number": 540575,
+      "subject": "Release 27.0.0",
+      "owner": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "url": "https://gerrit.wikimedia.org/r/540575",
+      "commitMessage": "Release 27.0.0\n\nThis is the last version supporting HHVM. Hence, I propose to tag this\nrelease now, and merge PHP7-only stuff afterwards.\n\nChange-Id: I734d7e35324bc1b129723359fbc89fac918abf7f\n",
+      "createdOn": 1570098954,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/tools/codesniffer",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I734d7e35324bc1b129723359fbc89fac918abf7f"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570126974
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 1:\n\nPost-merge build failed.\n\n- phpunit-coverage-docker-publish https://integration.wikimedia.org/ci/job/phpunit-coverage-docker-publish/1559/console : FAILURE in 23s",
+    "patchSet": {
+      "number": 1,
+      "revision": "99c961fbdc5d06438545fe9903287266374c1dc0",
+      "parents": [
+        "d9d93e3071589fbb2867c858252156ab3f42efc5"
+      ],
+      "ref": "refs/changes/46/540646/1",
+      "uploader": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "createdOn": 1570126580,
+      "author": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 1,
+      "sizeDeletions": -1
+    },
+    "change": {
+      "project": "mediawiki/tools/codesniffer",
+      "branch": "master",
+      "topic": "phpunit",
+      "id": "I6a290d65b13ccbb2e20bc878653f564b5fa57bb4",
+      "number": 540646,
+      "subject": "Require PHPUnit 6+",
+      "owner": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "url": "https://gerrit.wikimedia.org/r/540646",
+      "commitMessage": "Require PHPUnit 6+\n\nSame as core.\n\nChange-Id: I6a290d65b13ccbb2e20bc878653f564b5fa57bb4\n",
+      "createdOn": 1570126580,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/tools/codesniffer",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I6a290d65b13ccbb2e20bc878653f564b5fa57bb4"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570127000
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 4:\n\nPost-merge build failed.\n\n- phpunit-coverage-docker-publish https://integration.wikimedia.org/ci/job/phpunit-coverage-docker-publish/1560/console : FAILURE in 23s",
+    "patchSet": {
+      "number": 4,
+      "revision": "8d70a0da7645e0b7692651b457429749c5cbc4d5",
+      "parents": [
+        "99c961fbdc5d06438545fe9903287266374c1dc0"
+      ],
+      "ref": "refs/changes/26/538726/4",
+      "uploader": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "createdOn": 1570126862,
+      "author": {
+        "name": "RealName 4",
+        "email": "email.4@example.com",
+        "username": "UserName 4"
+      },
+      "kind": "TRIVIAL_REBASE",
+      "sizeInsertions": 1,
+      "sizeDeletions": -263
+    },
+    "change": {
+      "project": "mediawiki/tools/codesniffer",
+      "branch": "master",
+      "topic": "die-hhvm",
+      "id": "I26fc676d7b8a9246d367c56552806d73fc59b620",
+      "number": 538726,
+      "subject": "Remove prohibitions on new PHP features",
+      "owner": {
+        "name": "RealName 4",
+        "email": "email.4@example.com",
+        "username": "UserName 4"
+      },
+      "url": "https://gerrit.wikimedia.org/r/538726",
+      "commitMessage": "Remove prohibitions on new PHP features\n\nPending removal of HHVM support from MediaWiki.\n\nBug: T231710\nChange-Id: I26fc676d7b8a9246d367c56552806d73fc59b620\n",
+      "createdOn": 1569293592,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/tools/codesniffer",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I26fc676d7b8a9246d367c56552806d73fc59b620"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570127064
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 3:\n\nPost-merge build failed.\n\n- phpunit-coverage-docker-publish https://integration.wikimedia.org/ci/job/phpunit-coverage-docker-publish/1561/console : FAILURE in 30s",
+    "patchSet": {
+      "number": 3,
+      "revision": "f45c4c1bae186a666fdc576b6b88887ad54cab9e",
+      "parents": [
+        "8d70a0da7645e0b7692651b457429749c5cbc4d5"
+      ],
+      "ref": "refs/changes/48/540648/3",
+      "uploader": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "createdOn": 1570127170,
+      "author": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "kind": "TRIVIAL_REBASE",
+      "sizeInsertions": 1,
+      "sizeDeletions": -1
+    },
+    "change": {
+      "project": "mediawiki/tools/codesniffer",
+      "branch": "master",
+      "topic": "phpreq",
+      "id": "I8827c6d2f2e4c4ea2db255b3ebeaf357c9237390",
+      "number": 540648,
+      "subject": "Require PHP 7.2+ in composer.json",
+      "owner": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "url": "https://gerrit.wikimedia.org/r/540648",
+      "commitMessage": "Require PHP 7.2+ in composer.json\n\nChange-Id: I8827c6d2f2e4c4ea2db255b3ebeaf357c9237390\n",
+      "createdOn": 1570126815,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/tools/codesniffer",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I8827c6d2f2e4c4ea2db255b3ebeaf357c9237390"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570128017
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "comment": "Patch Set 5:\n\nPost-merge build failed.\n\n- phpunit-coverage-docker-publish https://integration.wikimedia.org/ci/job/phpunit-coverage-docker-publish/1563/console : FAILURE in 23s",
+    "patchSet": {
+      "number": 5,
+      "revision": "cf8a0442f155b7f05901582af3c516d8d143b94d",
+      "parents": [
+        "f45c4c1bae186a666fdc576b6b88887ad54cab9e"
+      ],
+      "ref": "refs/changes/29/539529/5",
+      "uploader": {
+        "name": "jenkins-bot",
+        "username": "jenkins-bot"
+      },
+      "createdOn": 1570140509,
+      "author": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "kind": "TRIVIAL_REBASE",
+      "sizeInsertions": 10,
+      "sizeDeletions": -5
+    },
+    "change": {
+      "project": "mediawiki/tools/codesniffer",
+      "branch": "master",
+      "topic": "referenceThis",
+      "id": "I6a9584c0c2667097742541ef74a744b5face7723",
+      "number": 539529,
+      "subject": "Don't suggest to use a temporary variable for &$this",
+      "owner": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "url": "https://gerrit.wikimedia.org/r/539529",
+      "commitMessage": "Don't suggest to use a temporary variable for &$this\n\nPassing $this by reference emits a notice since PHP 7.1. We've been\nrecommending to assign it to a different variable before creating a\nreference for back compat, but the reference is redundant in PHP > 4.\n\nNow that we only support PHP72+, directly suggest to remove the ampersand.\n\nChange-Id: I6a9584c0c2667097742541ef74a744b5face7723\n",
+      "createdOn": 1569589814,
+      "status": "MERGED"
+    },
+    "project": "mediawiki/tools/codesniffer",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I6a9584c0c2667097742541ef74a744b5face7723"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570140816
+  }
+]

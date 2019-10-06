@@ -37,15 +37,26 @@ def extract_bug(commit_msg: str):
         return 'T' + search.group(1)
 
 
-def is_post_merge_build_comment(ret: dict, event: dict):
-    comment = event.get('comment')
+def should_ignore_CI_comment(ret, event):
+    """
+    jenkins-bot and Pipeline bot get a special treatment: their comments are only reported
+    in case an approval _is present_, and _changes_ to a _negative value_.
+    The goal is to filter out post-commit events, code coverage comments, etc.
 
-    return (
-        ret['user'] == JENKINS_USER and
-        event['change']['status'] == 'MERGED' and
-        comment and
-        'Post-merge build succeeded' in comment
-    )
+    :param event: The event to handle
+    :return: Whether the event should be ignored or not.
+    """
+    if ret['user'] not in IGNORED_POSITIVE_VOTES:
+        return False
+
+    if 'approvals' not in event:
+        return True
+
+    if not any('oldValue' in approval and int(approval['value']) < 0
+               for approval in event['approvals']):
+        return True
+
+    return False
 
 
 def process_event(event: dict):
@@ -60,7 +71,7 @@ def process_event(event: dict):
     elif event['type'] == 'comment-added':
         ret = process_simple(event, 'CR', 'author')
 
-        if is_post_merge_build_comment(ret, event):
+        if should_ignore_CI_comment(ret, event):
             return None
 
         comment = ''
@@ -87,18 +98,11 @@ def process_event(event: dict):
         ret['inline'] = inline
         ret['approvals'] = {}
 
-        if event.get('approvals'):
+        if 'approvals' in event:
             for approval in event['approvals']:
                 value = int(approval['value'])
-
-                # First, if it's jenkins-bot, skip if the value is not negative
-                if ret['user'] in IGNORED_POSITIVE_VOTES and value >= 0:
-                    # Comments by CI bots are only relevant if they are -1; +1 does not need
-                    # notification and +2 gets followed immediately by a merge notification
-                    # which /is/ shown.
-                    return None
-
                 old_value = int(approval.get('oldValue', 0))
+
                 if value == old_value:
                     # if the review value didn't change, don't mention the score
                     continue

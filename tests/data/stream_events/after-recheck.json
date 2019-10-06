@@ -1,0 +1,131 @@
+[
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "-1"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 1:\n\nMain test build failed.\n\n- wmf-quibble-core-vendor-mysql-php72-docker https://integration.wikimedia.org/ci/job/wmf-quibble-core-vendor-mysql-php72-docker/7232/console : SUCCESS in 11m 40s\n- wmf-quibble-selenium-php72-docker https://integration.wikimedia.org/ci/job/wmf-quibble-selenium-php72-docker/608/console : SUCCESS in 12m 55s\n- mwgate-node10-docker https://integration.wikimedia.org/ci/job/mwgate-node10-docker/37857/console : SUCCESS in 1m 15s\n- mediawiki-quibble-composer-mysql-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-composer-mysql-php72-docker/2264/console : SUCCESS in 7m 30s\n- mediawiki-quibble-vendor-mysql-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-vendor-mysql-php72-docker/6485/console : SUCCESS in 7m 25s\n- mediawiki-quibble-composertest-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-composertest-php72-docker/6279/console : SUCCESS in 4m 23s\n- mediawiki-core-jsduck-docker https://integration.wikimedia.org/ci/job/mediawiki-core-jsduck-docker/18745/console : SUCCESS in 22s\n- mediawiki-core-php72-phan-docker https://integration.wikimedia.org/ci/job/mediawiki-core-php72-phan-docker/7548/console : FAILURE in 32s",
+    "patchSet": {
+      "number": 1,
+      "revision": "654b094fca5dc5496c03148ce4c6dde39491dc75",
+      "parents": [
+        "552d285184a2ba312700304c7e7414d567966bd9"
+      ],
+      "ref": "refs/changes/84/540584/1",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1570103539,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 1,
+      "sizeDeletions": 0
+    },
+    "change": {
+      "project": "mediawiki/core",
+      "branch": "master",
+      "id": "I772c9a89c681dba138b3caeac8dcd3ad5ef45cec",
+      "number": 540584,
+      "subject": "Add Doctrine DBAL",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/540584",
+      "commitMessage": "Add Doctrine DBAL\n\nBug: T230420\nBug: T230419\nChange-Id: I772c9a89c681dba138b3caeac8dcd3ad5ef45cec\n",
+      "createdOn": 1570103539,
+      "status": "NEW"
+    },
+    "project": "mediawiki/core",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I772c9a89c681dba138b3caeac8dcd3ad5ef45cec"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570136154
+  },
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "-1"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 14:\n\nMain test build failed.\n\n- wmf-quibble-core-vendor-mysql-php72-docker https://integration.wikimedia.org/ci/job/wmf-quibble-core-vendor-mysql-php72-docker/7249/console : SUCCESS in 14m 37s\n- wmf-quibble-selenium-php72-docker https://integration.wikimedia.org/ci/job/wmf-quibble-selenium-php72-docker/631/console : SUCCESS in 12m 48s\n- mwgate-node10-docker https://integration.wikimedia.org/ci/job/mwgate-node10-docker/37884/console : SUCCESS in 1m 16s\n- mediawiki-quibble-composer-mysql-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-composer-mysql-php72-docker/2277/console : FAILURE in 7m 15s\n- mediawiki-quibble-vendor-mysql-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-vendor-mysql-php72-docker/6498/console : FAILURE in 9m 01s\n- mediawiki-quibble-composertest-php72-docker https://integration.wikimedia.org/ci/job/mediawiki-quibble-composertest-php72-docker/6292/console : FAILURE in 1m 04s\n- mediawiki-core-jsduck-docker https://integration.wikimedia.org/ci/job/mediawiki-core-jsduck-docker/18758/console : SUCCESS in 22s\n- mediawiki-core-php72-phan-docker https://integration.wikimedia.org/ci/job/mediawiki-core-php72-phan-docker/7561/console : SUCCESS in 1m 38s",
+    "patchSet": {
+      "number": 14,
+      "revision": "7d111bd75ce360fa9b1a077510d2318982b48579",
+      "parents": [
+        "6a1c6cd86fbbe170f109e96431e511bd9ebb87d2"
+      ],
+      "ref": "refs/changes/06/458106/14",
+      "uploader": {
+        "name": "RealName 2",
+        "email": "email.2@example.com",
+        "username": "UserName 2"
+      },
+      "createdOn": 1570127843,
+      "author": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 46,
+      "sizeDeletions": -54
+    },
+    "change": {
+      "project": "mediawiki/core",
+      "branch": "master",
+      "topic": "phpunit-6",
+      "id": "I9d4771c28160356ff58884e3a58fa28c8db4e8a5",
+      "number": 458106,
+      "subject": "Move MediaWikiTestCase::setUp() and tearDown() to annotation hooks",
+      "owner": {
+        "name": "RealName 3",
+        "email": "email.3@example.com",
+        "username": "UserName 3"
+      },
+      "url": "https://gerrit.wikimedia.org/r/458106",
+      "commitMessage": "Move MediaWikiTestCase::setUp() and tearDown() to annotation hooks\n\nThis removes the requirement that setUp() and tearDown() in the derived\nclass need to call the parent.\n\nChange-Id: I9d4771c28160356ff58884e3a58fa28c8db4e8a5\n",
+      "createdOn": 1536122908,
+      "status": "NEW"
+    },
+    "project": "mediawiki/core",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I9d4771c28160356ff58884e3a58fa28c8db4e8a5"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570140251
+  }
+]

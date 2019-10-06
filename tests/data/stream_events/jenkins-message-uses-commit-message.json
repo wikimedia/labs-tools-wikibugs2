@@ -1,0 +1,68 @@
+[
+  {
+    "author": {
+      "name": "jenkins-bot",
+      "username": "jenkins-bot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "-1",
+        "oldValue": "0"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 4: Verified-1\n\nMerge Failed.\n\nThis change or one of its cross-repo dependencies was unable to be automatically merged with the current state of its repository. Please rebase the change and upload a new patchset.",
+    "patchSet": {
+      "number": 4,
+      "revision": "2e00e5a986ecf770cdcbd30f27713f72a8d801b6",
+      "parents": [
+        "e72776eb382e8ea9095308a95471d7fb890b91c0"
+      ],
+      "ref": "refs/changes/92/540492/4",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1570128616,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "TRIVIAL_REBASE",
+      "sizeInsertions": 0,
+      "sizeDeletions": -29
+    },
+    "change": {
+      "project": "mediawiki/core",
+      "branch": "master",
+      "topic": "hhvm-removal",
+      "id": "I2c551f45f0a3c329500887bea33ccce521a78be9",
+      "number": 540492,
+      "subject": "HHVM removal: Drop phan support for HHVM",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.1@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/540492",
+      "commitMessage": "HHVM removal: Drop phan support for HHVM\n\nChange-Id: I2c551f45f0a3c329500887bea33ccce521a78be9\n",
+      "createdOn": 1570052491,
+      "status": "NEW"
+    },
+    "project": "mediawiki/core",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I2c551f45f0a3c329500887bea33ccce521a78be9"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1570128705
+  }
+]

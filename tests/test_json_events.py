@@ -135,4 +135,42 @@ def test_gate_submit_merge():
 def test_post_merge_build():
     messages = process_events_file(data_path / "post-merge-build.json")
 
+    assert messages == []
+
+
+def test_post_merge_build_failed():
+    # See https://phabricator.wikimedia.org/T201261#5569860
+    messages = process_events_file(data_path / "post-merge-build-failed.json")
     assert len(messages) == 0
+
+
+def test_pipelinebot_nonvoting():
+    messages = process_events_file(data_path / "pipelinebot_nonvoting.json")
+    assert messages == []
+
+
+def test_after_recheck():
+    # Note: we would like the first vote after recheck to be reported, but Jenkins-bot does not provide
+    # us with sufficient information to do so.
+    messages = process_events_file(data_path / "after-recheck.json")
+    assert messages == []
+
+
+def test_jenkins_message_uses_commit_message():
+    messages = process_events_file(data_path / "jenkins-message-uses-commit-message.json")
+
+    assert len(messages) == 1
+    message = messages[0]
+
+    assert message['type'] == 'CR'
+    assert message['message'] == "HHVM removal: Drop phan support for HHVM"
+    assert message['approvals'] == {'V': -1}
+
+
+def test_multiple_jenkins_comments():
+    messages = process_events_file(data_path / "multiple-jenkins-comments.json")
+
+    assert len(messages) == 2
+    assert messages[0]['type'] == 'PS14'
+    assert messages[1]['type'] == 'CR'
+    assert messages[1]['approvals'] == {'V': -1}
