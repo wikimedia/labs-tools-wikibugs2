@@ -93,6 +93,7 @@ channels:
 
     "#mediawiki-i18n":
         - translatewiki\.net
+        - affects-translatewiki\.net
 
     "#wikimedia-cloud-feed":
         - Cloud-Services

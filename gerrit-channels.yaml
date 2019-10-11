@@ -11,15 +11,7 @@ default-channel: "#wikimedia-dev"
 firehose-channel: "#mediawiki-feed"
 channels:
     "#mediawiki-i18n":
-        mediawiki/extensions/Babel:
-        mediawiki/extensions/CLDR:
-        mediawiki/extensions/ContentTranslation:
         mediawiki/extensions/Translate:
-        mediawiki/extensions/TranslationNotifications:
-        mediawiki/extensions/TwnMainPage:
-        mediawiki/extensions/UniversalLanguageSelector:
-        mediawiki/services/cxserver:
-        mediawiki/services/cxserver/deploy:
         translatewiki.*:
     "#mediawiki-parsoid":
         mediawiki/services/parsoid:
