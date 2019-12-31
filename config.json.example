@@ -4,7 +4,8 @@
         "IRC_NICK" : "wikibugs",
         "IRC_PASSWORD": "...",
 
-        "PHAB_HOST" : "https://phabricator.wikimedia.org (or https://phab-01.wmflabs.org)",
+        "PHAB_HOST" : "https://phabricator.wikimedia.org",
+        "PHAB_HOST_comment": "(or https://phab-01.wmflabs.org)",
         "PHAB_USER" : "pywikibugs",
         "PHAB_CERT" : "...",
 

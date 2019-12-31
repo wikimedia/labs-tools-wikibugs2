@@ -75,10 +75,8 @@ class Wikibugs2(object):
         if not events:
             # PHP bug, what should be {} is actually []
             return
-        events = list(events.values())
-        # Events are in the order of most recent first to oldest, so reverse!
-        events.reverse()
-        for event in events:
+
+        for event in sorted(events.values(), key=lambda x: int(x['chronologicalKey'])):
             key = int(event['chronologicalKey'])
             if key > self.poll_last_seen_chrono_key:
                 self.process_event(event)

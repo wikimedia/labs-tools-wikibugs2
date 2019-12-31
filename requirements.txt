@@ -7,3 +7,4 @@ irc3==0.5.1
 beautifulsoup4==4.7.1
 click==6.7
 pytest
+requests_mock==1.7.0
