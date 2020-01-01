@@ -1,8 +1,5 @@
 # encoding: utf-8
-from collections import OrderedDict
 import json
-from pathlib import Path
-import urllib.parse
 
 import pytest
 import requests_mock
@@ -10,8 +7,8 @@ import requests_mock
 import configfetcher
 import phabricator
 import wikibugs
-
-root = Path(__file__).parent.parent
+from tests.common import root
+from tests.wikibugs_network.common import parse_request, conduit_connect, unexpected
 
 
 class WikibugsFixture:
@@ -29,16 +26,6 @@ class WikibugsFixture:
 @pytest.fixture()
 def bugs():
     return WikibugsFixture()
-
-
-def parse_request(request):
-    decoded = OrderedDict(urllib.parse.parse_qsl(request.text))
-    assert decoded['output'] == 'json'
-    return json.loads(decoded['params'])
-
-
-def conduit_connect_1(request, context):
-    return {'result': {'sessionKey': 'key', 'connectionID': 1}}
 
 
 def feed_query_initial(request, context):
@@ -68,12 +55,12 @@ def feed_query_error_response(request, context):
 
 def test_polling(bugs):
     with requests_mock.mock() as m:
-        m.post('/api/conduit.connect', json=conduit_connect_1)
-        m.post('/api/feed.query', [{'json': feed_query_initial}, {'json': feed_query_second}])
+        m.post('/api/conduit.connect', [{'json': conduit_connect}, {'json': unexpected}])
+        m.post('/api/feed.query', [{'json': feed_query_initial}, {'json': feed_query_second}, {'json': unexpected}])
         bugs.poll()
         assert bugs.events == []
 
-        m.post('/api/feed.query', json=feed_query_third)
+        m.post('/api/feed.query', [{'json': feed_query_third}, {'json': unexpected}])
         bugs.poll()
 
         assert len(bugs.events) == 3
@@ -83,10 +70,10 @@ def test_polling(bugs):
 
 def test_error_response(bugs):
     with requests_mock.mock() as m:
-        m.post('/api/conduit.connect', json=conduit_connect_1)
+        m.post('/api/conduit.connect', [{'json': conduit_connect}, {'json': unexpected}])
         m.post('/api/feed.query', [{'json': feed_query_initial}, {'json': feed_query_second}])
         bugs.poll()
 
-        m.post('/api/feed.query', json=feed_query_error_response)
+        m.post('/api/feed.query', [{'json': feed_query_error_response}, {'json': unexpected}])
         with pytest.raises(phabricator.PhabricatorException):
             bugs.poll()

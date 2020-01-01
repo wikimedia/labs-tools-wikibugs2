@@ -1,10 +1,8 @@
 import json
-from pathlib import Path
+from tests.common import root
 
 import grrrrit
 
-
-root = Path(__file__).parent.parent
 data_path = root / "tests" / "data" / "stream_events"
 
 

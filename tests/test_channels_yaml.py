@@ -1,10 +1,8 @@
 #!/usr/bin/env python
-from pathlib import Path
-
-import channelfilter
 import json
 
-root = Path(__file__).parent.parent  # type: Path
+import channelfilter
+from tests.common import root
 
 
 def test_channelfilter():

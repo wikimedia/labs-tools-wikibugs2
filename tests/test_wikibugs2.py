@@ -1,12 +1,10 @@
 # encoding: utf-8
-from pathlib import Path
 
 import configfetcher
 import pytest
 import requests
 import wikibugs
-
-root = Path(__file__).parent.parent
+from tests.common import root
 
 
 @pytest.fixture()

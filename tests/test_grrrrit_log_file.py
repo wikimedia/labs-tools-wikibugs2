@@ -5,8 +5,8 @@ from pathlib import Path
 import json
 import pytest
 import grrrrit
+from tests.common import root
 
-root = Path(__file__).parent.parent
 data_path = root / "tests" / "data"
 
 
