@@ -221,23 +221,19 @@ class Wikibugs2(object):
                 task_page, event_info['data']['transactionPHIDs']
             )
         except Exception as e:
-            logger.exception("Could not retrieve anchor for %s" % event_info['data']['transactionPHIDs'])
+            logger.exception("Could not retrieve anchor for %s" % event_info['data']['objectPHID'])
             if self.raise_errors:
                 raise
-            open("/data/project/wikibugs/errors/XACT-anchor/" + event_info['data']['objectPHID'], "w").write(
-                repr(event_info) + "\n" + repr(e)
-            )
+            self.dump_error("XACT-anchor", e, event_info)
             anchor = ""
 
         try:
             projects = self.get_tags(task_page)
         except Exception as e:
-            logger.exception("Could not retrieve tags for %s" % event_info['data']['transactionPHIDs'])
+            logger.exception("Could not retrieve tags for %s" % event_info['data']['objectPHID'])
             if self.raise_errors:
                 raise
-            open("/data/project/wikibugs/errors/scrape-tags/" + event_info['data']['objectPHID'], "w").write(
-                repr(event_info) + "\n" + repr(e)
-            )
+            self.dump_error("scrape-tags", e, event_info)
             projects = [self.get_project_name(phid) for phid in task_info['projectPHIDs']]
 
         # Start sorting this into things we care about...
@@ -300,6 +296,11 @@ class Wikibugs2(object):
         if not args.ask_before_push or \
                 input('Push? (y/N)').lower().strip() == 'y':
             self.rqueue.put(useful_event_metadata)
+
+    def dump_error(self, error_type, e, event_info):
+        open("/data/project/wikibugs/errors/" + error_type + "/" + event_info['data']['objectPHID'], "w").write(
+            repr(event_info) + "\n" + repr(e)
+        )
 
 
 if __name__ == '__main__':
