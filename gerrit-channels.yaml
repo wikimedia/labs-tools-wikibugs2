@@ -80,6 +80,8 @@ channels:
         mediawiki/extensions/NavigationTiming:
         mediawiki/extensions/PerformanceInspector:
         mediawiki/extensions/WikimediaEvents:
+    "#wikimedia-codehealth":
+        labs/tools/sonarqubebot:
     "#wikimedia-dev":
         # This is also sent to #mediawiki-i18n
         mediawiki/extensions/Babel:
