@@ -14,7 +14,7 @@ from enum import Enum
 from wblogging import LoggingSetupParser
 
 IGNORED_USERS = ['L10n-bot', 'Libraryupgrader']
-IGNORED_POSITIVE_VOTES = ['jenkins-bot', 'PipelineBot']
+IGNORED_POSITIVE_VOTES = ['jenkins-bot', 'PipelineBot', 'SonarQube Bot']
 JENKINS_USER = 'jenkins-bot'
 
 logger = logging.getLogger('wikibugs.wb2-grrrrit')

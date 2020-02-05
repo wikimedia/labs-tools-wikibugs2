@@ -31,9 +31,11 @@ for f in Path(__file__).parent.glob("*.json"):
     parsed = json.load(f.open(), object_pairs_hook=OrderedDict)
 
     replacements_used = {
-        'name': {'jenkins-bot': 'jenkins-bot', 'PipelineBot': 'PipelineBot'},
-        'email': {'no-jenkins-bot-email': 'no-jenkins-bot-email', 'no-pipelinebot-email': 'no-pipelinebot-email'},
-        'username': {'jenkins-bot': 'jenkins-bot', 'pipelinebot': 'pipelinebot'}
+        'name': {'jenkins-bot': 'jenkins-bot', 'PipelineBot': 'PipelineBot', 'SonarQube Bot': 'SonarQube Bot'},
+        'email': {'no-jenkins-bot-email': 'no-jenkins-bot-email',
+                  'no-pipelinebot-email': 'no-pipelinebot-email',
+                  'no-sonarqubebot-email': 'no-sonarqubebot-email'},
+        'username': {'jenkins-bot': 'jenkins-bot', 'pipelinebot': 'pipelinebot', 'sonarqubebot': 'sonarqubebot'}
     }
 
     formatting_offset = len(replacements_used['name']) - 1

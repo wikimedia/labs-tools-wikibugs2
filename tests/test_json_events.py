@@ -147,6 +147,16 @@ def test_pipelinebot_nonvoting():
     assert messages == []
 
 
+def test_sonarqube_plusone():
+    messages = process_events_file(data_path / "sonarqube_v+1.json")
+    assert messages == []
+
+
+def test_sonarqube_nonvoting():
+    messages = process_events_file(data_path / "sonarqube_failed_comment.json")
+    assert messages == []
+
+
 def test_after_recheck():
     # Note: we would like the first vote after recheck to be reported, but Jenkins-bot does not provide
     # us with sufficient information to do so.

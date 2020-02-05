@@ -1,0 +1,69 @@
+[
+  {
+    "author": {
+      "name": "SonarQube Bot",
+      "email": "email.1@example.com",
+      "username": "sonarqubebot"
+    },
+    "approvals": [
+      {
+        "type": "Verified",
+        "description": "Verified",
+        "value": "1",
+        "oldValue": "0"
+      },
+      {
+        "type": "Code-Review",
+        "description": "Code-Review",
+        "value": "0"
+      }
+    ],
+    "comment": "Patch Set 1: Verified+1\n\n\u00e2\u0153\u201d Quality gate passed!\n\n\n* \u00e2\u0153\u201d reliability rating\n* \u00e2\u0153\u201d security rating\n* \u00e2\u0153\u201d maintainability rating\n* \u00e2\u0153\u201d coverage\n* \u00e2\u0153\u201d duplicated lines density\n\nReport: https://sonarcloud.io/dashboard?id=mediawiki-extensions-Cite&branch=570283-1 Please give feedback and report false positives at https://www.mediawiki.org/wiki/Talk:Continuous_integration/Codehealth_Pipeline",
+    "patchSet": {
+      "number": 1,
+      "revision": "489be58ad0e229f8f341d8fbdc2e7404f68f7fed",
+      "parents": [
+        "7defec4d7a4c9890564e7373b5fdf609419c5a36"
+      ],
+      "ref": "refs/changes/83/570283/1",
+      "uploader": {
+        "name": "RealName 1",
+        "email": "email.2@example.com",
+        "username": "UserName 1"
+      },
+      "createdOn": 1580899632,
+      "author": {
+        "name": "RealName 1",
+        "email": "email.2@example.com",
+        "username": "UserName 1"
+      },
+      "kind": "REWORK",
+      "sizeInsertions": 223,
+      "sizeDeletions": -80
+    },
+    "change": {
+      "project": "mediawiki/extensions/Cite",
+      "branch": "master",
+      "topic": "revert_follow",
+      "id": "I695bf3ecc003715466c45c0d04cc023acf6ebe7c",
+      "number": 570283,
+      "subject": "Revert \"follow\" standardization (backport)",
+      "owner": {
+        "name": "RealName 1",
+        "email": "email.2@example.com",
+        "username": "UserName 1"
+      },
+      "url": "https://gerrit.wikimedia.org/r/570283",
+      "commitMessage": "Revert \"follow\" standardization (backport)\n\nOur changes were based on a misunderstanding of the use case for \"follow\".\n\nReverts the following commits:\n* d01cba60fb4764d9aa02f1730f98e3f5f3684519\n* 38122d91cd00bfc950ec199d2a76ceeb4b84f38b\n* a3d312c8f40c6c88852931950aa69acfe91a0acb\n\nBug: T240858\nChange-Id: I695bf3ecc003715466c45c0d04cc023acf6ebe7c\n",
+      "createdOn": 1580899632,
+      "status": "NEW"
+    },
+    "project": "mediawiki/extensions/Cite",
+    "refName": "refs/heads/master",
+    "changeKey": {
+      "id": "I695bf3ecc003715466c45c0d04cc023acf6ebe7c"
+    },
+    "type": "comment-added",
+    "eventCreatedOn": 1580899885
+  }
+]
