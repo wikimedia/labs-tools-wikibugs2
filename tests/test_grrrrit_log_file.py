@@ -25,18 +25,12 @@ def process_log_file(logfile: Path):
     diff = []
 
     for i, line in enumerate(logfile.open(encoding='utf-8')):
-        if " - INFO - {" not in line:
-            continue
-
-        try:
-            line = line.split("- INFO - ")[1]
+        if 'stream-events: ' in line:
+            line = line.split("stream-events: ")[1].strip()
+            if line == 'Connection to gerrit.wikimedia.org closed by remote host.':
+                continue
             line = json.loads(line)
-        except Exception as e:
-            print(i, line, e)
-            raise
 
-        if "eventCreatedOn" in line:
-            # heuristic: this is a gerrit logged event
             processed_event = grrrrit.process_event(line)
             if processed_event:
                 if current_expectation is not None:
@@ -44,7 +38,10 @@ def process_log_file(logfile: Path):
 
                 current_expectation = processed_event
                 current_expectation_line = i
-        else:
+        elif 'processed: ' in line:
+            line = line.split('processed: ')[1]
+            line = json.loads(line.strip())
+
             if current_expectation != line:
                 diff.append(("-", i, line))
             else:
