@@ -35,7 +35,7 @@ class IRCMessageBuilder(object):
         '100': 'Unbreak!',
         '90': 'Triage',
         '80': 'High',
-        '50': 'Normal',
+        '50': 'Medium',
         '25': 'Low',
         '10': 'Lowest',
     }
