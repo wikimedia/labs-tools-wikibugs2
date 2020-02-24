@@ -129,7 +129,6 @@ channels:
         - releng-(.*)
         # projects
         - Continuous-Integration-(.*)
-        - Beta-Cluster-Infrastructure(.*)
         - Deployments
         - scap(.*)
         - Gerrit
@@ -137,10 +136,12 @@ channels:
         - Differential
         - Diffusion
         - Project-Admins
-        - MediaWiki-Releasing
-        - MediaWiki-Codesniffer
         - commit-message-validator
         - Zuul
+        # Other projects we care about
+        - Beta-Cluster-Infrastructure(.*)
+        - MediaWiki-Codesniffer
+        - MediaWiki-Releasing
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
