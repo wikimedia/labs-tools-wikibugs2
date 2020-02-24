@@ -143,8 +143,12 @@ channels:
         - Zuul
         # Other projects we care about
         - Beta-Cluster-Infrastructure(.*)
+        - LibUp
         - MediaWiki-Codesniffer
         - MediaWiki-Releasing
+        - phan
+        - phan-taint-check-plugin
+        - VPS-project-codesearch
 
     "#mediawiki-visualeditor":
         - VisualEditor(-.*)?
