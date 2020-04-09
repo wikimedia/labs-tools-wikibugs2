@@ -257,15 +257,20 @@ channels:
         labs/tools/quarrybot-enwiki:
         labs/icinga2:
     "#wikimedia-infrastructure":
+        mediawiki/extensions/JsonConfig:
+        mediawiki/extensions/Kartographer:
+        mediawiki/extensions/MachineVision:
+        mediawiki/extensions/MobileApp:
+        mediawiki/extensions/PushNotifications:
+        mediawiki/extensions/ReadingLists:
+        mediawiki/extensions/WikimediaEditorTasks:
+        mediawiki/services/chromium-render:
+        mediawiki/services/kartotherian:
         mediawiki/services/mobileapps:
         mediawiki/services/mobileapps/deploy:
         mediawiki/services/recommendation-api:
         mediawiki/services/recommendation-api/deploy:
         mediawiki/services/wikifeeds:
-        mediawiki/extensions/MachineVision:
-        mediawiki/extensions/MobileApp:
-        mediawiki/extensions/ReadingLists:
-        mediawiki/extensions/WikimediaEditorTasks:
         maps/.*:
         mapdata:
     "#ZppixBot":
