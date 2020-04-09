@@ -41,13 +41,6 @@ channels:
         mediawiki/services/citoid:
         mediawiki/services/graphoid:
         mediawiki/services/mathoid:
-    "#wikimedia-interactive":
-        mediawiki/extensions/JsonConfig:
-        mediawiki/extensions/Graph:
-        mediawiki/extensions/Kartographer:
-        mediawiki/services/graphoid:
-        maps/.*:
-        mapdata:
     "#pywikibot":
         pywikipediabot.*:
         # Sent to #wikimedia-dev-africa as well

@@ -178,17 +178,6 @@ channels:
         - Apex
         - Vector
 
-    "#wikimedia-interactive":
-        - Graph
-        - Graphoid(.*)?
-        - Kartographer(.*)?
-        - Maps(.*)?
-        - Map-Styles(.*)?
-        - Kartotherian(.*)?
-        - Tilerator(.*)?
-        - Interactive-Sprint(.*)?
-        - Tabular-Data(.*)?
-
     "#wikimedia-perf-bots":
         - Performance-Team
         - MediaWiki-ResourceLoader
@@ -316,7 +305,13 @@ channels:
 
     "#wikimedia-infrastructure":
         - Product-Infrastructure-Team(-.*)?
+        - Kartographer(.*)?
+        - Kartotherian(.*)?
+        - Map-Styles(.*)?
+        - Maps(.*)?
         - Recommendation-API
+        - Tabular-Data(.*)?
+        - Tilerator(.*)?
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers
