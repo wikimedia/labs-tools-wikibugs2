@@ -316,6 +316,7 @@ channels:
 
     "#wikimedia-infrastructure":
         - Product-Infrastructure-Team(-.*)?
+        - Recommendation-API
 
     "#wikimedia-dev-africa":
         - Africa-Wikimedia-Developers

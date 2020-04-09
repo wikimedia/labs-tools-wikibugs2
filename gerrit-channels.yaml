@@ -259,8 +259,13 @@ channels:
     "#wikimedia-infrastructure":
         mediawiki/services/mobileapps:
         mediawiki/services/mobileapps/deploy:
+        mediawiki/services/recommendation-api:
+        mediawiki/services/recommendation-api/deploy:
+        mediawiki/services/wikifeeds:
+        mediawiki/extensions/MachineVision:
         mediawiki/extensions/MobileApp:
         mediawiki/extensions/ReadingLists:
+        mediawiki/extensions/WikimediaEditorTasks:
         maps/.*:
         mapdata:
     "#ZppixBot":
