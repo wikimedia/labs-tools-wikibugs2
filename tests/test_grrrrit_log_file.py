@@ -51,7 +51,7 @@ def process_log_file(logfile: Path):
                 current_expectation = None
                 current_expectation_line = -1
 
-    for l in diff:
-        print("{1}: {0}  {2}".format(*l))
+    for diffline in diff:
+        print("{1}: {0}  {2}".format(*diffline))
 
     assert len(diff) == 0
