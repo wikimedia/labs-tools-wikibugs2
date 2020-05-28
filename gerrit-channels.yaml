@@ -164,6 +164,9 @@ channels:
     operations/software/gerrit.*:
     wikimedia/bugzilla/modifications:
     wikimedia/bots/jouncebot:
+    # All commits to a wmf/ branch goes here, for co-ordinating production changes
+    .*:
+      branch: "^wmf\/"
     labs/private:
     # This is sent to #wikimedia-releng too.
   "#wikimedia-releng":
