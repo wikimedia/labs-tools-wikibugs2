@@ -301,7 +301,7 @@ channels:
         - VPS-project-icinga2
 
     "#ZppixBot":
-        - Tool-Zppixbot
+        - ZppixBot
 
     "#wikimedia-ops":
         - wikimedia-irc-freenode
