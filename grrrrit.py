@@ -138,7 +138,8 @@ def process_simple(event: dict, type_: str, user_property: str,
         'message': event['change']['subject'],
         'repo': event['change']['project'],
         'branch': event['change']['branch'],
-        'url': event['change']['url'],
+        # Use short URL form (T175929#6250620)
+        'url': "https://gerrit.wikimedia.org/r/{}".format(event['change']['number']),
         'task': extract_bug(event['change']['commitMessage']),
     }
 

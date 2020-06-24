@@ -12,6 +12,7 @@ def event():
             "project": "test",
             "branch": "master",
             "subject": "test",
+            "number": "2001",
             "url": "https://gerrit.git.wmflabs.org/r/2001",
             "commitMessage": "test\n\nChange-Id: I5a0210ada1104a378c2ecbc1dc7ec6c683d0eccd\n",
             "owner": {"name": "UserName"},
@@ -25,7 +26,7 @@ def test_basic_full(event):
     assert result['message'] == 'test'
     assert result['repo'] == 'test'
     assert result['branch'] == 'master'
-    assert result['url'] == 'https://gerrit.git.wmflabs.org/r/2001'
+    assert result['url'] == 'https://gerrit.wikimedia.org/r/2001'
     assert result['user'] == 'UserName'
     assert result['owner'] == 'UserName'
     assert result['task'] is None

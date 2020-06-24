@@ -32,7 +32,7 @@ def test_new_change():
         'branch': 'master',
         'repo': 'test',
         'task': None,
-        'url': 'https://gerrit.git.wmflabs.org/r/2001'}
+        'url': 'https://gerrit.wikimedia.org/r/2001'}
 
 
 def test_new_patchset():
