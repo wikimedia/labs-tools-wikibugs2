@@ -248,6 +248,8 @@ def main():
                 channels = list(channel_filter(processed['repo'], processed['branch']))
                 queue.put({'raw': True, 'msg': msg, 'channels': channels})
                 logger.info("%s: '%s' to [%s]", "message", msg, ", ".join(channels))
+            except KeyboardInterrupt:
+                raise
             except:
                 logger.exception('Error queuing message')
         ssh.stdout.flush()
@@ -262,5 +264,7 @@ if __name__ == '__main__':
     while True:
         try:
             main()
+        except KeyboardInterrupt:
+            raise
         except:
             logger.exception('Error, probably SSH connection dropped.')
