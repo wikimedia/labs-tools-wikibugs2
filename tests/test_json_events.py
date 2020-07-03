@@ -182,3 +182,8 @@ def test_multiple_jenkins_comments():
     assert messages[0]['type'] == 'PS14'
     assert messages[1]['type'] == 'CR'
     assert messages[1]['approvals'] == {'V': -1}
+
+
+def test_exclude_wip():
+    messages = process_events_file(data_path / "change_wip_true.json")
+    assert len(messages) == 0

@@ -59,9 +59,14 @@ def should_ignore_CI_comment(ret, event):
     return False
 
 
+# T239928
+def change_is_WIP(event: dict) -> bool:
+    return event.get('change', {}).get('wip', False)
+
+
 def process_event(event: dict):
     user = event.get('uploader', {}).get('name') or event.get('author', {}).get('name')
-    if user in IGNORED_USERS:
+    if user in IGNORED_USERS or change_is_WIP(event):
         return None
 
     ret = None
