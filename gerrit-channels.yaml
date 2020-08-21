@@ -177,6 +177,7 @@ channels:
     releng/.*:
     mediawiki/tools/codesniffer:
     mediawiki/tools/code-utils:
+    mediawiki/tools/train-dev:
     mediawiki/tools/release:
     mediawiki/tools/releng:
     mediawiki/tools/scap:
