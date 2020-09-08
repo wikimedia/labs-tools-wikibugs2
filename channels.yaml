@@ -141,6 +141,7 @@ channels:
         - Project-Admins
         - commit-message-validator
         - Zuul
+        - Jenkins
         # Other projects we care about
         - Beta-Cluster-Infrastructure(.*)
         - LibUp
