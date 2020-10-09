@@ -155,6 +155,7 @@ channels:
     # This is sent to #wikimedia-mobile too.
     mediawiki/extensions/Mantle:
   "#wikimedia-cloud-feed":
+    cloud/.*:
     labs/.*:
     analytics/quarry.*:
   "#wikimedia-operations":
