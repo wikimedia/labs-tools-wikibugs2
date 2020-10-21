@@ -190,7 +190,7 @@ def build_message(processed: dict) -> str:
             'comments' if processed['inline'] > 1 else 'comment'
         )
     text += ' [{}]'.format(trim_repo(processed['repo']))
-    if processed['branch'] not in ('master', 'production'):
+    if processed['branch'] not in ('master', 'main', 'production'):
         text += ' ({})'.format(processed['branch'])
     text += ' -'
     text += ' {}'.format(helper(processed['url'], foreground='teal'))
