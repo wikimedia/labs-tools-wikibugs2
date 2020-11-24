@@ -324,6 +324,9 @@ channels:
     "#wmcz-tracker":
         - WMCZ-Tracker
 
+    "#wikipedia-abstract-tech":
+        - abstract_wikipedia
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
 

@@ -25,6 +25,9 @@ channels:
     mediawiki/extensions/WikiEditor:
     unicodejs:
     VisualEditor/.*:
+  "#wikipedia-abstract-tech":
+    mediawiki/extensions/WikiLambda:
+    mediawiki/services/function-evaluator:
   "#wikimedia-editing":
     mediawiki/extensions/Cite$:
     mediawiki/extensions/CiteThisPage:
