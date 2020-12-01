@@ -291,6 +291,7 @@ channels:
     "#wikimedia-databases":
         - DBA
         - Blocked-on-schema-change
+        - Data-Persistence-Backup
 
     "#wikisource":
         - Wikisource
