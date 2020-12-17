@@ -73,6 +73,7 @@ channels:
     scoring/ores/assets:
   "#wikimedia-analytics":
     analytics/.*:
+    schemas/.*:
   "#wikimedia-perf-bots":
     performance.*:
     analytics/statsv:
