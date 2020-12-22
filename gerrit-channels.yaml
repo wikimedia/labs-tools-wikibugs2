@@ -260,7 +260,6 @@ channels:
     pywikibot.*:
   "##Zppix-Wikipedia":
     labs/tools/quarrybot-enwiki:
-    labs/icinga2:
   "#wikimedia-infrastructure":
     mediawiki/extensions/JsonConfig:
     mediawiki/extensions/Kartographer:
@@ -279,8 +278,6 @@ channels:
     mediawiki/services/wikifeeds:
     maps/.*:
     mapdata:
-  "#ZppixBot":
-    labs/tools/ZppixBot:
   "#wmcz-tracker":
     wikimedia-cz/tracker:
 ## WARNING

@@ -300,10 +300,6 @@ channels:
 
     "##Zppix-Wikipedia":
         - QuarryBot-enwiki
-        - VPS-project-icinga2
-
-    "#ZppixBot":
-        - ZppixBot
 
     "#wikimedia-ops":
         - wikimedia-irc-freenode
