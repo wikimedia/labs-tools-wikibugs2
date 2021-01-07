@@ -248,9 +248,9 @@ channels:
 
     "#wikimedia-operations":
         - ops(-.*)?
-        - operations
         - puppet
         - Blocked-on-Operations
+        - SRE
 
     "#wikimedia-serviceops":
         - serviceops
