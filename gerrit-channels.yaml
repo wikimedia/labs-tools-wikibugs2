@@ -28,6 +28,7 @@ channels:
   "#wikipedia-abstract-tech":
     mediawiki/extensions/WikiLambda:
     mediawiki/services/function-evaluator:
+    mediawiki/services/function-orchestrator:
   "#wikimedia-editing":
     mediawiki/extensions/Cite$:
     mediawiki/extensions/CiteThisPage:
