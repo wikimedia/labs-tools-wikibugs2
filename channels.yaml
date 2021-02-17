@@ -43,7 +43,9 @@ channels:
         - JADE
         - MediaWiki-extensions-ORES
         - ORES
-        - Scoring-platform-team(.*)?
+        - Machine-Learning-Team
+        - Lift-Wing
+        - artificial-intelligence
 
     "#wikimedia-codehealth":
         - Code-Health(-.*)?
