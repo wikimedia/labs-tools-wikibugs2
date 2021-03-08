@@ -46,6 +46,7 @@ channels:
         - Machine-Learning-Team
         - Lift-Wing
         - artificial-intelligence
+        - AI-Governance
 
     "#wikimedia-codehealth":
         - Code-Health(-.*)?
