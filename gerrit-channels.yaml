@@ -259,8 +259,6 @@ channels:
     labs/tools/Commons-twitter-bot:
     labs/tools/awmd-stats:
     pywikibot.*:
-  "##Zppix-Wikipedia":
-    labs/tools/quarrybot-enwiki:
   "#wikimedia-infrastructure":
     mediawiki/extensions/JsonConfig:
     mediawiki/extensions/Kartographer:

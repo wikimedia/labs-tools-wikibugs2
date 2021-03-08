@@ -301,9 +301,6 @@ channels:
         - Wikisource-Community-User-Group
         - ProofreadPage
 
-    "##Zppix-Wikipedia":
-        - QuarryBot-enwiki
-
     "#wikimedia-ops":
         - wikimedia-irc-freenode
 
