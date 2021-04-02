@@ -158,7 +158,7 @@ def main():
         ssl=True,
         password=conf.get('IRC_PASSWORD'),
         realname='wikibugs2',
-        userinfo=('Wikibugs v2.1, https://tools.wmflabs.org/wikibugs/ ,' +
+        userinfo=('Wikibugs v2.1, https://www.mediawiki.org/wiki/Wikibugs ,' +
                   'running on ' + current_host),
         includes=[
             'irc3.plugins.core',

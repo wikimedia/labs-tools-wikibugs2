@@ -10,6 +10,8 @@ import configfetcher
 import rqueue
 from wblogging import LoggingSetupParser
 
+USER_AGENT = 'Wikibugs v2.1, https://www.mediawiki.org/wiki/Wikibugs'
+
 parser = LoggingSetupParser(
     description="Read bugs from redis, format them and send them to irc",
 )
@@ -36,7 +38,8 @@ class Wikibugs2(object):
         self.phab = phabricator.Phabricator(
             self.conf.get('PHAB_HOST'),
             self.conf.get('PHAB_USER'),
-            self.conf.get('PHAB_CERT')
+            self.conf.get('PHAB_CERT'),
+            user_agent=USER_AGENT
         )
         self.rqueue = rqueue.RedisQueue(
             conf.get('REDIS_QUEUE_NAME'),
@@ -132,7 +135,7 @@ class Wikibugs2(object):
         return transactions
 
     def get_task_page(self, url):
-        return self.phab.req_session.get(url).text
+        return self.phab.req_session.get(url, headers=self.phab.headers).text
 
     def get_tags(self, task_page):
         soup = BeautifulSoup(task_page, features='html.parser')
