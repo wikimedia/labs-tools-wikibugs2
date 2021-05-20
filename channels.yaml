@@ -39,7 +39,7 @@ channels:
     "#wm-bot":
         - WM-Bot
 
-    "#wikimedia-ai":
+    "#wikimedia-ml":
         - JADE
         - MediaWiki-extensions-ORES
         - ORES
