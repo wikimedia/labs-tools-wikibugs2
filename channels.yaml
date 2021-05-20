@@ -97,7 +97,7 @@ channels:
     "#wikimedia-ed":
         - Education-.*
 
-    "#mediawiki-i18n":
+    "#translatewiki":
         - translatewiki\.net
         - affects-translatewiki\.net
 

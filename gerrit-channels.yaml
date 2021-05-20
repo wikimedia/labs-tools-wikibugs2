@@ -10,7 +10,7 @@
 default-channel: "#wikimedia-dev"
 firehose-channel: "#mediawiki-feed"
 channels:
-  "#mediawiki-i18n":
+  "#translatewiki":
     mediawiki/extensions/Translate:
     translatewiki.*:
   "#mediawiki-parsoid":
@@ -84,8 +84,6 @@ channels:
   "#wikimedia-codehealth":
     labs/tools/sonarqubebot:
   "#wikimedia-dev":
-    # This is also sent to #mediawiki-i18n
-    mediawiki/extensions/Babel:
     # This is also sent to #wikimedia-ai
     mediawiki/extensions/ORES:
     # These are sent to #wikimedia-collaboration too
