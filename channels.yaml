@@ -258,6 +258,9 @@ channels:
     "#wikimedia-serviceops":
         - serviceops
 
+    "#wikimedia-sp":
+        - Wikimedia-Small-Projects-User-Group.*
+
     "#wikimedia-traffic":
         - traffic
         - netops
