@@ -12,19 +12,18 @@ channels:
     mediawiki/services/parsoid/deploy:
     mediawiki/services/parsoid/node_modules:
     mediawiki/extensions/Parsoid:
-  "#mediawiki-visualeditor":
-    mediawiki/extensions/Citoid:
-    mediawiki/extensions/TemplateData:
-    mediawiki/extensions/VisualEditor:
-    mediawiki/extensions/WikiEditor:
-    unicodejs:
-    VisualEditor/.*:
   "#wikipedia-abstract-tech":
     mediawiki/extensions/WikiLambda:
     mediawiki/services/function-evaluator:
     mediawiki/services/function-orchestrator:
     mediawiki/services/function-schemata:
   "#wikimedia-editing":
+    mediawiki/extensions/Citoid:
+    mediawiki/extensions/TemplateData:
+    mediawiki/extensions/VisualEditor:
+    mediawiki/extensions/WikiEditor:
+    unicodejs:
+    VisualEditor/.*:
     mediawiki/extensions/Cite$:
     mediawiki/extensions/CiteThisPage:
     mediawiki/extensions/CodeEditor:
@@ -100,9 +99,8 @@ channels:
     mediawiki/extensions/PronunciationRecording:
     # These are sent to #wikipedia-en-ambassadors too
     mediawiki/extensions/Campaigns:
-    # These are sent to #mediawiki-visualeditor too
+    # These are sent to #mediawiki-editing too
     mediawiki/extensions/WikiEditor:
-    # These are sent to #wikimedia-editing too
     mediawiki/extensions/Cite$:
     mediawiki/extensions/CiteThisPage:
     mediawiki/extensions/CodeEditor:

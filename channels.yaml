@@ -147,7 +147,7 @@ channels:
         - Beta-Cluster-Infrastructure(.*)
         - MediaWiki-Releasing
 
-    "#mediawiki-visualeditor":
+    "#wikimedia-editing":
         - VisualEditor(-.*)?
         - TemplateData
         - Cite
@@ -156,8 +156,6 @@ channels:
         - UnicodeJS
         - MediaWiki-extensions-Graph-VE
         - Editing-team
-
-    "#wikimedia-editing":
         - Contributors-Team
         - Blocked-on-Editing
         - OOjs(-.*)?
