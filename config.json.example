@@ -1,6 +1,6 @@
 {
         "comment": "Don't forget to chmod 600 this file!",
-        "IRC_SERVER" : "irc.freenode.net",
+        "IRC_SERVER" : "irc.libera.chat",
         "IRC_NICK" : "wikibugs",
         "IRC_PASSWORD": "...",
 

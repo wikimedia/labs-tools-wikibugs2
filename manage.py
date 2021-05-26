@@ -8,13 +8,13 @@ import subprocess
 tool_name = 'wikibugs'
 
 home_dir = '/data/project/{}'.format(tool_name)
-code_dir = '{}/wikibugs2'.format(home_dir)
+code_dir = '{}/libera'.format(home_dir)
 python = '{}/py35-stretch/bin/python'.format(home_dir)
 
 job_definitions = {
-    'wb2-phab': [python, code_dir + '/wikibugs.py', '--logfile', home_dir + '/wikibugs.log'],
-    'wb2-irc': [python, code_dir + '/redis2irc.py', '--logfile', home_dir + '/redis2irc.log'],
-    'wb2-grrrrit': [python, code_dir + '/grrrrit.py', '--logfile', home_dir + '/grrrrit.log'],
+    'libera-phab': [python, code_dir + '/wikibugs.py', '--logfile', home_dir + '/wikibugs.log'],
+    'libera-irc': [python, code_dir + '/redis2irc.py', '--logfile', home_dir + '/redis2irc.log'],
+    'libera-grrrrit': [python, code_dir + '/grrrrit.py', '--logfile', home_dir + '/grrrrit.log'],
 }
 
 jsub = '/usr/bin/jsub'

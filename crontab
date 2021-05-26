@@ -1,3 +1,3 @@
 # This is the crontab for the _Debian Stretch_ Toolforge Grid
 #m   h   dom mon dow cmd
- 0   0   *   *   0   /usr/bin/jsub -N taxonomy -mem 512m -once /data/project/wikibugs/py35-stretch/bin/python /data/project/wikibugs/wikibugs2/taxonomy.py > /dev/null
+ 0   0   *   *   0   /usr/bin/jsub -N taxonomy -mem 512m -once /data/project/wikibugs/py35-stretch/bin/python /data/project/wikibugs/libera/taxonomy.py > /dev/null
