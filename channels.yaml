@@ -261,9 +261,20 @@ channels:
     "#wikimedia-sp":
         - Wikimedia-Small-Projects-User-Group.*
 
+    "#wikimedia-sre-foundations":
+        - sre-tools
+        - mail
+        - packaging
+        - netops
+        - netbox
+        - homer
+        - puppet
+        - puppet-compiler
+        - cas-sso
+        - cfssl-pki
+
     "#wikimedia-traffic":
         - traffic
-        - netops
         - varnish
         - wikimedia-dns
         - wikimedia-apache-configuration
