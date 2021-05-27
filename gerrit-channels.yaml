@@ -29,6 +29,7 @@ channels:
     mediawiki/extensions/WikiLambda:
     mediawiki/services/function-evaluator:
     mediawiki/services/function-orchestrator:
+    mediawiki/services/function-schemata:
   "#wikimedia-editing":
     mediawiki/extensions/Cite$:
     mediawiki/extensions/CiteThisPage:
