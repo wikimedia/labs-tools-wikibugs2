@@ -57,11 +57,11 @@ class Redis2Irc(irc3.IrcBot):
         for target in targets:
             self.privmsg(target, message)
 
-    def privmsg(self, target, message):
+    def privmsg(self, target, message, nowait=False):
         # if target not in self.channels:
         #     self.join(target)
         self.join(target)  # FIXME HACK
-        super(Redis2Irc, self).privmsg(target, message)
+        super(Redis2Irc, self).privmsg(target, message, nowait=nowait)
 
     @property
     def conf(self):
@@ -151,26 +151,28 @@ def main():
         conf=conf,
         builder=messagebuilder.IRCMessageBuilder(),
         chanfilter=chanfilter,
-        nick=conf.get('IRC_NICK'),
-        autojoins=['#wikimedia-cloud'],
+        nick='wikibugs-lego',
+        autojoins=['##legoktm'],
         host=conf.get('IRC_SERVER'),
-        port=6667,
-        ssl=False,  # FIXME
-        password=conf.get('IRC_PASSWORD'),
-        realname='wikibugs2',
-        userinfo=('Wikibugs v2.1, https://www.mediawiki.org/wiki/Wikibugs ,' +
+        port=6697,
+        ssl=True,
+        username='wikibugs2',
+        sasl_username=conf.get('IRC_NICK'),
+        sasl_password=conf.get('IRC_PASSWORD'),
+        realname=('Wikibugs v2.1, <https://www.mediawiki.org/wiki/Wikibugs> ' +
                   'running on ' + current_host),
         includes=[
             'irc3.plugins.core',
             'irc3.plugins.ctcp',
             'irc3.plugins.autojoins',
+            'irc3.plugins.sasl',
             __name__,  # this register MyPlugin
         ],
         ctcp={
-            'finger': '{userinfo}',
-            'source': '{userinfo}',
-            'version': '{userinfo}',
-            'userinfo': '{userinfo}',
+            'finger': '{realname}',
+            'source': '{realname}',
+            'version': '{realname}',
+            'userinfo': '{realname}',
             'ping': 'PONG',
         },
     )

@@ -3,7 +3,7 @@ fab==3.1.0
 redis==2.10.3
 requests>=2.20.0,<3.0
 asyncio-redis==0.12.3
-irc3==0.5.1
+irc3==1.1.7
 beautifulsoup4==4.7.1
 click==6.7
 pytest
