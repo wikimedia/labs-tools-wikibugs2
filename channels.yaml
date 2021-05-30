@@ -1,11 +1,6 @@
-## WARNING
-## Do **NOT** add new channels here without arranging with Libera Chat staff to get the wikibugs
-## bot exempt from Sigyn in the given channel.
-## This applies regardless of whether Sigyn is currently present in the channel or not, we are not
-## about to trust random channel ops who could ask for Sigyn to be added later without knowing about
-## or mentioning the bot exemption requirement.
-## Failure to do so may lead to wikibugs being banned across the whole network the next time it
-## forwards something strange to a channel where it has no exemption.
+# Please review <https://www.mediawiki.org/wiki/Wikibugs#Configuring_channels>
+# before adding a new channel. wikibugs MUST be given autovoice in all channels
+# it is in, otherwise it can get killed by the ozone anti-spam bot.
 
 channels:
     '##legoktm-bots':
@@ -340,12 +335,3 @@ channels:
 
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
-
-## WARNING
-## Do **NOT** add new channels here without arranging with Libera Chat staff to get the wikibugs bot
-## exempt from Sigyn in the given channel.
-## This applies regardless of whether Sigyn is currently present in the channel or not, we are not
-## about to trust random channel ops who could ask for Sigyn to be added later without knowing about
-## or mentioning the bot exemption requirement.
-## Failure to do so may lead to wikibugs being banned across the whole network the next time it
-## forwards something strange to a channel where it has no exemption.
