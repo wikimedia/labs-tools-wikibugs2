@@ -3,9 +3,6 @@
 # it is in, otherwise it can get killed by the ozone anti-spam bot.
 
 channels:
-    '##legoktm-bots':
-        - foobarbaz
-
     "/dev/null":
         - User(-.*)?
         - Spam(-.*)?
