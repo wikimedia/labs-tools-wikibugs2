@@ -156,9 +156,6 @@ channels:
         - MediaWiki-extensions-Graph-VE
         - Editing-team
 
-    "#wikimedia-ve":
-        - Wikimedia-Venezuela
-
     "#wikimedia-editing":
         - Contributors-Team
         - Blocked-on-Editing
