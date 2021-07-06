@@ -90,11 +90,8 @@ channels:
     # These are sent to #wikimedia-multimedia too
     mediawiki/extensions/TimedMediaHandler.*:
     mediawiki/extensions/PronunciationRecording:
-    # These are sent to #wikimedia-cloud too
-    labs/tools/grrrit:
     # These are sent to #wikipedia-en-ambassadors too
     mediawiki/extensions/Campaigns:
-    mediawiki/extensions/EducationProgram:
     # These are sent to #mediawiki-visualeditor too
     mediawiki/extensions/WikiEditor:
     # These are sent to #wikimedia-editing too
@@ -119,14 +116,10 @@ channels:
     mediawiki/extensions/examples:
     mediawiki/extensions/Cargo:
     # Sent to #wikimedia-design as well
-    mediawiki/skins/Blueprint:
-    mediawiki/extensions/OOUIPlayground:
     mediawiki/extensions/Popups:
     oojs/oojs-ui:
     mediawiki/core:
   "#wikimedia-design":
-    mediawiki/skins/Blueprint:
-    mediawiki/extensions/OOUIPlayground:
     mediawiki/extensions/Popups:
     oojs/oojs-ui:
   "#wikimedia-fundraising":
@@ -147,12 +140,9 @@ channels:
     mediawiki/extensions/GrowthExperiments:
     mediawiki/extensions/Echo:
     mediawiki/extensions/Flow:
-    mediawiki/extensions/MoodBar:
     mediawiki/extensions/PageTriage:
     mediawiki/extensions/Thanks:
     mediawiki/extensions/WikiLove:
-    # This is sent to #wikimedia-mobile too.
-    mediawiki/extensions/Mantle:
   "#wikimedia-cloud-feed":
     cloud/.*:
     labs/.*:
@@ -162,7 +152,6 @@ channels:
     operations(?!/debs/wikistats).*:
       branch: "^(?!betacluster)"
     operations/software/gerrit.*:
-    wikimedia/bugzilla/modifications:
     wikimedia/bots/jouncebot:
     # All commits to a wmf/ branch goes here, for co-ordinating production changes
     .*:
@@ -217,13 +206,11 @@ channels:
     mediawiki/extensions/UploadWizard.*:
     mediawiki/extensions/TimedMediaHandler.*:
     mediawiki/extensions/PronunciationRecording:
-    mediawiki/extensions/ImageMetrics:
     mediawiki/extensions/FileAnnotations:
     mediawiki/extensions/WikibaseMediaInfo:
     analytics/multimedia.*:
   "#wikipedia-en-ambassadors":
     mediawiki/extensions/Campaigns:
-    mediawiki/extensions/EducationProgram:
   "#brickimedia":
     mediawiki/extensions/ArticleFeedbackv5:
     mediawiki/extensions/ArticleRatings:
