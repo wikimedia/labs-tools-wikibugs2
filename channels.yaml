@@ -272,9 +272,6 @@ channels:
         - HTTPS
         - Acme-chief
 
-    "#wikimedia-teampractices":
-        - team-practices
-
     "##wmt":
         - WMT-bots
 
