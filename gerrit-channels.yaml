@@ -57,7 +57,7 @@ channels:
     mediawiki/extensions/Maps:
     mediawiki/extensions/RDFIO:
     mediawiki/extensions/SolrStore:
-  "#wikimedia-ai":
+  "#wikimedia-ml":
     mediawiki/extensions/JADE:
     mediawiki/extensions/ORES:
     mediawiki/services/ores/deploy:
