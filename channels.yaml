@@ -272,9 +272,6 @@ channels:
         - HTTPS
         - Acme-chief
 
-    "##wmt":
-        - WMT-bots
-
     "#wikimedia-design":
         - Design
         - Living-Style-Guide
