@@ -160,11 +160,8 @@ channels:
     # This is sent to #wikimedia-releng too.
   "#wikimedia-releng":
     operations/software/gerrit.*:
-    mediawiki/selenium:
-    mediawiki/ruby/.*:
     integration/.*:
     releng/.*:
-    mediawiki/tools/codesniffer:
     mediawiki/tools/code-utils:
     mediawiki/tools/train-dev:
     mediawiki/tools/release:
