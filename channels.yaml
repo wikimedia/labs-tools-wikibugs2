@@ -283,10 +283,12 @@ channels:
     "#wikimedia-ios":
         - Wikipedia-iOS-.*
 
-    "#wikimedia-databases":
+    "#wikimedia-data-persistence-feed":
         - DBA
         - Blocked-on-schema-change
+        - Data-Persistence
         - Data-Persistence-Backup
+        - Data-Persistence-Misc
 
     "#wikisource":
         - Wikisource
