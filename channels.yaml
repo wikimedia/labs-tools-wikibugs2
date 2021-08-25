@@ -294,9 +294,9 @@ channels:
         - Wikisource
         - Wikisource-Community-User-Group
         - ProofreadPage
-        - Wikimedia_OCR
-        - IA_Upload
-        - WS_Export
+        - Wikimedia OCR
+        - IA Upload
+        - WS Export
 
     "#wikimedia-ops":
         - wikimedia-irc-libera
