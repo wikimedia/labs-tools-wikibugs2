@@ -106,7 +106,7 @@ channels:
         - Quarry
         - Striker
         - Tool-(.*)
-        - Toolforge
+        - Toolforge(.*)?
         - Tools
         - Tools-Kubernetes
         - VPS-Project-(.*)
