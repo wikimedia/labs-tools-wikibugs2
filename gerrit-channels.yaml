@@ -34,8 +34,6 @@ channels:
     mediawiki/extensions/Math:
     mediawiki/extensions/ParserFunctions:
     mediawiki/skins/apex:
-    # Sent to #wikimedia-dev-africa as well
-    mediawiki/skins/Vector:
     oojs/.*:
     # Also in #wikimedia-services
     mediawiki/services/citoid:

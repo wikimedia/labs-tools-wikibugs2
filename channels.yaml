@@ -163,7 +163,6 @@ channels:
         - Mathoid
         - MediaWiki-Page-editing
         - Apex
-        - Vector
 
     "#wikimedia-interactive":
         - Maps(.*)?
