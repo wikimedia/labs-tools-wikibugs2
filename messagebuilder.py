@@ -47,6 +47,7 @@ class IRCMessageBuilder(object):
         'resolved': 'Resolved',
         'declined': 'Declined',
         'stalled': 'Stalled',
+        'progress': 'In progress',
     }
 
     OUTPUT_PROJECT_TYPES = ['briefcase', 'users', 'umbrella']
