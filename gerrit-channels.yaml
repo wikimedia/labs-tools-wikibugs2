@@ -156,6 +156,8 @@ channels:
       branch: "^wmf\/"
     labs/private:
     # This is sent to #wikimedia-releng too.
+  "#wikimedia-quibble":
+    integration/quibble:
   "#wikimedia-releng":
     operations/software/gerrit.*:
     integration/.*:
