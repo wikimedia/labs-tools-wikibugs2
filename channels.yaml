@@ -198,6 +198,7 @@ channels:
 
     "#wikimedia-analytics":
         - Analytics(-.*)?
+        - Data-Engineering(.*)?
         - Quarry
 
     '#wikimedia-rename':
