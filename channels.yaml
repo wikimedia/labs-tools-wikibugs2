@@ -123,6 +123,9 @@ channels:
     "#wikimedia-quibble":
         - Quibble
 
+    "#wikimedia-gitlab":
+        - GitLab(.*)
+
     "#wikimedia-releng":
         # Meta
         - Release-Engineering(.*)
@@ -133,6 +136,7 @@ channels:
         - Deployments
         - scap(.*)
         - Gerrit
+        - GitLab(.*)
         - Phabricator(.*)
         - Differential
         - Diffusion
