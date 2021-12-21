@@ -70,11 +70,21 @@ channels:
     analytics/.*:
     schemas/.*:
   "#wikimedia-perf-bots":
+    # See also our Gerrit dashboard:
+    # https://gerrit.wikimedia.org/g/wikimedia/+/refs/meta/dashboards/teams/performance
     performance.*:
     analytics/statsv:
     mediawiki/extensions/NavigationTiming:
     mediawiki/extensions/PerformanceInspector:
     mediawiki/extensions/WikimediaEvents:
+    mediawiki/libs/Minify:
+    mediawiki/libs/ScopedCallback:
+    at-ease:
+    cdb:
+    RelPath:
+    RunningStat:
+    WaitConditionLoop:
+    WrappedString:
   "#wikimedia-codehealth":
     labs/tools/sonarqubebot:
   "#wikimedia-dev":
