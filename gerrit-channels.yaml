@@ -170,7 +170,7 @@ channels:
     integration/quibble:
   "#wikimedia-releng":
     operations/software/gerrit.*:
-    integration/.*:
+    integration(?!/quibble)/.*:
     releng/.*:
     mediawiki/tools/code-utils:
     mediawiki/tools/train-dev:

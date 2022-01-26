@@ -143,7 +143,6 @@ channels:
         - Project-Admins
         - Zuul
         - Jenkins
-        - Quibble
         # Other projects we care about
         - Beta-Cluster-Infrastructure(.*)
         - MediaWiki-Releasing
