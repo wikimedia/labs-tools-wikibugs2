@@ -66,6 +66,7 @@ channels:
     research/ores/deploy:
     research/ores/wheels:
     scoring/ores/assets:
+    machinelearning/liftwing/inference-services:
   "#wikimedia-analytics":
     analytics/.*:
     schemas/.*:
