@@ -6,7 +6,6 @@ default-channel: "#wikimedia-dev"
 firehose-channel: "#mediawiki-feed"
 channels:
   "#translatewiki":
-    mediawiki/extensions/Translate:
     translatewiki.*:
   "#mediawiki-parsoid":
     mediawiki/services/parsoid:
