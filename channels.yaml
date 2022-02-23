@@ -325,5 +325,8 @@ channels:
     "#wikipedia-abstract-tech":
         - abstract_wikipedia
 
+    "#wikimedia-ve":
+        - Wikimedia-Venezuela.*
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
