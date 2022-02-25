@@ -152,6 +152,7 @@ channels:
   "#wikimedia-cloud-feed":
     cloud/.*:
     labs/.*:
+    openstack/.*:
     analytics/quarry.*:
   "#wikimedia-operations":
     # Do not post betacluster stuff here
