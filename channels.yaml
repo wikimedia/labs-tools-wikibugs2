@@ -95,6 +95,7 @@ channels:
 
     "#wikimedia-cloud-feed":
         - Cloud-Services
+        - Cloud Services Proposals
         - cloud-services-team(.*)?
         - Cloud-VPS(.*)?
         - Data-Services
