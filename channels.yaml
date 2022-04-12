@@ -27,6 +27,7 @@ channels:
 
     "##RhinosF1":
         - User-RhinosF1
+        - WikiSEO
 
     "#wm-bot":
         - WM-Bot
@@ -234,6 +235,7 @@ channels:
         - accessibility
         - mediawiki-interface
         - MobileFrontend
+        - WikiSEO
 
     "#wikimedia-fundraising":
         - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*

@@ -12,6 +12,8 @@ channels:
     mediawiki/services/parsoid/deploy:
     mediawiki/services/parsoid/node_modules:
     mediawiki/extensions/Parsoid:
+  "##RhinosF1":
+    mediawiki/extensions/WikiSEO:
   "#wikipedia-abstract-tech":
     mediawiki/extensions/WikiLambda:
     mediawiki/services/function-evaluator:
@@ -123,6 +125,8 @@ channels:
     mediawiki/extensions/Cargo:
     # Sent to #wikimedia-design as well
     mediawiki/extensions/Popups:
+    # Sent to ##RhinosF1 as well
+    mediawiki/extensions/WikiSEO:
     oojs/oojs-ui:
     mediawiki/core:
   "#wikimedia-design":
