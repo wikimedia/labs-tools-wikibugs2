@@ -16,6 +16,7 @@ from wblogging import LoggingSetupParser
 __version__ = '3.0alpha'
 current_host = socket.getfqdn()
 
+logging.basicConfig(level=logging.DEBUG)
 parser = LoggingSetupParser(
     description="Read bugs from redis, format them and send them to irc",
 )
@@ -166,6 +167,7 @@ def main():
             'irc3.plugins.ctcp',
             'irc3.plugins.autojoins',
             'irc3.plugins.sasl',
+            'irc3.plugins.log',
             __name__,  # this register MyPlugin
         ],
         ctcp={
