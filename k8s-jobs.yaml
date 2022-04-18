@@ -1,0 +1,17 @@
+---
+- name: wikibugs-phab
+  command: libera/wrapper.sh wikibugs
+  image: tf-python39
+  continuous: true
+  emails: none
+- name: grrrrit
+  command: libera/wrapper.sh grrrrit
+  image: tf-python39
+  continuous: true
+  emails: none
+- name: redis2irc
+  command: libera/wrapper.sh redis2irc
+  image: tf-python39
+  continuous: true
+  emails: none
+
