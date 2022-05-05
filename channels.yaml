@@ -85,7 +85,8 @@ channels:
 
     "#wikimedia-commtech":
         - Community-Tech(-.*)?
-        - Community-Wishlist-Survey
+        - Community-Wishlist-Survey(-.*)?
+        - CommTech-Sprint-\d+
 
     "#wikimedia-ed":
         - Education-.*
