@@ -115,7 +115,7 @@ def process_event(event: dict):
                 if approval['type'] == 'Verified' and value != 0:
                     ret['approvals']['V'] = value
                     if ret['user'] == JENKINS_USER and value == -1:
-                        ret['user'] = 'jerkins-bot'  # For MaxSem
+                        ret['user'] = 'CI reject'
                 elif approval['type'] == 'Code-Review' and value != 0:
                     ret['approvals']['C'] = value
 

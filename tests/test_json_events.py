@@ -59,7 +59,7 @@ def test_jenkins_verified_plus_2():
 
 
 def test_jenkins_verified_minus_1():
-    """Jenkins' V-1 messages are reported as Jerkins-bot"""
+    """Jenkins' V-1 messages are reported as CI reject"""
     messages = process_events_file(data_path / "jenkins_v-1.json")
 
     assert len(messages) == 1
@@ -71,7 +71,7 @@ def test_jenkins_verified_minus_1():
         'url': 'https://gerrit.wikimedia.org/r/443220',
         'message': 'Ignore wips when creating a patchset',  # noqa
         'owner': 'RealName 2',
-        'user': 'jerkins-bot',
+        'user': 'CI reject',
         'task': None,
         'repo': 'labs/tools/wikibugs2'
     }
