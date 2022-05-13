@@ -163,6 +163,7 @@ channels:
     operations(?!/debs/wikistats).*:
       branch: "^(?!betacluster)"
     operations/software/gerrit.*:
+      branch: "^deploy/"
     wikimedia/bots/jouncebot:
     # All commits to a wmf/ branch goes here, for co-ordinating production changes
     .*:
