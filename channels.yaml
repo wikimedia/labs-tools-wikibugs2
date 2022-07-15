@@ -327,7 +327,7 @@ channels:
         - WMCZ-Tracker
 
     "#wikipedia-abstract-tech":
-        - abstract_wikipedia
+        - abstract_wiki.*
 
     "#wikimedia-ve":
         - Wikimedia-Venezuela.*
