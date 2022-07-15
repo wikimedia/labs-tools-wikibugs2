@@ -19,6 +19,7 @@ channels:
     mediawiki/services/function-evaluator:
     mediawiki/services/function-orchestrator:
     mediawiki/services/function-schemata:
+    mediawiki/tools/wikilambda-cli:
   "#wikimedia-editing":
     mediawiki/extensions/Citoid:
     mediawiki/extensions/TemplateData:
