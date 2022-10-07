@@ -102,6 +102,7 @@ channels:
         - Cloud-VPS(.*)?
         - Data-Services
         - Gerrit-Patch-Uploader
+        - Grid-Engine-to-K8s-Migration
         - Horizon
         - LabsDB-Auditor
         - MediaWiki-extensions-OpenStackManager
