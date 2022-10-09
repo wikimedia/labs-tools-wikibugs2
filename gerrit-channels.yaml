@@ -159,6 +159,8 @@ channels:
     labs/.*:
     openstack/.*:
     analytics/quarry.*:
+    operations/docker-images/toollabs-images:
+    operations/software/tools-.*:
   "#wikimedia-operations":
     # Do not post betacluster stuff here
     operations(?!/debs/wikistats).*:
