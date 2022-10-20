@@ -327,7 +327,7 @@ channels:
     "#wmcz-tracker":
         - WMCZ-Tracker
 
-    "#wikipedia-abstract-tech":
+    "#wikipedia-abstract-devfeed":
         - abstract_wiki.*
 
     "#wikimedia-ve":

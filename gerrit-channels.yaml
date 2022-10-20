@@ -14,7 +14,7 @@ channels:
     mediawiki/extensions/Parsoid:
   "##RhinosF1":
     mediawiki/extensions/WikiSEO:
-  "#wikipedia-abstract-tech":
+  "#wikipedia-abstract-devfeed":
     mediawiki/extensions/WikiLambda:
     mediawiki/services/function-evaluator:
     mediawiki/services/function-orchestrator:
