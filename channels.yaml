@@ -240,7 +240,8 @@ channels:
         - WikiSEO
 
     "#wikimedia-fundraising":
-        - .*(?<!WMDE-)(?<!TCB-Team-)Fundraising.*
+        - Fundraising.*
+        - Wikimedia-Fundraising.*
 
     "#wikimedia-operations":
         - ops(-.*)?
