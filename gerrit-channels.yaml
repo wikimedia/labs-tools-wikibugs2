@@ -72,21 +72,26 @@ channels:
     analytics/.*:
     schemas/.*:
   "#wikimedia-perf-bots":
-    # See also our Gerrit dashboard:
+    # Keep in sync with our Gerrit dashboard:
     # https://gerrit.wikimedia.org/g/wikimedia/+/refs/meta/dashboards/teams/performance
     performance.*:
-    analytics/statsv:
     mediawiki/extensions/NavigationTiming:
     mediawiki/extensions/PerformanceInspector:
-    mediawiki/extensions/WikimediaEvents:
-    mediawiki/libs/Minify:
-    mediawiki/libs/ScopedCallback:
+    AhoCorasick:
     at-ease:
     cdb:
+    WrappedString:
     RelPath:
     RunningStat:
-    WaitConditionLoop:
-    WrappedString:
+    mediawiki/libs/RequestTimeout:
+    mediawiki/libs/ScopedCallback:
+    mediawiki/libs/WaitConditionLoop:
+    mediawiki/libs/Minify:
+    mediawiki/libs/Timestamp:
+    mediawiki/extensions/WikimediaEvents:
+    # Other
+    analytics/statsv:
+    fresh:
   "#wikimedia-codehealth":
     labs/tools/sonarqubebot:
   "#wikimedia-dev":
