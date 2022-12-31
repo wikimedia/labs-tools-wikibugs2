@@ -334,5 +334,10 @@ channels:
     "#wikimedia-ve":
         - Wikimedia-Venezuela.*
 
+    "##theresnotime-feed":
+        - User-TheresNoTime
+        - Tool-refill
+        - linkwatcher
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
