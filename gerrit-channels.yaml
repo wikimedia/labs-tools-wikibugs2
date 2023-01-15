@@ -5,6 +5,8 @@
 default-channel: "#wikimedia-dev"
 firehose-channel: "#mediawiki-feed"
 channels:
+  "#countervandalism":
+    labs/countervandalism/.*:
   "#translatewiki":
     translatewiki.*:
   "#mediawiki-parsoid":

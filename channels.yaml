@@ -18,6 +18,10 @@ channels:
     "#autowikibrowser":
         - AutoWikiBrowser
 
+    "#countervandalism":
+        - Countervandalism-Network
+        - CVNBot
+
     "#pywikibot":
         - Pywikibot(-.*)?
         - PAWS
