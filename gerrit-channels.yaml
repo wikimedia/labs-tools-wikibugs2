@@ -85,12 +85,16 @@ channels:
     WrappedString:
     RelPath:
     RunningStat:
+    mediawiki/libs/less.php:
+    mediawiki/libs/node-cssjanus:
+    mediawiki/libs/php-cssjanus:
     mediawiki/libs/RequestTimeout:
     mediawiki/libs/ScopedCallback:
     mediawiki/libs/WaitConditionLoop:
     mediawiki/libs/Minify:
     mediawiki/libs/Timestamp:
     mediawiki/extensions/WikimediaEvents:
+    mediawiki/tools/grunt-cssjanus:
     # Other
     analytics/statsv:
     fresh:
