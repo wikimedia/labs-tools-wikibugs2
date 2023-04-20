@@ -198,7 +198,6 @@ channels:
         - restbase.*
         - services.*
         - service-runner
-        - cassandra
 
     "#wikimedia-multimedia":
         - FileAnnotations
@@ -303,6 +302,7 @@ channels:
         - Data-Persistence
         - Data-Persistence-Backup
         - Data-Persistence-Misc
+        - cassandra
 
     "#wikisource":
         - Wikisource
