@@ -196,7 +196,6 @@ channels:
 
     "#wikimedia-services":
         - restbase.*
-        - services.*
         - service-runner
 
     "#wikimedia-multimedia":
