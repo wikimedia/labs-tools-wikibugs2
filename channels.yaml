@@ -199,7 +199,6 @@ channels:
         - services.*
         - service-runner
         - cassandra
-        - blocked-on-services
 
     "#wikimedia-multimedia":
         - FileAnnotations
