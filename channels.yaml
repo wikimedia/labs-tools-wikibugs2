@@ -55,6 +55,7 @@ channels:
         - Wikimedia-Wikidata
         - ArticlePlaceholder
         - Wikidata.org
+        - wmde-wikidata-tech
 
     "#wikimedia-collaboration":
         # teams
