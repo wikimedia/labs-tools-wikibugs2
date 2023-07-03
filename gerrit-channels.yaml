@@ -70,6 +70,7 @@ channels:
     research/ores/wheels:
     scoring/ores/assets:
     machinelearning/liftwing/inference-services:
+    research/recommendation-api:
   "#wikimedia-analytics":
     analytics/.*:
     schemas/.*:
