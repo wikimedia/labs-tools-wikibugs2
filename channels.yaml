@@ -195,10 +195,6 @@ channels:
         - MediaWiki-extensions-(ParserFunctions|Linter)
         - RemexHtml
 
-    "#wikimedia-services":
-        - restbase.*
-        - service-runner
-
     "#wikimedia-multimedia":
         - FileAnnotations
         - Multimedia
