@@ -9,6 +9,16 @@ channels:
     labs/countervandalism/.*:
   "#translatewiki":
     translatewiki.*:
+  "#mediawiki-core-bots":
+    # Keep in sync with our Gerrit dashboard:
+    # https://gerrit.wikimedia.org/g/wikimedia/+/refs/meta/dashboards/teams/platform
+    WrappedString:
+    RelPath:
+    mediawiki/libs/less.php:
+    mediawiki/libs/node-cssjanus:
+    mediawiki/libs/php-cssjanus:
+    mediawiki/libs/Minify:
+    mediawiki/tools/grunt-cssjanus:
   "#mediawiki-parsoid":
     mediawiki/services/parsoid:
     mediawiki/services/parsoid/deploy:
@@ -75,29 +85,10 @@ channels:
     analytics/.*:
     schemas/.*:
   "#wikimedia-perf-bots":
-    # Keep in sync with our Gerrit dashboard:
     # https://gerrit.wikimedia.org/g/wikimedia/+/refs/meta/dashboards/teams/performance
     performance.*:
     mediawiki/extensions/NavigationTiming:
-    mediawiki/extensions/PerformanceInspector:
-    AhoCorasick:
-    at-ease:
-    cdb:
-    WrappedString:
-    RelPath:
-    RunningStat:
-    mediawiki/libs/less.php:
-    mediawiki/libs/node-cssjanus:
-    mediawiki/libs/php-cssjanus:
-    mediawiki/libs/RequestTimeout:
-    mediawiki/libs/ScopedCallback:
-    mediawiki/libs/WaitConditionLoop:
-    mediawiki/libs/Minify:
-    mediawiki/libs/Timestamp:
     mediawiki/extensions/WikimediaEvents:
-    mediawiki/tools/grunt-cssjanus:
-    # Other
-    analytics/statsv:
     fresh:
   "#wikimedia-codehealth":
     labs/tools/sonarqubebot:

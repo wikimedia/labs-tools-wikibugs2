@@ -185,8 +185,11 @@ channels:
         - Tilerator(.*)?
 
     "#wikimedia-perf-bots":
-        # "Performance-Team" and "Performance-Team (Radar)"
         - Performance-Team(.*)?
+
+    "#mediawiki-core-bots":
+        - MediaWiki-Platform-Team(.*)?
+        - MediaWiki-Services-Group-onboarding
 
     "#mediawiki-parsoid":
         - Parsoid(-.*)?
