@@ -114,6 +114,7 @@ channels:
         - PAWS
         - Quarry
         - Striker
+        - superset.wmcloud.org
         - Tool-(.*)
         - Toolforge(.*)?
         - Tools
