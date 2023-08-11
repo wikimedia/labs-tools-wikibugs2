@@ -183,6 +183,7 @@ channels:
     mediawiki/tools/scap:
     blubber:
     fresh:
+    performance/WikimediaDebug:
     All-Projects:
     All-Users:
     All-Groups:

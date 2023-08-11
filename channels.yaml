@@ -145,12 +145,14 @@ channels:
         - Continuous-Integration-(.*)
         - Deployments
         - scap(.*)
+        - Fresh
         - Gerrit
         - GitLab(.*)
         - Phabricator(.*)
         - Differential
         - Diffusion
         - Project-Admins
+        - WikimediaDebug
         - Zuul
         - Jenkins
         # Other projects we care about
