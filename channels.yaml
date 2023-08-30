@@ -32,6 +32,7 @@ channels:
     "##RhinosF1":
         - User-RhinosF1
         - WikiSEO
+        - VPS-project-Wikistats
 
     "#wm-bot":
         - WM-Bot
