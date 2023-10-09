@@ -346,5 +346,8 @@ channels:
         - Tool-refill
         - linkwatcher
 
+    "#wikimedia-external-links":
+        - linkwatcher
+
 firehose-channel: '#mediawiki-feed'
 default-channel: '#wikimedia-dev'
