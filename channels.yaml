@@ -147,6 +147,7 @@ channels:
         - Deployments
         - scap(.*)
         - Fresh
+        - Fresnel
         - Gerrit
         - GitLab(.*)
         - Phabricator(.*)

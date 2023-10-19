@@ -184,6 +184,7 @@ channels:
     blubber:
     fresh:
     performance/WikimediaDebug:
+    performance/fresnel:
     All-Projects:
     All-Users:
     All-Groups:
