@@ -131,9 +131,6 @@ channels:
     "#wikimedia-vrt":
         - Znuny
 
-    "#wikimedia-quibble":
-        - Quibble
-
     "#wikimedia-gitlab":
         - GitLab(.*)
 
