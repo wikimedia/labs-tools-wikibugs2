@@ -73,6 +73,9 @@ def process_event(event: dict):
     if event['type'] == 'patchset-created':
         ps = 'PS' + str(event['patchSet']['number'])
         ret = process_simple(event, ps, 'uploader', IncludeOwner.IF_NOT_USER)
+    elif event['type'] == 'wip-state-changed' and not change_is_WIP(event):
+        ps = 'PS' + str(event['patchSet']['number'])
+        ret = process_simple(event, ps, 'changer', IncludeOwner.IF_NOT_USER)
     elif event['type'] == 'comment-added':
         ret = process_simple(event, 'CR', 'author')
 
@@ -93,6 +96,12 @@ def process_event(event: dict):
                 # cheat! Get rid of (# comments) from the text
                 original_comment = original_comment.replace(inline_match.group(0), '')
             comment = "\n".join(original_comment.split('\n')[1:]).strip().split('\n')[0].strip()
+
+        if comment == "This change is ready for review.":
+            # T350778: a wip-to-non-wip change results in *both* a wip-state-changed and a comment-added event.
+            # Ignore the latter.
+            return None
+
         if comment:
             comment = '"' + comment[:138] + '"'
         else:

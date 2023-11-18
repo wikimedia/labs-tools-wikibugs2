@@ -187,3 +187,17 @@ def test_multiple_jenkins_comments():
 def test_exclude_wip():
     messages = process_events_file(data_path / "change_wip_true.json")
     assert len(messages) == 0
+
+
+def test_wip_to_ready():
+    messages = process_events_file(data_path / "wip-state-changed.json")
+    assert len(messages) == 1
+    assert messages[0] == {
+        'type': 'PS1',
+        'branch': 'master',
+        'url': 'https://gerrit.wikimedia.org/r/975276',
+        'message': 'Test commit [DO NOT MERGE]',
+        'user': 'RealName 1',
+        'task': None,
+        'repo': 'labs/tools/wikibugs2'
+    }
