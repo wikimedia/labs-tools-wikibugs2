@@ -93,6 +93,7 @@ channels:
         - Community-Tech(-.*)?
         - Community-Wishlist-Survey(-.*)?
         - CommTech-Sprint-\d+
+        - CommTech-(.*)?
 
     "#wikimedia-ed":
         - Education-.*
