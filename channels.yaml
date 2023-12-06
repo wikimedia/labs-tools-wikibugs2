@@ -24,7 +24,6 @@ channels:
 
     "#pywikibot":
         - Pywikibot(-.*)?
-        - PAWS
 
     "##Revi":
         - User-revi
