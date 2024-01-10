@@ -112,6 +112,7 @@ channels:
         - Horizon
         - LabsDB-Auditor
         - MediaWiki-extensions-OpenStackManager
+        - Open[Ss]tack(.*)?
         - PAWS
         - Quarry
         - Striker
