@@ -209,8 +209,10 @@ channels:
     "#wikimedia-analytics":
         - Analytics(-.*)?
         - Data-Engineering(.*)?
-        - Data-Platform-SRE(.*)?
         - Quarry
+
+    "#wikimedia-data-plaform":
+        - Data-Platform-SRE(.*)?
 
     '#wikimedia-rename':
         - GlobalRename
