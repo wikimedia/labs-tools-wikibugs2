@@ -134,6 +134,7 @@ channels:
 
     "#wikimedia-gitlab":
         - GitLab(.*)
+        - Tool-gitlab-account-approval
 
     "#wikimedia-releng":
         # Meta
