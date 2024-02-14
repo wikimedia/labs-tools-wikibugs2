@@ -166,14 +166,20 @@ class Wikibugs2(object):
         :type url: basestring
         :returns dict(phid => anchor)
         """
-        data_dict_str = task_page.split(
-            '<script type="text/javascript">JX.Stratcom.mergeData(0,'
-        )[1].split(
-            ");\nJX.onload"
-        )[0]
+        soup = BeautifulSoup(task_page, features="html.parser")
+        data_tag = soup.find("data", attrs={"data-javelin-init-kind": "merge"})
+        if data_tag:
+            data_dict = json.loads(
+                data_tag.attrs.get("data-javelin-init-data", '{"data":[]}')
+            )
+        else:
+            data_dict = {"data": []}
 
-        data_dict = json.loads(data_dict_str)
-        return {x[u'phid']: x[u'anchor'] for x in data_dict if u'phid' in x and u'anchor' in x}
+        return {
+            x["phid"]: x["anchor"]
+            for x in data_dict["data"]
+            if "phid" in x and "anchor" in x
+        }
 
     def get_lowest_anchor_for_task_and_XACTs(self, task_page, XACTs):
         """

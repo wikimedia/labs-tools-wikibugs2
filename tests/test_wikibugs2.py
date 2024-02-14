@@ -32,7 +32,7 @@ def test_offline_scrape(mockbugs):
 
     assert {
         'Wikimedia-Fundraising',
-        'Fundraising Tech Backlog',
+        'Fundraising-Backlog-Old',
         'Wikimedia-Fundraising-CiviCRM',
         '§ Fundraising Sprint Devo',
         'Fr-tech-archived-from-FY-2014/15',
