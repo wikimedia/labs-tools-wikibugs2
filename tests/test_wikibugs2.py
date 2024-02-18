@@ -89,7 +89,7 @@ class TestParseEvents:
         assert len(messages) == 1
         message = messages[0]
 
-        assert message['url'] == 'https://phabricator.wikimedia.org/T163142'  # no deeplink found
+        assert message['url'] == 'https://phabricator.wikimedia.org/T163142#5040723'
         assert 'comment' not in message
 
     def test_many_changes(self):
