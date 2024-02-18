@@ -89,6 +89,7 @@ class Wikibugs2(object):
         info = self.phab.request('phid.query', {
             'phids': [phid]
         })
+        logger.debug("phid_info(%s): %s", phid, info)
         return list(info.values())[0]
 
     def maniphest_info(self, task_id):
@@ -125,12 +126,18 @@ class Wikibugs2(object):
         transactions = {}
         for trans in list(info.values())[0]:
             if trans['transactionPHID'] in transaction_phids:
-                transactions[trans['transactionType']] = {
+                ttype = trans['transactionType']
+                transactions[ttype] = {
                     'old': trans['oldValue'],
                     'new': trans['newValue'],
+                    'anchor': trans['transactionID'],
                 }
                 if trans['comments'] is not None:
-                    transactions[trans['transactionType']]['comments'] = trans['comments']
+                    transactions[ttype]['comments'] = trans['comments']
+                if 'core.create' in trans['meta']:
+                    # This was part of the initial object creation.
+                    # Force anchor to "0" so bare link will be used later
+                    transactions[ttype]['anchor'] = '0'
         logger.debug('get_transaction_info(%r,%r) = %s', task_id, transaction_phids, json.dumps(transactions))
         return transactions
 
@@ -160,46 +167,21 @@ class Wikibugs2(object):
                              'uri': uri}
         return alltags
 
-    def get_anchors_for_task(self, task_page):
+    def guess_best_anchor(self, transactions):
         """
-        :param url: url to task
-        :type url: basestring
-        :returns dict(phid => anchor)
+        :param transactions: simplified transaction info
+        :type transactions: list(dict)
+        :returns basestring
         """
-        soup = BeautifulSoup(task_page, features="html.parser")
-        data_tag = soup.find("data", attrs={"data-javelin-init-kind": "merge"})
-        if data_tag:
-            data_dict = json.loads(
-                data_tag.attrs.get("data-javelin-init-data", '{"data":[]}')
-            )
-        else:
-            data_dict = {"data": []}
-
-        return {
-            x["phid"]: x["anchor"]
-            for x in data_dict["data"]
-            if "phid" in x and "anchor" in x
-        }
-
-    def get_lowest_anchor_for_task_and_XACTs(self, task_page, XACTs):
-        """
-        :param url: url to task
-        :type url: basestring
-        :param XACTs: list of XACT phids to look up anchors for
-        :type XACTs: list(basestring)
-        :returns dict(phid => anchor)
-        """
-        anchor_dict = self.get_anchors_for_task(task_page)
-        anchors = [anchor_dict.get(phid, None) for phid in XACTs]
-        anchors = [anchor for anchor in anchors if anchor]
-
-        if anchors:
-            return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
-
-        # if no anchors could be found, return the highest-numbered anchor we /can/ find
-        anchors = sorted(anchor_dict.values(), key=lambda x: int(x))
-        if anchors:
-            return "#{anchor}".format(anchor=sorted(anchors, key=lambda x: int(x))[0])
+        logger.debug('guess_best_anchor(%s)', transactions)
+        # Our current theory is that the lowest (oldest) transaction id in the
+        # set is what Phorge will be using as an anchor id in the rendered
+        # HTML. We know however that this is only true after discarding some
+        # transaction types, so it is a fragile heuristic at best.
+        anchors = [trans['anchor'] for trans in transactions.values()]
+        min_anchor = sorted(anchors, key=lambda x: int(x))[0]
+        if min_anchor != '0':
+            return f"#{min_anchor}"
         return ""
 
     def get_type_from_phid(self, phid):
@@ -229,19 +211,38 @@ class Wikibugs2(object):
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         task_info = self.maniphest_info(phid_info['name'])
 
-        # try to get the (lowest) anchor for this change
-        task_page = self.get_task_page(phid_info['uri'])
-        try:
-            anchor = self.get_lowest_anchor_for_task_and_XACTs(
-                task_page, event_info['data']['transactionPHIDs']
-            )
-        except Exception as e:
-            logger.exception("Could not retrieve anchor for %s", event_info['data']['objectPHID'])
-            if self.raise_errors:
-                raise
-            self.dump_error("XACT-anchor", e, event_info)
-            anchor = ""
+        transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
+        ignored = [
+            'core:columns',         # Column changes, see T1204
+            'core:edit-policy',     # Edit policy changed
+            'core:file',            # Attached/removed/modified file
+            'core:inlinestate',     # Changed inline comment state
+            'core:interact-policy'  # Interaction policy changed
+            'core:join-policy',     # Join policy changed
+            'core:space',           # Moved to a different space
+            'core:subscribers',     # CC updates
+            'core:subtype',         # Subtype changes
+            'core:view-policy',     # View policy changed
+            'token:give',           # Adding a token
+        ]
+        removed_types = []
+        for event_type in ignored:
+            if event_type in transactions:
+                removed_types.append(event_type)
+                transactions.pop(event_type)
 
+        if not transactions:
+            # We removed everything, skip.
+            logging.debug(
+                "Skipping %s which only has event types: %s",
+                event_info['data']['transactionPHIDs'],
+                ', '.join(removed_types),
+            )
+            return
+
+        anchor = self.guess_best_anchor(transactions)
+
+        task_page = self.get_task_page(phid_info['uri'])
         try:
             projects = self.get_tags(task_page)
         except Exception as e:
@@ -257,25 +258,6 @@ class Wikibugs2(object):
             'projects': projects,
             'user': self.get_user_name(event_info['authorPHID']),
         }
-
-        transactions = self.get_transaction_info(phid_info['name'], event_info['data']['transactionPHIDs'])
-        ignored = [
-            'core:subscribers',  # Ignore any only-CC updates
-            'core:columns',  # Ignore column changes, see T1204
-        ]
-        removed = []
-        for event in ignored:
-            if event in transactions:
-                removed.append(event)
-                transactions.pop(event)
-
-        if not transactions:
-            # We removed everything, skip.
-            logging.debug("Skipping {PHID} which only has an event of type {ttype}".format(
-                PHID=event_info['data']['transactionPHIDs'],
-                ttype=', '.join(removed),
-            ))
-            return
 
         if 'title' in transactions:
             useful_event_metadata['title'] = transactions['title']['new']

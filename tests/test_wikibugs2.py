@@ -100,3 +100,12 @@ class TestParseEvents:
         assert 'priority' in message
         assert 'old' in message['priority']
         assert 'new' in message['priority']
+        assert message['url'] == 'https://phabricator.wikimedia.org/T218788#5041358'
+
+    def test_new_task(self):
+        messages = self._process("createtask.json")
+        assert len(messages) == 1
+        message = messages[0]
+
+        # A creation event's URL should not have a fragment
+        assert message['url'] == 'https://phabricator.wikimedia.org/T218800'
