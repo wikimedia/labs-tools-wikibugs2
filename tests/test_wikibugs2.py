@@ -2,20 +2,11 @@
 import queue
 import json
 import pytest
-import requests
 
 import configfetcher
 import wikibugs
 from tests.common import root
 realconfigfile = root / "config.json"
-mockconfigfile = root / "config.json.example"
-
-
-@pytest.fixture()
-def mockbugs():
-    return wikibugs.Wikibugs2(
-        configfetcher.ConfigFetcher(str(mockconfigfile))
-    )
 
 
 @pytest.fixture()
@@ -25,11 +16,12 @@ def realbugs():
     )
 
 
-def test_offline_scrape(mockbugs):
-    content = (root / "tests" / "data" / "T87834").open(encoding="utf-8").read()
+@pytest.mark.skipif(not realconfigfile.exists(), reason="Requires live site access")
+def test_get_tags(realbugs):
+    task = json.load((root / "tests" / "data" / "phab_tasks" / "T87834.json").open())
+    tags = realbugs.get_tags(task)
 
-    tags = mockbugs.get_tags(content)
-
+    assert len(tags) > 0
     assert {
         'Wikimedia-Fundraising',
         'Fundraising-Backlog-Old',
@@ -39,18 +31,12 @@ def test_offline_scrape(mockbugs):
     } == tags.keys()
 
     assert {'shade', 'disabled', 'uri', 'tagtype'} == tags['§ Fundraising Sprint Devo'].keys()
-    assert tags['§ Fundraising Sprint Devo']['shade'] == 'blue'
+    assert tags['§ Fundraising Sprint Devo']['shade'] == 'disabled'
     assert tags['§ Fundraising Sprint Devo']['disabled']
-    assert tags['§ Fundraising Sprint Devo']['uri'] == '/tag/§_fundraising_sprint_devo/'
+    assert tags['§ Fundraising Sprint Devo']['uri'] == (
+        'https://phabricator.wikimedia.org/tag/§_fundraising_sprint_devo/'
+    )
     assert tags['§ Fundraising Sprint Devo']['tagtype'] == 'calendar'
-
-
-def test_online_scrape(mockbugs):
-    content = requests.get('https://phabricator.wikimedia.org/T87834').text
-
-    tags = mockbugs.get_tags(content)
-
-    assert len(tags) > 0
 
     n_disabled = 0
     n_briefcase = 0
@@ -66,6 +52,7 @@ def test_online_scrape(mockbugs):
 
     assert n_disabled > 0
     assert n_briefcase > 0
+    assert n_calendar > 0
 
 
 @pytest.mark.skipif(not realconfigfile.exists(), reason="Requires live site access")

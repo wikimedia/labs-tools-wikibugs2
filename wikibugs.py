@@ -5,7 +5,6 @@ import logging
 import phabricator
 import time
 import json
-from bs4 import BeautifulSoup
 import configfetcher
 import rqueue
 from wblogging import LoggingSetupParser
@@ -105,6 +104,16 @@ class Wikibugs2(object):
         return info
 
     @functools.lru_cache(maxsize=200)
+    def project_info(self, phid):
+        info = self.phab.request('project.search', {
+            'constraints': {
+                'phids': [phid],
+            },
+        })['data'][0]
+        logger.debug('project.search for %r = %s', phid, json.dumps(info))
+        return info
+
+    @functools.lru_cache(maxsize=200)
     def cached_phid_info(self, phid):
         """
         Same thing as phid_info, but
@@ -141,30 +150,25 @@ class Wikibugs2(object):
         logger.debug('get_transaction_info(%r,%r) = %s', task_id, transaction_phids, json.dumps(transactions))
         return transactions
 
-    def get_task_page(self, url):
-        return self.phab.req_session.get(url, headers=self.phab.headers).text
-
-    def get_tags(self, task_page):
-        soup = BeautifulSoup(task_page, features='html.parser')
+    def get_tags(self, task_info):
+        """
+        :param task_info: Data from the maniphest.info API
+        :type task_info: dict
+        """
         alltags = {}
+        logger.debug('get_tags(%s)', json.dumps(task_info))
 
-        for tag in soup.findAll(class_='phabricator-handle-tag-list-item'):
-            taglink = tag.find('a', class_='phui-tag-view')
-            if not taglink:
-                continue
+        for phid in task_info['projectPHIDs']:
+            tag = self.project_info(phid)
+            phid_info = self.cached_phid_info(phid)
 
-            marker = taglink.find('span', class_='phui-icon-view')
-
-            classes = taglink['class'] + marker['class']
-
-            disabled = "phui-tag-disabled" in classes
-            tagtype = [cls.split("-")[1] for cls in classes if cls.startswith("fa-")][0]
-            uri = taglink['href']
-            name = taglink.text
-            alltags[name] = {'shade': "blue",
-                             'disabled': disabled,
-                             'tagtype': tagtype,
-                             'uri': uri}
+            name = tag['fields']['name']
+            alltags[name] = {
+                'shade': tag['fields']['color']['key'],
+                'disabled': phid_info['status'] == 'closed',
+                'tagtype': tag['fields']['icon']['icon'][3:],
+                'uri': phid_info['uri'],
+            }
         return alltags
 
     def guess_best_anchor(self, transactions):
@@ -241,16 +245,7 @@ class Wikibugs2(object):
             return
 
         anchor = self.guess_best_anchor(transactions)
-
-        task_page = self.get_task_page(phid_info['uri'])
-        try:
-            projects = self.get_tags(task_page)
-        except Exception as e:
-            logger.exception("Could not retrieve tags for %s", event_info['data']['objectPHID'])
-            if self.raise_errors:
-                raise
-            self.dump_error("scrape-tags", e, event_info)
-            projects = [self.get_project_name(phid) for phid in task_info['projectPHIDs']]
+        projects = self.get_tags(task_info)
 
         # Start sorting this into things we care about...
         useful_event_metadata = {

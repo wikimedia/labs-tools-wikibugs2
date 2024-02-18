@@ -29,6 +29,7 @@ class IRCMessageBuilder(object):
         'grey': 'grey',
         'pink': 'pink',
         'checkered': 'silver',
+        'disabled': 'grey',
     }
 
     PRIORITY = {
