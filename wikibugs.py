@@ -100,7 +100,7 @@ class Wikibugs2(object):
         info = self.phab.request('maniphest.info', {
             'task_id': task_id
         })
-        logger.debug('maniphest.info for %r = %s' % (task_id, json.dumps(info)))
+        logger.debug('maniphest.info for %r = %s', task_id, json.dumps(info))
         return info
 
     @functools.lru_cache(maxsize=200)
@@ -131,7 +131,7 @@ class Wikibugs2(object):
                 }
                 if trans['comments'] is not None:
                     transactions[trans['transactionType']]['comments'] = trans['comments']
-        logger.debug('get_transaction_info(%r,%r) = %s' % (task_id, transaction_phids, json.dumps(transactions)))
+        logger.debug('get_transaction_info(%r,%r) = %s', task_id, transaction_phids, json.dumps(transactions))
         return transactions
 
     def get_task_page(self, url):
@@ -216,15 +216,15 @@ class Wikibugs2(object):
         """
         phid_type = self.get_type_from_phid(event_info['data']['objectPHID'])
         if phid_type != 'TASK':  # Only handle Maniphest Tasks for now
-            logger.debug('Skipping %s, it is of type %s' % (event_info['data']['objectPHID'], phid_type))
+            logger.debug('Skipping %s, it is of type %s', event_info['data']['objectPHID'], phid_type)
             return
 
         if 'transactionPHIDs' not in event_info['data']:
-            logger.debug('Skipping %s, does not contain transactions' % (event_info['data']['objectPHID'], ))
+            logger.debug('Skipping %s, does not contain transactions', event_info['data']['objectPHID'])
             # If there are no transactions, it's something weird like tokens
             return
 
-        logger.debug('Processing %s' % json.dumps(event_info))
+        logger.debug('Processing %s', json.dumps(event_info))
 
         phid_info = self.phid_info(event_info['data']['objectPHID'])
         task_info = self.maniphest_info(phid_info['name'])
@@ -236,7 +236,7 @@ class Wikibugs2(object):
                 task_page, event_info['data']['transactionPHIDs']
             )
         except Exception as e:
-            logger.exception("Could not retrieve anchor for %s" % event_info['data']['objectPHID'])
+            logger.exception("Could not retrieve anchor for %s", event_info['data']['objectPHID'])
             if self.raise_errors:
                 raise
             self.dump_error("XACT-anchor", e, event_info)
@@ -245,7 +245,7 @@ class Wikibugs2(object):
         try:
             projects = self.get_tags(task_page)
         except Exception as e:
-            logger.exception("Could not retrieve tags for %s" % event_info['data']['objectPHID'])
+            logger.exception("Could not retrieve tags for %s", event_info['data']['objectPHID'])
             if self.raise_errors:
                 raise
             self.dump_error("scrape-tags", e, event_info)
@@ -325,7 +325,7 @@ if __name__ == '__main__':
 
     bugs.raise_errors = args.raise_errors
     for file in args.files:
-        logger.info("Processing {f}".format(f=file))
+        logger.info("Processing %s", file)
         from collections import OrderedDict  # noqa
         bugs.process_event(eval(open(file).readline()))
 
